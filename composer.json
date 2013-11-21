@@ -13,7 +13,8 @@
         "google/api-client": "*",
         "zendframework/zend-http": "*",
         "seld/jsonlint": "*",
-        "crodas/text-rank": "*"
+        "crodas/text-rank": "*",
+        "neitanod/forceutf8": "*"
     },
     "scripts": {
         "post-autoload-dump": "Autoloader\\Composer::generate"

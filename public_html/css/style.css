@@ -177,6 +177,11 @@
 			{
 				position: relative;
 			}
+
+			.button.fo:after
+			{
+				position: relative;
+			}
 	
 		.button.alt
 		{
@@ -264,6 +269,19 @@
 			}
 
 		.fa:before
+		{
+			display:inline-block;
+			font-family: FontAwesome;
+			font-size: 1.25em;
+			text-decoration: none;
+			font-style: normal;
+			font-weight: normal;
+			line-height: 1;
+			-webkit-font-smoothing:antialiased;
+			-moz-osx-font-smoothing:grayscale;
+		}
+
+		.fo:after
 		{
 			display:inline-block;
 			font-family: FontAwesome;
@@ -391,7 +409,7 @@
 		.fa-check-circle-o:before{content:"\f05d"}
 		.fa-ban:before{content:"\f05e"}
 		.fa-arrow-left:before{content:"\f060"}
-		.fa-arrow-right:before{content:"\f061"}
+		.fa-arrow-right:after{content:"\f061"}
 		.fa-arrow-up:before{content:"\f062"}
 		.fa-arrow-down:before{content:"\f063"}
 		.fa-mail-forward:before,.fa-share:before{content:"\f064"}
@@ -459,7 +477,7 @@
 		.fa-hand-o-up:before{content:"\f0a6"}
 		.fa-hand-o-down:before{content:"\f0a7"}
 		.fa-arrow-circle-left:before{content:"\f0a8"}
-		.fa-arrow-circle-right:before{content:"\f0a9"}
+		.fa-arrow-circle-right:after{content:"\f0a9"}
 		.fa-arrow-circle-up:before{content:"\f0aa"}
 		.fa-arrow-circle-down:before{content:"\f0ab"}
 		.fa-globe:before{content:"\f0ac"}

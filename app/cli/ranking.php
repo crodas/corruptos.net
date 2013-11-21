@@ -14,15 +14,24 @@ function ranking()
 
     $db = Service::get('db');
     foreach ($db->getCollection('corrupto')->find() as $corrupto) {
+        if (!empty($corrupto->keywords)) continue;
+
         $text = "";
         foreach ($db->getCollection('noticia')->find(['corruptos.uri' => $corrupto->uri]) as $row) {
+            $row->texto = ForceUTF8\Encoding::toUTF8($row->texto);
+            $db->save($row);
             $text .= $row->texto . "\n";
+
         }
         echo "{$corrupto->nombre}\n";
+
         $corrupto->keywords = array_keys($analizer->GetKeywords($text));
         $corrupto->summary  = $summary->GetSummary($text);
         try {
             $db->save($corrupto);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            $corrupto->keywords = array();
+            $db->save($corrupto);
+        }
     }
 }

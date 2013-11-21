@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "06edd10cd85e97868dedc9bad32f8133",
+    "hash": "1d9496c1797adec11c9aa7ac7d078efe",
     "packages": [
         {
             "name": "crodas/activemongo2",
@@ -677,6 +677,34 @@
                 "youtube"
             ],
             "time": "2013-06-08 08:53:50"
+        },
+        {
+            "name": "neitanod/forceutf8",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neitanod/forceutf8.git",
+                "reference": "546fe2b8dfd280764a4d7906c9a9b1dc955eb876"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neitanod/forceutf8/zipball/546fe2b8dfd280764a4d7906c9a9b1dc955eb876",
+                "reference": "546fe2b8dfd280764a4d7906c9a9b1dc955eb876",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ForceUTF8\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+            "homepage": "https://github.com/neitanod/forceutf8",
+            "time": "2013-03-10 08:51:59"
         },
         {
             "name": "seld/jsonlint",

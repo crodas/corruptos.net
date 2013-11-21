@@ -41,13 +41,14 @@
 											<span>Del Paraguay</span>
 										</div>
 									
-									<!-- Nav -->
+									<!--
 										<nav id="nav">
 											<ul>
 												<li class="current_page_item"><a href="index.html">Portada</a></li>
 												<li><a href="left-sidebar.html">Noticias</a></li>
 											</ul>
 										</nav>
+                                    -->
 								
 								</header>
 
@@ -67,16 +68,20 @@
 
 									<div>
 										<div class="row">
-											<div class="7u">
+											<div class="12u">
+                                            @section('header')
 												<h2>Los corruptos</h2>
 												<p>Bienvenidos al ranking de corruptos</p>
+                                            @show
 											</div>
+                                                <!---
 											<div class="5u">
 												<ul>
 													<li><a href="/" class="button big fa fa-arrow-circle-right">Top Corruptos</a></li>
 													<li><a href="/" class="button alt big fa fa-question-circle">Como funciona</a></li>
 												</ul>
 											</div>
+                                                -->
 										</div>
 									</div>
 								
@@ -87,7 +92,7 @@
 				</div>
 			</div>
 		
-		<!-- Features Wrapper -->
+            @section('content')
 			<div id="features-wrapper">
 				<div class="container">
 					<div class="row">
@@ -105,7 +110,7 @@
 											<h2><a href="/{{$corrupto->uri}}">{{{ $corrupto->nombre }}}</a></h2>
 											<span class="byline">Noticias procesadas: {{$corrupto->total_noticias}}</span>
 										</header>
-                                        <p>{{{ $corrupto->summary }}}</p>
+                                        <p>{{{ substr($corrupto->summary, 0, 200) }}}...</p>
 									</div>
 								</section>
 						</div>
@@ -118,6 +123,7 @@
                     </div>
 				</div>
 			</div>
+            @show
 
 		<!-- Footer Wrapper -->
 			<div id="footer-wrapper">

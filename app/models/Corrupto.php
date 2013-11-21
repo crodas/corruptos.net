@@ -55,4 +55,16 @@ class Corrupto
         }
         return $doc;
     }
+
+    public function getNoticias($page, &$has_more)
+    {
+        $db  = Service::get('db');
+        $col = $db->getCollection('noticias')
+            ->find(['corruptos.uri' => $this->uri])
+            ->skip($page * 10)
+            ->limit(10)
+            ->sort(['hits' => -1]);
+        $has_more = $col->count() > ($page+1)*10;
+        return $col;
+    } 
 }

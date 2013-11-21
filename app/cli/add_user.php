@@ -18,6 +18,11 @@ function agregar($input, $output)
     $conn   = Service::get('db');
     $search = Service::get('search');
 
+    if ($nombre == "CARLOS NÚÑEZ AGÜERO") {
+        // seems odd but abc's search is a bit silly
+        $nombre = "SENADOR CARLOS NÚÑEZ";
+    }
+
     $corrupto = Corrupto::getOrCreate($nombre);
     $corrupto->total_noticias = 0;
     $corrupto->comentarios    = 0;

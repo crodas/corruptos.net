@@ -24,8 +24,8 @@ NELSON AGUINAGALDE
 CARLOS NÚÑEZ AGÜERO 
 JOSÉ BÓBEDA";
 
-`php cli.php db:index`;
+echo "php cli.php db:index\n";
 foreach (explode("\n", $text) as $nombre) {
     $nombre = trim($nombre);
-    `php cli.php corrupto:agregar  "$nombre"`;
+    echo "php cli.php corrupto:agregar  \"$nombre\"\n";
 }
