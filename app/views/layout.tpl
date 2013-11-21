@@ -103,9 +103,9 @@
 									<div class="inner">
 										<header>
 											<h2><a href="/{{$corrupto->uri}}">{{{ $corrupto->nombre }}}</a></h2>
-											<span class="byline">Total: {{$corrupto->total_noticias}}</span>
+											<span class="byline">Noticias procesadas: {{$corrupto->total_noticias}}</span>
 										</header>
-										<p>{{{ implode(",", array_keys($corrupto->keywords)) }}}</p>
+                                        <p>{{{ $corrupto->summary }}}</p>
 									</div>
 								</section>
 						</div>

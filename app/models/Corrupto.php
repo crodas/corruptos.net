@@ -16,13 +16,22 @@ class Corrupto
     /** @String @Required */
     public $nombre;
 
+    /** @Int */
+    public $hits;
+
+    /** @Int */
+    public $comentarios;
+
     /** @Array */
     public $foto;
+
+    /** @String */
+    public $summary;
 
     /** @Int */
     public $total_noticias;
 
-    /** @Hash */
+    /** @Array */
     public $keywords;
 
     public function getImage()

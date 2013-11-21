@@ -27,6 +27,12 @@ class Noticia
     /** @String @Unique */
     public $url;
 
+    /** @Int */
+    public $hits;
+
+    /** @Int */
+    public $comentarios;
+
     /** @Hash */
     public $keywords;
 
