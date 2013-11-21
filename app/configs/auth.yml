@@ -1,0 +1,4 @@
+user_collection: users
+user_class: \Model\User
+user_id: id
+password_field: password

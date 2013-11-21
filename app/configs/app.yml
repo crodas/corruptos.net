@@ -1,0 +1,21 @@
+include:
+    - auth.yml
+
+devel: true
+temp_dir: ../../tmp/
+
+activemongo:
+    path: ../models/
+    db: corruptos_net
+
+simple-view:
+    views: [../views/]
+
+dispatcher:
+    dir: [../controllers/, ../libs]
+
+db: %activemongo%
+view: %simple-view%
+
+search:
+    api: "SJC9X385Av2uLXPm43rJ7Jkmr4TndGnwV025h9rXWI8"

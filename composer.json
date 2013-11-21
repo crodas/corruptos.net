@@ -1,0 +1,30 @@
+{
+    "name": "crodas/framework",
+    "description": "Tiny framework that I use daily, it is basically my libraries glued all together",
+    "require": {
+        "crodas/autoloader": "~0.1",
+        "crodas/dispatcher": "~0.1",
+        "crodas/service-provider": "~0.1",
+        "crodas/activemongo2": "dev-feature/better-memory",
+        "crodas/simple-view-engine": "~0.1",
+        "filp/whoops": "1.*",
+        "crodas/tiny-form": "*",
+        "crodas/cli": "~0.1",
+        "google/api-client": "*",
+        "zendframework/zend-http": "*",
+        "seld/jsonlint": "*",
+        "crodas/text-rank": "*"
+    },
+    "scripts": {
+        "post-autoload-dump": "Autoloader\\Composer::generate"
+    },
+    "license": "BSD-4-Clause",
+    "version": "v0.1.2",
+    "authors": [
+        {
+            "name": "César D. Rodas",
+            "email": "crodas@php.net"
+        }
+    ],
+    "minimum-stability": "dev"
+}
