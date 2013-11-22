@@ -131,7 +131,7 @@
 						<div class="12u">
 							<div id="copyright">
                                 Idea de <a href="https://twitter.com/crodas">@SanTula</a>, programado por
-								 <a href="https://twitter.com/crodas">crodas</a>. No rights reserved. | El conocimiento debe ser libre, sin un amo, por eso esto es <a href="https://github.com/crodas/corruptos.net">código abierto</a> | Design: <a href="http://html5up.net/">HTML5 UP</a>
+								 <a href="https://twitter.com/crodas">crodas</a>. | El conocimiento debe ser libre, sin un amo, por eso esto es libre (<a href="https://github.com/crodas/corruptos.net">código</a> y <a href="/db.tar.xz">datos</a>)  | Design: <a href="http://html5up.net/">HTML5 UP</a>
 							</div>
 						</div>
 					</div>
