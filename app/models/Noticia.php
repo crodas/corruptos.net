@@ -3,8 +3,9 @@
 /**
  *  @Persist("noticias")
  *  @Sluggable("titulo", "uri")
+ *  @SingleCollection
  */
-class Noticia
+abstract class Noticia
 {
     /** @Id */
     public $id;
@@ -45,50 +46,13 @@ class Noticia
     /** @Hash */
     public $crawled_data = array();
 
-    public static function is_useful($url)
-    {
-        return preg_match('/abc-radio|congresistas|editorial|judicial|locales|interior|politica|policiales|economia|nacionales|articulos/', $url);
-    }
-
-    private function text($object)
+    protected function text($object)
     {
         $text = [];
         foreach ($object as $node) {
             $text[] = trim($node->textContent);
         }
         return implode("\n", $text);
-    }
-
-    public function crawl()
-    {
-        if ($this->crawled) return;
-
-        echo "Crawling {$this->url}\n";
-
-        $content = file_get_contents($this->url);
-        $dom = new \DomDocument;
-        @$dom->loadHTML($content);
-        $xpath = new \DOMXPath($dom);
-        
-        $title  = $this->text($xpath->query('//*[@id="article"]/h1'));
-        $copete = $this->text($xpath->query('//*[@id="article"]/p'));
-        $texto  = $this->text($xpath->query('//*[@id="article"]/div[@class="text"]/p'));
-        $links  = [];
-        $images = [];
-
-        foreach ($xpath->query('//*[@id="article"]/div[@class="text"]/p/a') as $l) {
-            $links[] = [
-                $l->getAttribute('href'),
-                $l->textContent
-            ];
-        }
-
-        foreach ($xpath->query('//*[@id="thumbs-nav"]//a') as $l) {
-            $images[] = $l->getAttribute('data-large');
-        }
-
-        $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images');
-        $this->crawled = true;
     }
 
     public static function getOrCreate($url)
@@ -102,5 +66,28 @@ class Noticia
 
         return $col;
     }
+
+    public static function getType($url)
+    {
+        foreach (array('Abc') as $type) 
+        {
+            if ($type::is($url)) {
+                return $type;
+            }
+        }
+        return false;
+    }
+
+    public static function is_useful($url) 
+    {
+        $type = self::getType($url);
+
+        if ($type) {
+            return $type::is_useful_internal($url);
+        }
+        return false;
+    }
+
+    abstract public function crawl();
 
 }
