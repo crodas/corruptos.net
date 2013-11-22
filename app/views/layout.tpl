@@ -37,7 +37,7 @@
 								
 									<!-- Logo -->
 										<div id="logo">
-											<h1><a href="/" id="logo">Corruptos</a></h1>
+											<h1><a href="/">Corruptos</a></h1>
 											<span>Del Paraguay</span>
 										</div>
 									
