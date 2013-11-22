@@ -50,6 +50,11 @@ class Corrupto
         $this->fixImage();
 
         foreach($search($this->nombre) as $news) {
+            if (!Noticia::is_useful($news->url)) {
+                echo "\t {$news->url}  is not useful\n";
+                continue;
+            }
+
             $not = Noticia::getOrCreate("http://www.abc.com.py/" . $news->url);
             $not->titulo   = $news->titulo;
             $not->texto    = $news->copete;

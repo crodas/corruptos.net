@@ -42,6 +42,11 @@ class Noticia
     /** @Hash */
     public $crawled_data = array();
 
+    public static function is_useful($url)
+    {
+        return preg_match('/abc-radio|congresistas|editorial|judicial|locales|interior|politica|policiales|economia|nacionales|articulos/', $url);
+    }
+
     private function text($object)
     {
         $text = [];

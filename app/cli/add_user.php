@@ -9,6 +9,20 @@ function index($input, $output)
 }
 
 /** 
+ *  @Cli("corrupto:clean-up") 
+ */
+function cleaup_things($input, $output)
+{
+    $conn = Service::get('db');
+    foreach ($conn->getCollection('noticias')->Find() as $noticia) {
+        if (!Noticia::is_useful($noticia->url)) {
+            $conn->delete($noticia);
+        }
+    }
+}
+
+
+/** 
  *  @Cli("corrupto:actualizar") 
  */
 function update($input, $output)
