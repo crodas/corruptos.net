@@ -15,6 +15,7 @@ function update($input, $output)
 {
     $conn = Service::get('db');
     foreach ($conn->getCollection('corruptos')->Find() as $corrupto) {
+        echo "Actualizando {$corrupto->nombre}\n";
         $corrupto->update();
         $conn->save($corrupto);
     }
