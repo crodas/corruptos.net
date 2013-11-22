@@ -1,6 +1,40 @@
 <?php
 
 /**
+ *  @Cli("ranking:simple")
+ *  @Option('force')
+ */ 
+function ranking_simple($input)
+{
+    ini_set('memory_limit', '1G');
+
+    $config = new \crodas\TextRank\Config;
+    $config->addListener(new \crodas\TextRank\Stopword);
+    $analizer = new \crodas\TextRank\TextRank($config);
+
+    $db  = Service::get("db");
+    foreach ($db->getCollection('noticia')->find() as $row) {
+        if (!$row->crawled || (!empty($row->keywords) && !$input->getOption('force'))) continue;
+        echo "{$row->titulo}\n";
+        $texto = ForceUTF8\Encoding::toUTF8(implode(".\n", [
+            $row->crawled_data['title'],
+            $row->crawled_data['copete'],
+            $row->crawled_data['texto'],
+        ]));
+
+        try {
+            $row->keywords = [];
+            foreach ($analizer->GetKeywords($texto) as $tag => $score) {
+                $row->keywords[] = ForceUTF8\Encoding::toUTF8($tag);
+            }
+            $db->save($row);
+        } catch (\Exception $e) {}
+
+
+    }
+}
+
+/**
  *  @Cli("ranking")
  */ 
 function ranking()
