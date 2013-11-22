@@ -7,7 +7,7 @@
  */
 class Corrupto
 {
-    const PER_PAGE = 20;
+    const PER_PAGE = 30;
 
     /** @Id */
     public $id;
