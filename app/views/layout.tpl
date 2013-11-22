@@ -41,14 +41,13 @@
 											<span>Del Paraguay</span>
 										</div>
 									
-									<!--
 										<nav id="nav">
 											<ul>
-												<li class="current_page_item"><a href="index.html">Portada</a></li>
-												<li><a href="left-sidebar.html">Noticias</a></li>
+                                            @foreach($menu as $link => $item)
+												<li class="{{ $item[1] ? 'current_page_item': ''}}"><a href="{{$link}}">{{$item[0]}}</a></li>
+                                            @end
 											</ul>
 										</nav>
-                                    -->
 								
 								</header>
 
@@ -102,7 +101,7 @@
 								<section class="box box-feature">
                                     @if ($picture = $corrupto->getImage())
 									<a href="#" class="image image-full">
-                                        <!-- <img src="{{{ $picture }}}" alt="" /> -->
+                 <!-- <img src="{{{ $picture }}}" alt="" /> -->
                                     </a>
                                     @end
 									<div class="inner">
@@ -131,7 +130,8 @@
 					<div class="row">
 						<div class="12u">
 							<div id="copyright">
-								&copy; <a href="https://twitter.com/crodas">crodas</a>. No rights reserved. | El conocimiento debe ser libre, sin un amo, por eso esto es <a href="https://github.com/crodas/corruptos.net">código abierto</a> | Design: <a href="http://html5up.net/">HTML5 UP</a>
+                                Idea de <a href="https://twitter.com/crodas">@SanTula</a>, programado por
+								 <a href="https://twitter.com/crodas">crodas</a>. No rights reserved. | El conocimiento debe ser libre, sin un amo, por eso esto es <a href="https://github.com/crodas/corruptos.net">código abierto</a> | Design: <a href="http://html5up.net/">HTML5 UP</a>
 							</div>
 						</div>
 					</div>

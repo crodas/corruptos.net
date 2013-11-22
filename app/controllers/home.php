@@ -1,5 +1,19 @@
 <?php
 
+/** @postRoute */
+function inject_menu($req, $unused, $args)
+{
+    $args['menu'] = [
+        '/' => ['Portada', false],
+        '/locales' => ['Locales Adheridos', false],
+    ];
+    if (!empty($args['menu'][$_SERVER['REQUEST_URI']])) {
+        // Go home @crodas you're drunk!
+        $args['menu'][$_SERVER['REQUEST_URI']][1] = true;
+    }
+    return $args;
+}
+
 /** @Filter uri */
 function uri($req, $name, $value)
 {
@@ -10,6 +24,14 @@ function uri($req, $name, $value)
     }
     $req->set($name, $doc);
     return true;
+}
+
+/**
+ *  @Route /locales
+ *  @View locales.tpl
+ */
+function get_locales() {
+    return [];
 }
 
 /**

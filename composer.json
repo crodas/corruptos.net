@@ -5,7 +5,7 @@
         "crodas/autoloader": "~0.1",
         "crodas/dispatcher": "~0.1",
         "crodas/service-provider": "~0.1",
-        "crodas/activemongo2": "dev-feature/better-memory",
+        "crodas/activemongo2": "dev-develop",
         "crodas/simple-view-engine": "~0.1",
         "filp/whoops": "1.*",
         "crodas/tiny-form": "*",

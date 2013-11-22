@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1d9496c1797adec11c9aa7ac7d078efe",
+    "hash": "55fa230646a562d0b8ab35d3fc575568",
     "packages": [
         {
             "name": "crodas/activemongo2",
-            "version": "dev-feature/better-memory",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "8f37b80cd9a7225840913241a6c1f208791deb7c"
+                "reference": "e9062c5fd9b0e781dbee46d4b8bd9e5c81b34676"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/8f37b80cd9a7225840913241a6c1f208791deb7c",
-                "reference": "8f37b80cd9a7225840913241a6c1f208791deb7c",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/e9062c5fd9b0e781dbee46d4b8bd9e5c81b34676",
+                "reference": "e9062c5fd9b0e781dbee46d4b8bd9e5c81b34676",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-11-20 16:17:51"
+            "time": "2013-11-22 01:37:10"
         },
         {
             "name": "crodas/artifex",
