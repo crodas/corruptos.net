@@ -16,6 +16,9 @@
                 <div id="sidebar">
                     <section class="widget-thumbnails">
                         <h2>Resumen</h2>
+	                    <div class="wide">
+                            <img alt="corrupto {{{$corrupto->nombre}}}" src="{{{ $corrupto->avatar }}}" alt="" />
+                        </div>
                         <p><small>{{{$corrupto->summary}}}</small></p>
                     </section>
                 </div>

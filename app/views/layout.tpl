@@ -100,8 +100,8 @@
 						<div class="4u">
 								<section class="box box-feature">
                                     @if ($corrupto->avatar) {
-									<a href="#" class="image image-full">
-                                        <img src="{{{ $corrupto->avatar }}}" alt="" />
+									<a href="/{{{$corrupto->uri}}}" class="image image-full">
+                                        <img alt="corrupto {{{$corrupto->nombre}}}" src="{{{ $corrupto->avatar }}}" alt="" />
                                     </a>
                                     @end
 									<div class="inner">
