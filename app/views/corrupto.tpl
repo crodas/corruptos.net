@@ -28,9 +28,9 @@
                     <h2>Noticias</h2>
                     @foreach($corrupto->getNoticias($page, $has_more) as $noticia)
                     <section class="last">
-                        <h3>{{{$noticia->titulo}}}</h3>
+                        <h3><a href="/go/{{$noticia->id}}" target="_blank">{{{$noticia->titulo}}}</a></h3>
                         <p>{{{$noticia->texto}}}</p>
-                        <a href="{{{$noticia->url}}}"
+                        <a href="/go/{{{$noticia->id}}}"
                         target="_blank"
                         class="button fa ">Leer más</a>
                     </section>

@@ -30,6 +30,9 @@ class Noticia
     /** @Int */
     public $hits;
 
+    /** @Int @Inc */
+    public $visitas = 0;
+
     /** @Int */
     public $comentarios;
 

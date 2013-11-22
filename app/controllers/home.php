@@ -14,6 +14,18 @@ function inject_menu($req, $unused, $args)
     return $args;
 }
 
+/** @Filter id */
+function get_id($req, $name, $value)
+{
+    $db  = Service::get('db');
+    $doc = $db->GetCollection('noticia')->findOne(['_id' => new \MongoId($value)]);
+    if (empty($doc)) {
+        return false;
+    }
+    $req->set($name, $doc);
+    return true;
+}
+
 /** @Filter uri */
 function uri($req, $name, $value)
 {
@@ -25,6 +37,17 @@ function uri($req, $name, $value)
     $req->set($name, $doc);
     return true;
 }
+
+/** @Route("/go/{id:noticia}") */
+function go($req)
+{
+    $noticia = $req->get('noticia');
+    $noticia->visitas++;
+    Service::get('db')->save($noticia);
+    header("Location: {$noticia->url}");
+    exit;
+}
+
 
 /**
  *  @Route /locales
