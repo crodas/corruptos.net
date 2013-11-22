@@ -74,7 +74,11 @@ class Corrupto
 
     public function selectImage(Array $candidates)
     {
-        $names = explode(" ", strtolower(preg_replace('/\?+/', '.', mb_convert_encoding($this->nombre, 'ascii'))));
+        $nombre = $this->nombre;
+        if ($nombre == 'JULIO FRANCO GÓMEZ') {
+            $nombre = 'yoyito';
+        }
+        $names = explode(" ", strtolower(preg_replace('/\?+/', '.', mb_convert_encoding($nombre, 'ascii'))));
 
         $cands = [];
         foreach ($candidates as $url) {
