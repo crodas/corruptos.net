@@ -7,6 +7,8 @@
  */
 class Corrupto
 {
+    const PER_PAGE = 20;
+
     /** @Id */
     public $id;
 
@@ -118,10 +120,10 @@ class Corrupto
         $db  = Service::get('db');
         $col = $db->getCollection('noticias')
             ->find(['corruptos.uri' => $this->uri])
-            ->skip($page * 10)
-            ->limit(10)
+            ->skip($page * self::PER_PAGE)
+            ->limit(self::PER_PAGE)
             ->sort(['hits' => -1]);
-        $has_more = $col->count() > ($page+1)*10;
+        $has_more = $col->count() > ($page+1)*self::PER_PAGE;
         return $col;
     } 
 }
