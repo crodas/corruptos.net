@@ -9,6 +9,25 @@ function index($input, $output)
 }
 
 /** 
+ *  @Cli("corrupto:pickup-image") 
+ */
+function select_frontimage($input, $output)
+{
+    $conn = Service::get('db');
+    foreach ($conn->getCollection('corruptos')->Find() as $corrupto) {
+        $candidates = [];
+        foreach ($conn->getCollection('noticias')->find(['corruptos.uri' => $corrupto->uri]) as $noticia) {
+            if (!empty($noticia->crawled_data['images'])) {
+                $candidates = array_merge($candidates, $corrupto->selectImage($noticia->crawled_data['images']));
+            }
+        }
+        shuffle($candidates);
+        $corrupto->avatar = current($candidates);
+        $conn->save($corrupto);
+    }
+}
+
+/** 
  *  @Cli("corrupto:clean-up") 
  */
 function cleaup_things($input, $output)

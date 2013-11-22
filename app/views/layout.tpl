@@ -99,9 +99,9 @@
                         @foreach ($corruptos as $corrupto)
 						<div class="4u">
 								<section class="box box-feature">
-                                    @if ($picture = $corrupto->getImage())
+                                    @if ($corrupto->avatar) {
 									<a href="#" class="image image-full">
-                 <!-- <img src="{{{ $picture }}}" alt="" /> -->
+                                        <img src="{{{ $corrupto->avatar }}}" alt="" />
                                     </a>
                                     @end
 									<div class="inner">

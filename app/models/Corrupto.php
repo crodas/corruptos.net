@@ -24,32 +24,22 @@ class Corrupto
     /** @Int */
     public $comentarios;
 
-    /** @Array */
-    public $foto;
-
     /** @String */
     public $summary;
 
     /** @Int */
     public $total_noticias;
 
+    /** @String */
+    public $avatar;
+
     /** @Array */
     public $keywords;
-
-    public function getImage()
-    {
-        if (empty($this->foto)) {
-            return null;
-        }
-        shuffle($this->foto);
-        return current($this->foto);
-    }
 
     public function update()
     {
         $conn   = Service::get('db');
         $search = Service::get('search');
-        $this->fixImage();
 
         foreach($search($this->nombre) as $news) {
             if (!Noticia::is_useful($news->url)) {
@@ -66,8 +56,6 @@ class Corrupto
             $not->hits        = $news->hits;
             $not->comentarios = $news->comentarios;
             $not->corruptos[] = $this;
-            $not->foto     = $news->corte_url;
-            $this->foto[] = $news->corte_url;
             try {
                 $not->crawl();
             } catch (\Exception $e) {}
@@ -77,7 +65,6 @@ class Corrupto
                 echo (string)$e . "\n";
             }
         }
-        $this->fixImage();
         $news = $conn->getCollection('noticias');
         $this->hits = $news->sum('hits', ['corruptos.uri' => $this->uri]);
         $this->comentarios = $news->sum('commentarios', ['corruptos.uri' => $this->uri]);
@@ -85,12 +72,12 @@ class Corrupto
         $conn->save($this);
     }
 
-    public function fixImage()
+    public function selectImage(Array $candidates)
     {
         $names = explode(" ", strtolower(preg_replace('/\?+/', '.', mb_convert_encoding($this->nombre, 'ascii'))));
 
         $cands = [];
-        foreach ($this->foto as $url) {
+        foreach ($candidates as $url) {
             foreach ($names as $name) {
                 if (preg_match("/$name/", $url)) {
                     $cands[] = $url;
@@ -99,7 +86,7 @@ class Corrupto
             }
         }
 
-        $this->foto = array_unique($cands);
+        return array_unique($cands);
     }
     
     public static function getOrCreate($nombre)
