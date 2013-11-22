@@ -29,6 +29,7 @@
                     @foreach($corrupto->getNoticias($page, $has_more) as $noticia)
                     <section class="last">
                         <h3><a href="/go/{{$noticia->id}}" target="_blank">{{{$noticia->titulo}}}</a></h3>
+                        <small>{{date("Y/m/d H:i:s", $noticia->creado->sec)}}</small>
                         <p>{{{$noticia->texto}}}</p>
                         <a href="/go/{{{$noticia->id}}}"
                         target="_blank"
