@@ -158,7 +158,7 @@ function search_service(Array $config)
         return array_merge([]
             , Crawler::nanduti($text)
             , Crawler::cardinal($text)
-            //, Crawler::abc($text)
+            , Crawler::abc($text)
         );
     };
 }
