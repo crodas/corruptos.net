@@ -46,7 +46,7 @@
                         @if (empty($noticia->is_audio)) {
                             <p>{{{ $noticia->render() }}}</p>
                         @else
-                            @include("mp3", ['id' => $noticia->id])
+                            @include("mp3", ['id' => $noticia->id, 'noticia' => $noticia])
                             @if (!empty($noticia->has_text))
                                 <p>{{{ $noticia->render() }}}</p>
                             @end

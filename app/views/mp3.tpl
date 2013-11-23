@@ -50,7 +50,7 @@ $(document).ready(function(){
         </div>
         <div class="jp-title">
             <ul>
-                <li>Cro Magnon Man</li>
+                <li>Audio de {{$noticia->fuente()}}</li>
             </ul>
         </div>
         <div class="jp-no-solution">

@@ -74,6 +74,11 @@ abstract class Noticia
         return true;
     }
 
+    public function fuente()
+    {
+        return get_parent_class($this);
+    }
+
     public function render()
     {
         echo $this->texto;
