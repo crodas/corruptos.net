@@ -42,12 +42,12 @@ function uupdate_profiel($input, $output)
 
         $image   = $xpath->query(".//img[1]", $tr)->item(0)->getAttribute('src');
         $nombre  = Http::text($xpath->query(".//a[1]", $tr)->item(0));
-        $profile = "http://www.senado.gov.py/" . $xpath->query(".//a[1]", $tr)->item(0)->getAttribute('href');
+        $cv      = "http://www.senado.gov.py/" . $xpath->query(".//a[1]", $tr)->item(0)->getAttribute('href');
         $partido = Http::text($xpath->query("./td/div/span", $tr)->item(2));
         $tel     = Http::text($xpath->query("./td/div/span", $tr)->item(3));
         $email   = Http::text($xpath->query("./td/div/span", $tr)->item(4));
 
-        $datas[] = compact('image', 'nombre', 'profile', 'partido', 'tel', 'email');
+        $datas[] = compact('image', 'nombre', 'cv', 'partido', 'tel', 'email');
     }
 
     foreach ($datas as $data) {

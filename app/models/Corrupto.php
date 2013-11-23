@@ -43,6 +43,9 @@ class Corrupto
     public $partido;
 
     /** @String */
+    public $cv;
+
+    /** @String */
     public $tel;
 
     /** @Array */
