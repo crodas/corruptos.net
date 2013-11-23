@@ -143,6 +143,8 @@ class Crawler
         foreach ($alls as &$noticia) {
             $noticia->url = "http://www.abc.com.py/" . $noticia->url;
         }
+
+        return $alls;
     }
 }
 
