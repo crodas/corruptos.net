@@ -69,6 +69,19 @@ function get_home($req)
 }
 
 /**
+ *  @Route "/audio/{uri:corrupto}"
+ *  @Route "/audio/{uri:corrupto}/{page}"
+ *  @View corrupto.tpl
+ */
+function get_corruptos_audio($req)
+{
+    $corrupto = $req->get('corrupto');
+    $page     = $req->get('page') ?: 0;
+    $filter   = ['is_audio' => true];
+    return compact('corrupto', 'filter', 'page');
+}
+
+/**
  *  @Route "/{uri:corrupto}"
  *  @Route "/{uri:corrupto}/{page}"
  *  @View corrupto.tpl
@@ -77,5 +90,6 @@ function get_corruptos($req)
 {
     $corrupto = $req->get('corrupto');
     $page     = $req->get('page') ?: 0;
-    return compact('corrupto', 'page');
+    $filter   = [];
+    return compact('corrupto', 'page', 'filter');
 }

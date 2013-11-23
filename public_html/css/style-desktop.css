@@ -192,7 +192,7 @@
 /* Nav                                                                           */
 /*********************************************************************************/
 
-	#nav
+	.nav
 	{
 		position: absolute;
 		right: 0;
@@ -200,18 +200,18 @@
 		font-size: 0.9em;
 	}
 	
-		#nav ul
+		.nav ul
 		{
 		}
 			
-			#nav ul li
+			.nav ul li
 			{
 				float: left;
 				line-height: 4.5em;
 				padding-left: 1.5em;
 			}
 
-				#nav ul li a
+				.nav ul li a
 				{
 					font-weight: 800;
 					letter-spacing: 0.025em;
@@ -226,20 +226,20 @@
 					transition: background-color .25s ease-in-out;
 				}
 
-			#nav ul li:hover
+			.nav ul li:hover
 			{
 			}
 
-				#nav ul li:hover a
+				.nav ul li:hover a
 				{
 					background: rgba(255,255,255,0.5);
 				}
 
-			#nav ul li.current_page_item
+			.nav ul li.current_page_item
 			{
 			}
 
-				#nav ul li.current_page_item a
+				.nav ul li.current_page_item a
 				{
 					background: #444;
 					color: #fff;

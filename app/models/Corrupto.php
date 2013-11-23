@@ -62,9 +62,11 @@ class Corrupto
                 continue;
             }
 
-            $not = Noticia::getOrCreate("http://www.abc.com.py/" . $news->url);
+            $not = Noticia::getOrCreate($news->url);
             $not->titulo   = $news->titulo;
-            $not->texto    = $news->copete;
+            if (!empty($news->copete)) {
+                $not->texto = $news->copete;
+            }
             if (empty($not->creado)) {
                 $not->creado   = new MongoDate(strtotime($news->publicacion));
             }
@@ -121,14 +123,14 @@ class Corrupto
         return $doc;
     }
 
-    public function getNoticias($page, &$has_more)
+    public function getNoticias($page, &$has_more, $filter = [])
     {
         $db  = Service::get('db');
         $col = $db->getCollection('noticias')
-            ->find(['corruptos.uri' => $this->uri])
+            ->find(array_merge(['corruptos.uri' => $this->uri], $filter))
             ->skip($page * self::PER_PAGE)
             ->limit(self::PER_PAGE)
-            ->sort(['hits' => -1]);
+            ->sort(['hits' => -1, 'creado' => -1]);
         $has_more = $col->count() > ($page+1)*self::PER_PAGE;
         return $col;
     } 

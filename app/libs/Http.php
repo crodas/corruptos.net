@@ -11,16 +11,19 @@ class Http
         ]);
         $html = curl_exec($ch);
         $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-
         curl_close($ch);
 
         $html = ForceUTF8\Encoding::toUTF8($html);
+        $bom  = "\xEF\xBB\xBF";
+        if (substr($html, 0, 3) === $bom) {
+            $html = substr($html, 3);
+        }
 
         if (is_callable('tidy_repair_string')) {
             // thanks cardinal for given me a hard time serving broken html
             $html = tidy_repair_string($html, array('wrap' => 0), 'utf8');
         }
-
+        $html = mb_convert_encoding($html,'HTML-ENTITIES','UTF-8'); 
         $dom  = new \DomDocument;
         @$dom->loadHTML($html);
         return new \DOMXPath($dom);
@@ -36,7 +39,7 @@ class Http
             $text[] = trim($node->textContent);
         }
 
-        return trim(implode("\n", $text));
+        return ForceUTF8\Encoding::toUTF8(trim(implode("\n", $text)));
     }
 
 }

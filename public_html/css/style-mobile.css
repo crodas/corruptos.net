@@ -172,14 +172,14 @@
 				opacity: 0.75;
 			}
 
-	#navPanel
+	.navPanel
 	{
 		background: #fff;
 		box-shadow: inset -3px 0px 0px 0px #dfdfdf;
 		padding: 0 23px 0 20px;
 	}
 
-		#navPanel .link
+		.navPanel .link
 		{
 			display: block;
 			text-decoration: none;
@@ -189,7 +189,7 @@
 			font-weight: 800;
 		}
 		
-			#navPanel .link:first-child
+			.navPanel .link:first-child
 			{
 				border-top: 0;
 			}
@@ -253,7 +253,7 @@
 /* Nav                                                                           */
 /*********************************************************************************/
 
-	#nav
+	.nav
 	{
 		display: none;
 	}

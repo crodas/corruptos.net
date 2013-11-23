@@ -111,10 +111,6 @@ function select_frontimage($input, $output)
  */
 function cleaup_things($input, $output)
 {
-    $noticia = Noticia::getOrCreate("http://www.cardinal.com.py/noticias/senadora_blanca_fonseca_mi_nica_torpeza_fue_no_medir_la_reaccin_de_la_ciudadana_23326.html");
-    $noticia->crawl();
-    var_dump($noticia);exit;
-
     $conn = Service::get('db');
     foreach ($conn->getCollection('noticias')->Find() as $noticia) {
         if (!Noticia::is_useful($noticia->url)) {

@@ -2,7 +2,12 @@
 
 @section('header')
     <h2>{{{$corrupto->nombre}}}</h2>
-	<p></p>
+    <nav class="nav">
+        <ul>
+        <li class="current_page_item"><a href="/audio/{{$corrupto->uri}}">Audio</a></li>
+        <li class="current_page_item"><a href="/{{$corrupto->uri}}">Noticias</a></li>
+        </ul>
+    </nav>
 @end
 
 @section('content')
@@ -29,11 +34,15 @@
             <!-- Content -->
                 <div id="content">
                     <h2>Noticias</h2>
-                    @foreach($corrupto->getNoticias($page, $has_more) as $noticia)
+                    @foreach($corrupto->getNoticias($page, $has_more, $filter) as $noticia)
                     <section class="last">
                         <h3><a href="/go/{{$noticia->id}}" target="_blank">{{{$noticia->titulo}}}</a></h3>
                         <small>{{date("Y/m/d H:i:s", $noticia->creado->sec)}}</small>
-                        <p>{{{$noticia->texto}}}</p>
+                        @if (empty($noticia->is_audio)) {
+                            <p>{{{ $noticia->render() }}}</p>
+                        @else
+                            {{ $noticia->render() }}
+                        @end
                         <a href="/go/{{{$noticia->id}}}"
                         target="_blank"
                         class="button fa ">Leer más</a>

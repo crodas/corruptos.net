@@ -26,7 +26,7 @@ class Cardinal extends Noticia
         $mp3   = $xpath->query('//*[@id="noticias-list"]//div[@class="links"]/a[1]')->item(0)->getAttribute('href');
         $html  = $xpath->query('//*[@id="embed_code"]')->item(0)->getAttribute('value');
         $this->titulo = $title;
-        Http::texto  = $html;
+        $this->texto  = $html;
 
         $tags = array();
         foreach ($xpath->query('//*[@id="etiquetas"]/a') as $etiqueta) {

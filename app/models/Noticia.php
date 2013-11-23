@@ -14,7 +14,7 @@ abstract class Noticia
     public $uri;
 
     /** @ReferenceMany("corruptos", [uri, nombre]) @Required */
-    public $corruptos;
+    public $corruptos = array();
 
     /** @String @Required */
     public $titulo;
@@ -75,6 +75,10 @@ abstract class Noticia
         return true;
     }
 
+    public function render()
+    {
+        echo $this->texto;
+    }
 
     public static function is_useful($url) 
     {
