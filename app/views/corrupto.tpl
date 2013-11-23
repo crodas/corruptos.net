@@ -46,7 +46,10 @@
                         @if (empty($noticia->is_audio)) {
                             <p>{{{ $noticia->render() }}}</p>
                         @else
-                            {{ $noticia->render() }}
+                            @include("mp3", ['id' => $noticia->id])
+                            @if (!empty($noticia->has_text))
+                                <p>{{{ $noticia->render() }}}</p>
+                            @end
                         @end
                         <a href="/go/{{{$noticia->id}}}"
                         target="_blank"
@@ -55,13 +58,13 @@
                     @end
 
                     @if ($page > 0)
-                        <a href="/{{{$corrupto->uri}}}/{{$page-1}}"
+                        <a href="{{{$base}}}/{{$page-1}}"
                         class="button fa
                         fa-arrow-circle-left">Siguiente anterior</a>
                     @end
                     
                     @if ($has_more)
-                        <a href="/{{{$corrupto->uri}}}/{{$page+1}}"
+                        <a href="{{{$base}}}/{{$page+1}}"
                         class="button fo pull-right fa-arrow-right
                         fa-arrow-circle-right">Siguiente página</a>
                     @end
@@ -75,3 +78,9 @@
 </div>
 
 @end
+
+@section('js')
+<link href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
+@end
+

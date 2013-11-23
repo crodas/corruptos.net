@@ -153,6 +153,8 @@
     ga('send', 'pageview');
 
     </script>
+        @section('js')
+        @show
 
     </body>
 </html>

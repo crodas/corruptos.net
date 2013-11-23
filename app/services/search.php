@@ -64,16 +64,16 @@ class Crawler
         $hits = 0;
         $comentarios = 0;
         $xpath = Http::wget($url);
+        $alls  = [];
         foreach ($xpath->query('//div[@class="BAcaja"]') as $div) {
             $titulo = Http::text($xpath->query('./div[@class="BAcajaTitu"]', $div));
             $url    = $xpath->query('.//a', $div)->item(0)->getAttribute('href');
-            $publicacion = Http::text($xpath->query('./div[@class="BAcajaFec"]', $div));
+            $publicacion = implode("/", array_reverse(explode("/", Http::text($xpath->query('./div[@class="BAcajaFec"]', $div)))));
             $texto  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
-
 
             $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits');
         }
-    
+
         return $alls;
     }
 

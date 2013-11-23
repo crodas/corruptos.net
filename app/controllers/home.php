@@ -48,6 +48,19 @@ function go($req)
     exit;
 }
 
+/** @Route("/play/audio/{id:noticia}") */
+function get_audio($req)
+{
+    $noticia = $req->get('noticia');
+    if (!$noticia->is_audio || empty($noticia->crawled_data['mp3'])) {
+        $req->notFound();
+    }
+    $noticia->listened++;
+    Service::get('db')->save($noticia);
+    header("Location: {$noticia->crawled_data['mp3']}");
+    exit;
+}
+
 
 /**
  *  @Route /locales
@@ -78,7 +91,8 @@ function get_corruptos_audio($req)
     $corrupto = $req->get('corrupto');
     $page     = $req->get('page') ?: 0;
     $filter   = ['is_audio' => true];
-    return compact('corrupto', 'filter', 'page');
+    $base     = "/audio/" . $corrupto->uri;
+    return compact('corrupto', 'filter', 'page', 'base');
 }
 
 /**
@@ -91,5 +105,6 @@ function get_corruptos($req)
     $corrupto = $req->get('corrupto');
     $page     = $req->get('page') ?: 0;
     $filter   = [];
-    return compact('corrupto', 'page', 'filter');
+    $base     = "/audio/" . $corrupto->uri;
+    return compact('corrupto', 'page', 'filter', 'base');
 }

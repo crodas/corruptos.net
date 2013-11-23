@@ -67,7 +67,7 @@ class Corrupto
             if (!empty($news->copete)) {
                 $not->texto = $news->copete;
             }
-            if (empty($not->creado)) {
+            if (empty($not->creado) || empty($not->creado->sec)) {
                 $not->creado   = new MongoDate(strtotime($news->publicacion));
             }
             $not->hits        = $news->hits;

@@ -61,8 +61,7 @@ abstract class Noticia
 
     public static function getType($url)
     {
-        foreach (array('Abc', 'Cardinal', 'Nanduti') as $type) 
-        {
+        foreach (array('Abc', 'Cardinal', 'Nanduti') as $type) {
             if ($type::is($url)) {
                 return $type;
             }
