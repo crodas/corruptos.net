@@ -83,7 +83,6 @@ function get_home($req)
 
 /**
  *  @Route "/audio/{uri:corrupto}"
- *  @Route "/audio/{uri:corrupto}/{page}"
  *  @View corrupto.tpl
  */
 function get_corruptos_audio($req)
