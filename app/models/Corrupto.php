@@ -18,6 +18,9 @@ class Corrupto
     /** @String @Required */
     public $nombre;
 
+    /** @String */
+    public $alias;
+
     /** @Int */
     public $hits;
 
