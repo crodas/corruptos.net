@@ -49,6 +49,34 @@ class Crawler
         }
     }
 
+    static function nanduti($text)
+    {
+        $url = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
+            'buscar' => $text, 
+            'noti' => 'si',
+            'secciones' => '', 
+            'fech1'=> '1999-11-23', 
+            'fech2'=> '2099-11-23',
+            'paginas'=> 10000000000000, 
+            'button' => 'Empezar busqueda',
+        ]);
+
+        $hits = 0;
+        $comentarios = 0;
+        $xpath = Http::wget($url);
+        foreach ($xpath->query('//div[@class="BAcaja"]') as $div) {
+            $titulo = Http::text($xpath->query('./div[@class="BAcajaTitu"]', $div));
+            $url    = $xpath->query('.//a', $div)->item(0)->getAttribute('href');
+            $publicacion = Http::text($xpath->query('./div[@class="BAcajaFec"]', $div));
+            $texto  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
+
+
+            $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits');
+        }
+    
+        return $alls;
+    }
+
     static function cardinal($text)
     {
         $alls  = [];
@@ -127,8 +155,9 @@ function search_service(Array $config)
 {
 
     return function($text) use ($config) {
-        return array_merge(
-            Crawler::cardinal($text)
+        return array_merge([]
+            , Crawler::nanduti($text)
+            , Crawler::cardinal($text)
             //, Crawler::abc($text)
         );
     };

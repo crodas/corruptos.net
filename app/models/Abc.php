@@ -8,7 +8,7 @@ class Abc extends Noticia
 {
     public static function is($url)
     {
-        return preg_match('/abc\.com/', $url);
+        return preg_match('/abc\.com\.py/', $url);
     }
 
     protected static function is_useful_internal($url)
