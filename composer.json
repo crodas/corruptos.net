@@ -14,7 +14,8 @@
         "zendframework/zend-http": "*",
         "seld/jsonlint": "*",
         "crodas/text-rank": "*",
-        "neitanod/forceutf8": "*"
+        "neitanod/forceutf8": "*",
+        "elasticsearch/elasticsearch": "*"
     },
     "scripts": {
         "post-autoload-dump": "Autoloader\\Composer::generate"

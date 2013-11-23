@@ -6,6 +6,9 @@ $(document).ready(function(){
             $(this).jPlayer("setMedia", {
                 mp3:"/play/audio/{{{$id}}}",
             });
+            @if (!empty($autoplay))
+            $("#jquery_jplayer_{{$id}}").jPlayer("play");
+            @end
         },
         cssSelectorAncestor: "#jp_container_{{$id}}",
         swfPath: "/js",
