@@ -2,12 +2,7 @@
 
 @section('header')
     <h2>{{{$corrupto->nombre}}}</h2>
-    <nav class="nav">
-        <ul>
-        <li class="current_page_item"><a href="/audio/{{$corrupto->uri}}">Audio</a></li>
-        <li class="current_page_item"><a href="/{{$corrupto->uri}}">Noticias</a></li>
-        </ul>
-    </nav>
+    <p></p>
 @end
 
 @section('content')
