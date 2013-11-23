@@ -153,7 +153,6 @@
     ga('send', 'pageview');
 
     </script>
-        <script src="http://www.cardinal.com.py/play/23326"></script>
 
     </body>
 </html>
