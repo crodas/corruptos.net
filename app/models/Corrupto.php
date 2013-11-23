@@ -19,7 +19,7 @@ class Corrupto
     public $nombre;
 
     /** @String */
-    public $alias;
+    public $apodo;
 
     /** @Int */
     public $hits;
@@ -59,7 +59,7 @@ class Corrupto
         $conn   = Service::get('db');
         $search = Service::get('search');
 
-        foreach($search($this->nombre) as $news) {
+        foreach($search($this->apodo ?: $this->nombre) as $news) {
             if (!Noticia::is_useful($news->url)) {
                 echo "\t {$news->url}  is not useful\n";
                 continue;

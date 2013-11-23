@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_error', 'on');
+ini_set('memory_limit', '512m');
 
 require __DIR__ . "/app/boot.php";
 

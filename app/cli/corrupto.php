@@ -1,6 +1,28 @@
 <?php
 
 /** 
+ *  @Cli("corrupto:cambiar") 
+ *  @Arg("uri", REQUIRED)
+ *  @Arg("clave", REQUIRED)
+ *  @Arg("valor", REQUIRED)
+ */
+function do_update($input, $output)
+{
+    $uri   = $input->getArgument('uri');
+    $clave = $input->getArgument('clave');
+    $valor = $input->getArgument('valor');
+
+    $corrupto = Service::get('db')->getCollection('corrupto')
+        ->findOne(compact('uri'));
+    if (!empty($corrupto)) {
+        $corrupto->$clave = $valor;
+        Service::get('db')->save($corrupto);
+        echo "Actualizado\n";
+    }
+}
+
+
+/** 
  *  @Cli("db:index") 
  */
 function index($input, $output)
