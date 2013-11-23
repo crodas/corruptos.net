@@ -102,7 +102,8 @@ function get_noticia($req)
 {
     $noticia  = $req->get('noticia');
     $corrupto = current($noticia->corruptos); 
-    return compact('corrupto', 'noticia');
+    $autoplay = true;
+    return compact('corrupto', 'noticia', 'autoplay');
 }
 
 /**
