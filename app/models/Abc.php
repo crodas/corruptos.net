@@ -22,14 +22,11 @@ class Abc extends Noticia
 
         echo "Crawling {$this->url}\n";
 
-        $content = file_get_contents($this->url);
-        $dom = new \DomDocument;
-        @$dom->loadHTML($content);
-        $xpath = new \DOMXPath($dom);
+        $xpath = Http::wget($this->url);
         
-        $title  = $this->text($xpath->query('//*[@id="article"]/h1'));
-        $copete = $this->text($xpath->query('//*[@id="article"]/p'));
-        $texto  = $this->text($xpath->query('//*[@id="article"]/div[@class="text"]/p'));
+        $title  = Http::text($xpath->query('//*[@id="article"]/h1'));
+        $copete = Http::text($xpath->query('//*[@id="article"]/p'));
+        $texto  = Http::text($xpath->query('//*[@id="article"]/div[@class="text"]/p'));
         $links  = [];
         $images = [];
 

@@ -20,20 +20,17 @@ class Cardinal extends Noticia
 
         echo "Crawling {$this->url}\n";
 
-        $content = $this->wget($this->url);
-        $dom = new \DomDocument;
-        @$dom->loadHTML($content);
-        $xpath = new \DOMXPath($dom);
+        $xpath = Http::wget($this->url);
 
-        $title = $this->text($xpath->query('//*[@id="noticias-list"]//div[@class="description"]/a'));
+        $title = Http::text($xpath->query('//*[@id="noticias-list"]//div[@class="description"]/a'));
         $mp3   = $xpath->query('//*[@id="noticias-list"]//div[@class="links"]/a[1]')->item(0)->getAttribute('href');
         $html  = $xpath->query('//*[@id="embed_code"]')->item(0)->getAttribute('value');
         $this->titulo = $title;
-        $this->texto  = $html;
+        Http::texto  = $html;
 
         $tags = array();
         foreach ($xpath->query('//*[@id="etiquetas"]/a') as $etiqueta) {
-            $tags[] = $this->text([$etiqueta]);
+            $tags[] = Http::text([$etiqueta]);
         }
 
         $this->crawled_data = compact('title', 'html', 'tags', 'mp3');

@@ -30,6 +30,63 @@ function select_frontimage_one($input, $output)
 }
 
 /** 
+ *  @Cli("corrupto:profile") 
+ */
+function uupdate_profiel($input, $output)
+{
+    $conn  = Service::get('db');
+    $col   = $conn->getCollection('corruptos');
+    $xpath = Http::wget('http://www.senado.gov.py/nomina');
+    foreach ($xpath->query('//div[@class="34ewe"]') as $senador) {
+        $tr = $senador->parentNode->parentNode;
+
+        $image   = $xpath->query(".//img[1]", $tr)->item(0)->getAttribute('src');
+        $nombre  = Http::text($xpath->query(".//a[1]", $tr)->item(0));
+        $profile = "http://www.senado.gov.py/" . $xpath->query(".//a[1]", $tr)->item(0)->getAttribute('href');
+        $partido = Http::text($xpath->query("./td/div/span", $tr)->item(2));
+        $tel     = Http::text($xpath->query("./td/div/span", $tr)->item(3));
+        $email   = Http::text($xpath->query("./td/div/span", $tr)->item(4));
+
+        $datas[] = compact('image', 'nombre', 'profile', 'partido', 'tel', 'email');
+    }
+
+    foreach ($datas as $data) {
+        list($apellido, $nombre) = explode(",", $data['nombre']);
+
+        // typos?
+        $nombre   = str_replace("Oscar", "Óscar", $nombre);
+        $apellido = str_replace("Bachetta", "Bacchetta", $apellido);
+        $apellido = str_replace("Quiñonez", "Quiñónez", $apellido);
+
+        $nombre   = explode(" ", trim($nombre));
+        $apellido = explode(" ", trim($apellido));
+
+        $cursor = $col->find(['nombre' => new MongoRegex(
+            '/' . preg_replace('/[^a-z]{2}/i', '.+', $nombre[0] . '.+'. $apellido[0]) . '/i'
+        )]);
+
+        $corrupto = null;
+        switch ($cursor->count()) {
+        case 1:
+            $corrupto = $cursor->getNext();
+            break;
+        case 0:
+            echo '/' . preg_replace('/[^a-z]{2}/i', '.+', $nombre[0] . '.+'. $apellido[0]) . '/i' . "\n";
+
+        }
+
+        if (empty($corrupto)) continue;
+
+        foreach ($data as $type => $value) {
+            if ($type != 'nombre') {
+                $corrupto->$type = $value;
+            }
+        }
+        $conn->save($corrupto);
+    }
+}
+
+/** 
  *  @Cli("corrupto:avatar:all") 
  */
 function select_frontimage($input, $output)

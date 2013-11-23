@@ -33,6 +33,18 @@ class Corrupto
     /** @String */
     public $avatar;
 
+    /** @String */
+    public $image;
+
+    /** @Email */
+    public $email;
+
+    /** @String */
+    public $partido;
+
+    /** @String */
+    public $tel;
+
     /** @Array */
     public $keywords;
 
