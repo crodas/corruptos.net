@@ -32,7 +32,7 @@
         <div class="8u">
             <div id="content">
                 <h2>Noticias</h2>
-                @include('detalle-noticia',compact('noticia'))
+                @include('detalle-noticia',compact('noticia', 'autoplay'))
             </div>
         </div>
     </div>
