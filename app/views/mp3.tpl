@@ -10,6 +10,9 @@ $(document).ready(function(){
             $("#jquery_jplayer_{{$id}}").jPlayer("play");
             @end
         },
+        play: function() { // To avoid multiple jPlayers playing together.
+            $(this).jPlayer("pauseOthers");
+        },
         cssSelectorAncestor: "#jp_container_{{$id}}",
         swfPath: "/js",
         supplied: "mp3",
