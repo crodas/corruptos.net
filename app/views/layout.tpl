@@ -41,7 +41,7 @@
                                             <span>Del Paraguay</span>
                                         </div>
                                     
-                                        <nav class="nav">
+                                        <nav class="nav" id="nav">
                                             <ul>
                                             @foreach($menu as $link => $item)
                                                 <li class="{{ $item[1] ? 'current_page_item': ''}}"><a href="{{$link}}">{{$item[0]}}</a></li>

@@ -33,8 +33,13 @@
 
             <!-- Content -->
                 <div id="content">
-                    <h2>Noticias</h2>
-                    @foreach($corrupto->getNoticias($page, $has_more, $filter) as $noticia)
+                    @set($datos, $corrupto->getNoticias($page, $has_more, $filter))
+                    @if ($datos->count() > 0)
+                        <h2>Noticias</h2>
+                    @else
+                        <h2>Todavia no hay nada</h2>
+                    @end
+                    @foreach($datos as $noticia)
                     <section class="last">
                         <h3><a href="/go/{{$noticia->id}}" target="_blank">{{{$noticia->titulo}}}</a></h3>
                         <small>{{date("Y/m/d H:i:s", $noticia->creado->sec)}}</small>
