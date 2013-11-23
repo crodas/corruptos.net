@@ -4,7 +4,7 @@ $(document).ready(function(){
     $("#jquery_jplayer_{{$id}}").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                mp3:"/play/audio/{{{$id}}}",
+                mp3:"/play/audio/{{$id}}",
             });
             @if (!empty($autoplay))
             $("#jquery_jplayer_{{$id}}").jPlayer("play");
@@ -15,7 +15,8 @@ $(document).ready(function(){
         supplied: "mp3",
         wmode: "window",
         smoothPlayBar: true,
-        keyEnabled: false
+        keyEnabled: false,
+        preload:'none'
     });
 });
 //]]>
