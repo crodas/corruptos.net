@@ -30,7 +30,7 @@ function get_id($req, $name, $value)
 function uri($req, $name, $value)
 {
     $db  = Service::get('db');
-    $doc = $db->GetCollection('corrupto')->findOne(['uri' => $value]);
+    $doc = $db->GetCollection($name)->findOne(['uri' => $value]);
     if (empty($doc)) {
         return false;
     }
@@ -93,6 +93,17 @@ function get_corruptos_audio($req)
     $filter   = ['is_audio' => true];
     $base     = "/audio/" . $corrupto->uri;
     return compact('corrupto', 'filter', 'page', 'base');
+}
+
+/**
+ *  @Route "/noticia/{uri:noticia}"
+ *  @View detalle.tpl
+ */
+function get_noticia($req)
+{
+    $noticia  = $req->get('noticia');
+    $corrupto = current($noticia->corruptos); 
+    return compact('corrupto', 'noticia');
 }
 
 /**

@@ -30,45 +30,18 @@
         
         </div>
         <div class="8u">
-
-            <!-- Content -->
-                <div id="content">
-                    @set($datos, $corrupto->getNoticias($page, $has_more, $filter))
-                    @if ($datos->count() > 0)
-                        <h2>Noticias</h2>
-                    @else
-                        <h2>Todavia no hay nada</h2>
-                    @end
-                    @foreach($datos as $noticia)
-                    <section class="last">
-                        @include('detalle-noticia',compact('noticia'))
-                    </section>
-                    @end
-
-                    @if ($page > 0)
-                        <a href="{{{$base}}}/{{$page-1}}"
-                        class="button fa
-                        fa-arrow-circle-left">Siguiente anterior</a>
-                    @end
-                    
-                    @if ($has_more)
-                        <a href="{{{$base}}}/{{$page+1}}"
-                        class="button fo pull-right fa-arrow-right
-                        fa-arrow-circle-right">Siguiente página</a>
-                    @end
-
-                </div>
-
+            <div id="content">
+                <h2>Noticias</h2>
+                @include('detalle-noticia',compact('noticia'))
+            </div>
         </div>
-
     </div>
 </div>
 </div>
-
 @end
+
 
 @section('js')
 <link href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
 @end
-
