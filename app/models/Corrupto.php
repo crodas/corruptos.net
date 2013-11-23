@@ -130,7 +130,7 @@ class Corrupto
             ->find(array_merge(['corruptos.uri' => $this->uri], $filter))
             ->skip($page * self::PER_PAGE)
             ->limit(self::PER_PAGE)
-            ->sort(['hits' => -1, 'creado' => -1]);
+            ->sort(['creado' => -1]);
         $has_more = $col->count() > ($page+1)*self::PER_PAGE;
         return $col;
     } 
