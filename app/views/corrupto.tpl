@@ -2,7 +2,11 @@
 
 @section('header')
 <div itemscope itemtype="http://data-vocabulary.org/Person">
-    <h2><span itemprop="name">{{{$corrupto->nombre}}}</span></h2>
+    <h2 itemprop="name">{{{$corrupto->nombre}}}</h2>
+    <small class="byline">
+        <span itemprop="role">Senador</span> -
+        <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
+    </small>
     <p></p>
 </div>
 @end

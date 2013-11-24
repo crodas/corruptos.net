@@ -107,7 +107,10 @@
                                 <div class="inner">
                                     <header>
                                         <h2><a href="/{{$corrupto->uri}}"><span itemprop="name">{{{ $corrupto->nombre }}}</span></a></h2>
-                                        <span class="byline" itemprop="affiliation">{{{$corrupto->partido}}}</span>
+                                        <small class="byline">
+                                            <span itemprop="role">Senador</span> -
+                                            <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
+                                        </small>
                                     </header>
                                     <div>
                                     <ul>
