@@ -26,7 +26,9 @@ function images()
     $base = realpath(__DIR__ . '/../../public_html/images/photos/');
     foreach($db->getCollection('corruptos')->find() as $corrupto) {
         $ext = explode('.', $corrupto->image);
-        $ext = end($ext);
+        $ext = strtolower(end($ext));
         `wget "{$corrupto->image}" -O "{$base}/{$corrupto->id}.{$ext}"`;
+        `wget "{$corrupto->avatar}" -O "{$base}/{$corrupto->id}:large.{$ext}"`;
     }
+    `cd $base ; jpegoptim --strip-all * ; chmod +r *`;
 }
