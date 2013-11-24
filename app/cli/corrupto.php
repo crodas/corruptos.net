@@ -158,16 +158,17 @@ function update($input, $output)
 /** 
  *  @Cli("corrupto:agregar") 
  *  @Arg("nombre", REQUIRED)
+ *  @Arg("tipo", REQUIRED|IS_ARRAY)
  */
 function agregar($input, $output)
 {
     $nombre = $input->GetArgument('nombre');
 
-    if ($nombre == "CARLOS NÚÑEZ AGÜERO") {
-        // seems odd but abc's search is a bit silly
-        $nombre = "SENADOR CARLOS NÚÑEZ";
-    }
-
     $corrupto = Corrupto::getOrCreate($nombre);
+    foreach ($input->getArgument('tipo') as $tipo) {
+        $corrupto->tags[] = $tipo;
+    }
+    $corrupto->tags = array_unique($corrupto->tags);
+    Service::get('db')->save($corrupto);
     $corrupto->update();
 }
