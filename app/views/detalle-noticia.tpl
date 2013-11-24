@@ -3,7 +3,7 @@
 <small>{{date("Y/m/d H:i:s", $noticia->creado->sec)}}</small>
 @if (empty($args['is_mobile']))
     <div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://corruptos.net/noticia/{{$noticia->uri}}" data-text="{{{substr($noticia->titulo,0, 80)}}}..." data-via="corruptos_net" data-hashtags="corruptos" data-lang="es">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://corruptos.net/noticia/{{$noticia->uri}}/" data-text="{{{substr($noticia->titulo,0, 80)}}}..." data-via="corruptos_net" data-hashtags="corruptos" data-lang="es">Tweet</a>
     </div>
 @end
 @if (empty($noticia->is_audio)) {
