@@ -7,6 +7,7 @@ class Sitemap implements Iterator
 
     protected $queue = array();
     protected $current;
+    protected $baseUrl;
 
     public function __construct(Iterator $cursor, Closure $step)
     {
@@ -14,10 +15,12 @@ class Sitemap implements Iterator
         $this->step   = $step;
     }
 
-    public function generate($file)
+    public function generate($file, $base = '')
     {
+        $this->baseUrl = $base;
         $xml = Service::get('view')->get('sitemap/index', [])->render([
             'urls' => $this,
+            'base' => $base
         ], true);
         \crodas\File::write($file, $xml);
     }
@@ -34,7 +37,7 @@ class Sitemap implements Iterator
         } else {
             $current = $this->current;
         }
-        return (object)['url' => $current, 'lastmod' => 0, 'changefreq' => ''];
+        return (object)['url' => $this->baseUrl . $current, 'lastmod' => 0, 'changefreq' => ''];
     }
 
 

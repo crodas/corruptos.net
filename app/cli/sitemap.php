@@ -11,9 +11,10 @@ function sitemap()
             "/" . $corrupto->uri . "/audio"
         ];
     });
-    $sitemap->generate($base . '/corruptos.xml');
+    $sitemap->generate($base . '/corruptos.xml', 'http://corruptos.net');
+
     $sitemap = new Sitemap($db->getCollection('noticias')->find()->sort(['$natural' => -1])->limit(1000), function($corrupto) {
-        return"/noticias" . $corrupto->uri;
+        return "/noticias" . $corrupto->uri;
     });
-    $sitemap->generate($base . '/noticias.xml');
+    $sitemap->generate($base . '/noticias.xml', 'http://corruptos.net');
 }
