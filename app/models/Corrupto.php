@@ -54,6 +54,9 @@ class Corrupto
     /** @Array */
     public $keywords;
 
+    /** @Array */
+    public $tags = array();
+
     public function update()
     {
         $conn   = Service::get('db');
