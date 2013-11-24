@@ -111,6 +111,8 @@
                                         <small class="byline">
                                             <span itemprop="role">Senador</span> -
                                             <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
+                                            <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="http://corruptos.net/{{$corrupto->uri}}"></i>
+                                            <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="http://corruptos.net/{{$corrupto->uri}}"></i>
                                         </small>
                                     </header>
                                     <div>

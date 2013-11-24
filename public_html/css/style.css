@@ -286,10 +286,9 @@ display: block;
 		{
 			display:inline-block;
 			font-family: FontAwesome;
-			font-size: 1.90em;
-            color: blue;
-            margin-left: 10px;
 			text-decoration: none;
+            color: blue;
+            margin-left: 5px;
 			font-style: normal;
 			font-weight: normal;
 			line-height: 1;
