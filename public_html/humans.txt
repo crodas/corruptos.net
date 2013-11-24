@@ -1,0 +1,9 @@
+/* TEAM */
+    Idea:Santiago González Parra
+    Twitter:@santula
+    From:Asunción, Paraguay
+
+    Developer:César Rodas
+    Contact:crodas [at] php.net
+    Twitter:@crodas
+    From:Asunción, Paraguay

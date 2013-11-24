@@ -12,6 +12,7 @@
         <meta name="keywords" content="" />
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
         <link href="http://fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
+        <link type="text/plain" rel="author" href="http://corruptos.net/humans.txt" />
         <script src="/js/jquery.min.js"></script>
         <script src="/js/config.js"></script>
         <script src="/js/skel.min.js"></script>
