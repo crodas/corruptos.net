@@ -1,0 +1,4 @@
+User-agent: *
+
+Sitemap: /sitemap/corruptos.xml
+Sitemap: /sitemap/noticias.xml
