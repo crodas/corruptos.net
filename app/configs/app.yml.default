@@ -16,6 +16,7 @@ dispatcher:
 
 db: %activemongo%
 view: %simple-view%
+host_image: false
 
 search:
     api: "SJC9X385Av2uLXPm43rJ7Jkmr4TndGnwV025h9rXWI8"

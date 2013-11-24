@@ -99,9 +99,9 @@
                         @foreach ($corruptos as $corrupto)
                         <div class="4u" itemscope itemtype="http://data-vocabulary.org/Person">
                             <section class="box box-feature">
-                                @if ($corrupto->image) {
+                                @if ($corrupto->getImage()) 
                                 <a href="/{{{$corrupto->uri}}}" class="image image-full">
-                                    <img itemprop="photo" alt="corrupto" alt="{{{$corrupto->nombre}}}" src="{{{ $corrupto->image }}}" alt="" />
+                                    <img itemprop="photo" alt="corrupto" alt="{{{$corrupto->nombre}}}" src="{{{ $corrupto->getImage() }}}" alt="" />
                                 </a>
                                 @end
                                 <div class="inner">

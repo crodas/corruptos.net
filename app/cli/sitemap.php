@@ -18,3 +18,15 @@ function sitemap()
     });
     $sitemap->generate($base . '/noticias.xml', 'http://corruptos.net');
 }
+
+/** @Cli("generate:images", "host corruptos' images locally") */
+function images()
+{
+    $db   = Service::get('db');
+    $base = realpath(__DIR__ . '/../../public_html/images/photos/');
+    foreach($db->getCollection('corruptos')->find() as $corrupto) {
+        $ext = explode('.', $corrupto->image);
+        $ext = end($ext);
+        `wget "{$corrupto->image}" -O "{$base}/{$corrupto->id}.{$ext}"`;
+    }
+}

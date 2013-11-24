@@ -95,6 +95,16 @@ class Corrupto
         $conn->save($this);
     }
 
+    public function getImage()
+    {
+        if (Service::get('host_image')) {
+            $ext = explode(".", $this->image);
+            $ext = end($ext);
+            return "/images/photos/{$this->id}.{$ext}";
+        }
+        return $this->image;
+    }
+
     public function selectImage(Array $candidates)
     {
         $nombre = $this->nombre;
