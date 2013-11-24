@@ -18,7 +18,7 @@ class Nanduti extends Noticia
 
     public function crawl()
     {
-        //if ($this->crawled) return;
+        if ($this->crawled) return;
 
         echo "Crawling {$this->url}\n";
 
