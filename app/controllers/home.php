@@ -33,18 +33,40 @@ function get_locales() {
 }
 
 /**
- *  @Route /
+ *  @Route "/"
+ *  @Route "/{page}"
+ *  @Route "/ver_{tag}"
+ *  @Route "/ver_{tag}/{page}"
  *  @View layout.tpl
  */
 function get_home($req)
 {
-    $db = Service::get('db');
-    $corruptos = $db->getCollection('corrupto')->find()->sort(['hits' => -1]);
-    return compact('corruptos');
+    $db    = Service::get('db');
+    $query = array();
+    $tag   = $req->get('tag');
+    $page  = $req->get('page') ?: 0;
+    $limit = 30;
+    if (!empty($tag)) {
+        $query = ['tags' => $tag];
+    }
+
+    $corruptos = $db->getCollection('corrupto')
+        ->find($query)
+        ->limit($limit+1)
+        ->skip($page * $limit)
+        ->sort(['hits' => -1]);
+    if ($corruptos->count(true) == 0) {
+        $req->notFound();
+    }
+    $has_next = $corruptos->count(true) == $limit+1;
+    $base     = explode("/", $_SERVER['REQUEST_URI'])[1];
+    $corruptos->limit($limit);
+    return compact('corruptos', 'page', 'has_next', 'base');
 }
 
 /**
  *  @Route "/audio/{uri:corrupto}"
+ *  @Route "/audio/{uri:corrupto}/{page}"
  *  @View corrupto.tpl
  */
 function get_corruptos_audio($req)

@@ -131,6 +131,19 @@
                         @end
                         @end
                     </div>
+
+                    @if ($page > 0)
+                        <a href="/{{{$base}}}/{{$page-1}}"
+                        class="button fa
+                        fa-arrow-circle-left">Siguiente anterior</a>
+                    @end
+                    
+                    @if ($has_next)
+                        <a href="/{{{$base}}}/{{$page+1}}"
+                        class="button fo pull-right fa-arrow-right
+                        fa-arrow-circle-right">Siguiente página</a>
+                    @end
+
                 </div>
             </div>
             @show

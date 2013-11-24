@@ -34,7 +34,7 @@
 
             <!-- Content -->
                 <div id="content">
-                    @set($datos, $corrupto->getNoticias($page, $has_more, $filter))
+                    @set($datos, $corrupto->getNoticias($page, $has_next, $filter))
                     @if ($datos->count() > 0)
                         <h2>Noticias</h2>
                     @else
@@ -52,7 +52,7 @@
                         fa-arrow-circle-left">Siguiente anterior</a>
                     @end
                     
-                    @if ($has_more)
+                    @if ($has_next)
                         <a href="{{{$base}}}/{{$page+1}}"
                         class="button fo pull-right fa-arrow-right
                         fa-arrow-circle-right">Siguiente página</a>

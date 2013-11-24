@@ -21,6 +21,8 @@ function inject_menu($req, $unused, $args)
 {
     $args['menu'] = array_merge([
             '/' => ['Portada', false],
+            '/ver_los23' => ['Los 23', false],
+            '/ver_senador' => ['Senadores', false],
             '/locales' => ['Locales Adheridos', false],
         ]
         , empty($args['menu']) ? [] : $args['menu']
@@ -41,6 +43,16 @@ function get_id($req, $name, $value)
         return false;
     }
     $req->set($name, $doc);
+    return true;
+}
+
+/** @Filter page */
+function page($req, $name, $value)
+{
+    if (!is_numeric($value) || $value+0 !== (int)$value) {
+        return false;
+    }
+    $req->set($name, $value+0);
     return true;
 }
 
