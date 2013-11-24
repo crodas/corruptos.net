@@ -270,6 +270,7 @@ display: block;
 	.fa
 	{
 		text-decoration: none;
+        cursor: pointer;
 	}
 
 		.fa.solo
@@ -285,7 +286,9 @@ display: block;
 		{
 			display:inline-block;
 			font-family: FontAwesome;
-			font-size: 1.25em;
+			font-size: 1.90em;
+            color: blue;
+            margin-left: 10px;
 			text-decoration: none;
 			font-style: normal;
 			font-weight: normal;

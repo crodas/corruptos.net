@@ -147,19 +147,30 @@
                 </footer>
             </div>
 
-            <script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-8237210-3', 'corruptos.net');
-    ga('send', 'pageview');
-
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-8237210-3', 'corruptos.net');
+        ga('send', 'pageview');
+        $('.fa-facebook').click(function() {
+            var me = $(this)
+                , text = encodeURIComponent(me.data('text'))
+                , link = encodeURIComponent(me.data('url'))
+                , url = 'https://www.facebook.com/sharer/sharer.php?u=' + link + '&ptitle=' + text + '&display=popup'
+            window.open(url, '', "toolbar=0, status=0, width=650, height=360");
+        });
+        $('.fa-twitter').click(function() {
+            var me = $(this)
+                , text = encodeURIComponent(me.data('text'))
+                , link = encodeURIComponent(me.data('url'))
+                , url = 'https://twitter.com/intent/tweet?hashtags=corruptos&original_referer=' + link +  '&text=' + text  + '&tw_p=tweetbutton&url='+ link +'&via=corruptos_net';
+            window.open(url, '', "toolbar=0, status=0, width=650, height=360");
+        });
     </script>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        @section('js')
-        @show
+    @section('js')
+    @show
 
     </body>
 </html>
