@@ -97,17 +97,17 @@
                     <div class="row">
                         @set($i, '0')
                         @foreach ($corruptos as $corrupto)
-                        <div class="4u">
+                        <div class="4u" itemscope itemtype="http://data-vocabulary.org/Person">
                             <section class="box box-feature">
                                 @if ($corrupto->image) {
                                 <a href="/{{{$corrupto->uri}}}" class="image image-full">
-                                    <img alt="corrupto {{{$corrupto->nombre}}}" src="{{{ $corrupto->image }}}" alt="" />
+                                    <img itemprop="photo" alt="corrupto" alt="{{{$corrupto->nombre}}}" src="{{{ $corrupto->image }}}" alt="" />
                                 </a>
                                 @end
                                 <div class="inner">
                                     <header>
-                                        <h2><a href="/{{$corrupto->uri}}">{{{ $corrupto->nombre }}}</a></h2>
-                                        <span class="byline">{{{$corrupto->partido}}}</span>
+                                        <h2><a href="/{{$corrupto->uri}}"><span itemprop="name">{{{ $corrupto->nombre }}}</span></a></h2>
+                                        <span class="byline" itemprop="affiliation">{{{$corrupto->partido}}}</span>
                                     </header>
                                     <div>
                                     <ul>

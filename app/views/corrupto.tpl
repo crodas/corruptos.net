@@ -1,8 +1,10 @@
 @extends('layout')
 
 @section('header')
-    <h2>{{{$corrupto->nombre}}}</h2>
+<div itemscope itemtype="http://data-vocabulary.org/Person">
+    <h2><span itemprop="name">{{{$corrupto->nombre}}}</span></h2>
     <p></p>
+</div>
 @end
 
 @section('content')
