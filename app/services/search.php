@@ -69,19 +69,23 @@ class Crawler
         $comentarios = $current = $hits = 0;
 
         while (true) {
-            $page    = Http::wget('http://paraguay.com/buscar/' . urlencode($text) . '/pagina/' . ($current++));
+            $page    = Http::wget('http://paraguay.com/buscar/' . urlencode($text) . '/pagina/' . (++$current));
             $stories = $page->query('//div[@class="story"]');
             if ($stories->length == 0) {
                 // so long and thanks for all the firsh @mikeotr!
                 break;
             }
 
+            $current_page = "/pagina/{$current}";
             foreach ($stories as $story) {
                 $link   = $page->query('./h1/a', $story)->item(0);
                 $titulo = Http::text($link);
                 $url    = 'http://paraguay.com' . $link->getAttribute('href');
-                $coptete = Http::text($page->query('.//p', $story));
+                if (substr($url, -1 * strlen($current_page)) == $current_page) {
+                    $url = substr($url, 0, -1 * strlen($current_page));
+                }
 
+                $coptete  = Http::text($page->query('.//p', $story));
                 $categoria = Http::text($page->query('.//span[@class="news_category"]', $story));
 
                 /* fecha */
