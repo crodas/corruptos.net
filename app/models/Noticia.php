@@ -59,6 +59,18 @@ abstract class Noticia
         return $col;
     }
 
+    /** @onHydratation */
+    public function onHydratation()
+    {
+        if (!empty($this->texto)) {
+            if (!empty($this->crawled_data['texto'])) {
+                $this->texto = substr($this->crawled_data['texto'], 0, 500) . '...';
+                Service::get('db')->save($this);
+            }
+        }
+    }
+
+
     public static function getType($url)
     {
         foreach (array('Abc', 'Cardinal', 'Nanduti') as $type) {
