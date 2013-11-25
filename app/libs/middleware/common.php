@@ -27,6 +27,17 @@ function inject_menu($req, $unused, $args)
         ]
         , empty($args['menu']) ? [] : $args['menu']
     );
+    // FIXME: I should be in a nice yml file
+    $args['newspaper'] = [
+        'cardinal' => 'Cardinal',
+        'paraguay' => 'Paraguay.com',
+        'abc' => 'ABC Color',
+        'nandudi' => 'Ñandutí',
+    ];
+    
+    // be fair
+    uasort($args['newspaper'], function() { return rand(-1, 1); });
+
     if (!empty($args['menu'][$_SERVER['REQUEST_URI']])) {
         // Go home @crodas you're drunk!
         $args['menu'][$_SERVER['REQUEST_URI']][1] = true;

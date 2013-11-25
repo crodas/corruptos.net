@@ -25,6 +25,9 @@
 	                    <div class="wide">
                             <img alt="corrupto {{{$corrupto->nombre}}}" src="{{{ $corrupto->getImage(false) }}}" alt="" />
                         </div>
+                            @foreach($newspaper as $uri => $name)
+                            <a class="button small"  href="/{{$corrupto->uri}}/medio/{{$uri}}">{{$name}}</a>
+                            @end
                         <p><small>{{{$corrupto->summary}}}</small></p>
                     </section>
                 </div>
