@@ -15,11 +15,8 @@ function ranking_simple($input)
     $db  = Service::get("db");
     foreach ($db->getCollection('noticia')->find() as $row) {
         if (!$row->crawled || (!empty($row->keywords) && !$input->getOption('force'))) continue;
-        echo "{$row->titulo}\n";
         $texto = ForceUTF8\Encoding::toUTF8(implode(".\n", [
             $row->crawled_data['title'],
-            $row->crawled_data['copete'],
-            $row->crawled_data['texto'],
         ]));
 
         try {
@@ -48,15 +45,15 @@ function ranking()
 
     $db = Service::get('db');
     foreach ($db->getCollection('corrupto')->find() as $corrupto) {
-        if (!empty($corrupto->keywords)) continue;
-
         $text = "";
         foreach ($db->getCollection('noticia')->find(['corruptos.uri' => $corrupto->uri]) as $row) {
             $row->texto = ForceUTF8\Encoding::toUTF8($row->texto);
             $db->save($row);
-            $text .= $row->texto . "\n";
+            $text .= $row->titulo . "\n";
 
         }
+
+        if (empty($text)) continue;
         echo "{$corrupto->nombre}\n";
 
         $corrupto->keywords = array_keys($analizer->GetKeywords($text));

@@ -10,9 +10,9 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
-        <link href="http://fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
-        <link type="text/plain" rel="author" href="http://corruptos.net/humans.txt" />
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
+        <link href="//fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
+        <link type="text/plain" rel="author" href="//corruptos.net/humans.txt" />
         <script src="/js/jquery.min.js"></script>
         <script src="/js/config.js"></script>
         <script src="/js/skel.min.js"></script>
@@ -111,8 +111,8 @@
                                         <small class="byline">
                                             <span itemprop="role">Senador</span> -
                                             <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
-                                            <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="http://corruptos.net/{{$corrupto->uri}}"></i>
-                                            <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="http://corruptos.net/{{$corrupto->uri}}"></i>
+                                            <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>
+                                            <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>
                                         </small>
                                     </header>
                                     <div>
