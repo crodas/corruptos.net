@@ -4,6 +4,11 @@ use Seld\JsonLint\JsonParser;
 
 class Crawler
 {
+    static protected $meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+        'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+
     static function post($url, $post)
     {
         $ch = curl_init($url);
@@ -49,6 +54,51 @@ class Crawler
         }
     }
 
+    static function paraguay_com($text)
+    {
+        $meses = array_map(function($name) {
+            return substr(ucfirst($name), 0, 3);
+        }, self::$meses);
+
+        $month = array_map(function($index) {
+            $index++;
+            return date('F', strtotime("{$index}/1/2013"));
+        }, array_keys($meses));
+
+        $urls = [];
+        $comentarios = $current = $hits = 0;
+
+        while (true) {
+            $page    = Http::wget('http://paraguay.com/buscar/' . urlencode($text) . '/pagina/' . ($current++));
+            $stories = $page->query('//div[@class="story"]');
+            if ($stories->length == 0) {
+                // so long and thanks for all the firsh @mikeotr!
+                break;
+            }
+
+            foreach ($stories as $story) {
+                $link   = $page->query('./h1/a', $story)->item(0);
+                $titulo = Http::text($link);
+                $url    = 'http://paraguay.com' . $link->getAttribute('href');
+                $coptete = Http::text($page->query('.//p', $story));
+
+                $categoria = Http::text($page->query('.//span[@class="news_category"]', $story));
+
+                /* fecha */
+                $fecha = Http::text($page->query('.//span[@class="search_results_time_stamp"]', $story));
+                $publicacion = str_replace($meses, $month, $fecha);
+
+                $images = array();
+                foreach ($page->query('.//img', $story) as $img) {
+                    $images[] = $img->GetAttribute('src');
+                }
+                $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits', 'copete', 'categoria');
+            }
+        }
+
+        return $alls;
+    }
+
     static function nanduti($text)
     {
         $url = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
@@ -69,9 +119,9 @@ class Crawler
             $titulo = Http::text($xpath->query('./div[@class="BAcajaTitu"]', $div));
             $url    = $xpath->query('.//a', $div)->item(0)->getAttribute('href');
             $publicacion = implode("/", array_reverse(explode("/", Http::text($xpath->query('./div[@class="BAcajaFec"]', $div)))));
-            $texto  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
+            $copete  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
 
-            $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits');
+            $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits', 'copete');
         }
 
         return $alls;
@@ -81,10 +131,7 @@ class Crawler
     {
         $alls  = [];
         $max   = 2;
-        $meses = [
-            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
-            'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-        ];
+        $meses = self::$meses;
 
         $month = array_map(function($index) {
             $index++;
@@ -158,9 +205,11 @@ function search_service(Array $config)
 
     return function($text) use ($config) {
         return array_merge([]
+            , Crawler::paraguay_com($text)
             , Crawler::nanduti($text)
             , Crawler::cardinal($text)
             , Crawler::abc($text)
+            /**/
         );
     };
 }
