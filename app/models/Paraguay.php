@@ -8,6 +8,11 @@ class Paraguay extends Noticia
         return preg_match('/paraguay\.com\//', $url);
     }
 
+    protected static function is_useful_internal($url)
+    {
+        return !preg_match('/deportes/i', $url);
+    }
+
     public function crawl()
     {
         if ($this->crawled) return;
