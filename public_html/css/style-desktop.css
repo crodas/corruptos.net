@@ -68,6 +68,14 @@
 		padding: 0.4em 1.5em 0.4em 1.5em;
 	}
 
+		.button.small
+		{
+			font-size: 1.9em;
+			padding: 0.1em;
+            padding-left: 0.3em;
+            color: white;
+		}
+
 		.button.big
 		{
 			font-size: 2.25em;
