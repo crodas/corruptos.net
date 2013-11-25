@@ -64,7 +64,7 @@ abstract class Noticia
     {
         if (!empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
-                $this->texto = substr($this->crawled_data['texto'], 0, 500) . '...';
+                $this->texto = mb_substr($this->crawled_data['texto'], 0, 500) . '...';
                 Service::get('db')->save($this);
             }
         }
