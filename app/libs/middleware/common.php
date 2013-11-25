@@ -23,6 +23,7 @@ function inject_menu($req, $unused, $args)
             '/' => ['Portada', false],
             '/ver_los23' => ['Los 23', false],
             '/ver_senador' => ['Senadores', false],
+            '/ver_diputado' => ['Diputados', false],
             '/locales' => ['Locales Adheridos', false],
         ]
         , empty($args['menu']) ? [] : $args['menu']
