@@ -14,8 +14,3 @@
     @end
 @end
 
-<div>
-    <a href="/go/{{{$noticia->id}}}" target="_blank" class="button fa ">Leer más</a>
-</div>
-<div>
-</div>

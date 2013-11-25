@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "fd74b0c3627e18fc8d9ddde289fcb111d6fbec99"
+                "reference": "08b4f473c1fe4bfd7de7c0be6fa0a3093bb98613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/fd74b0c3627e18fc8d9ddde289fcb111d6fbec99",
-                "reference": "fd74b0c3627e18fc8d9ddde289fcb111d6fbec99",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/08b4f473c1fe4bfd7de7c0be6fa0a3093bb98613",
+                "reference": "08b4f473c1fe4bfd7de7c0be6fa0a3093bb98613",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-11-23 06:24:05"
+            "time": "2013-11-25 08:48:44"
         },
         {
             "name": "crodas/artifex",
@@ -882,12 +882,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "11cb918bbc471da036c6148b995d42f79806428d"
+                "reference": "afaafc91995aff60604db79fcd30b489d2e6e7c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/11cb918bbc471da036c6148b995d42f79806428d",
-                "reference": "11cb918bbc471da036c6148b995d42f79806428d",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/afaafc91995aff60604db79fcd30b489d2e6e7c3",
+                "reference": "afaafc91995aff60604db79fcd30b489d2e6e7c3",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-11-20 12:44:25"
+            "time": "2013-11-23 21:58:36"
         },
         {
             "name": "neitanod/forceutf8",
@@ -1156,12 +1156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "04a4e9564f5a506c0ec306b0303fe729cedb5326"
+                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/04a4e9564f5a506c0ec306b0303fe729cedb5326",
-                "reference": "04a4e9564f5a506c0ec306b0303fe729cedb5326",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/07244506ed46ff1914596e13ccc09666ecf7e06d",
+                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d",
                 "shasum": ""
             },
             "require": {
@@ -1177,7 +1177,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -1201,7 +1201,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-22 17:42:00"
+            "time": "2013-11-24 20:17:07"
         },
         {
             "name": "symfony/finder",
@@ -1252,12 +1252,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "1f7cabb841e62ec49615bd965ac780fd994b3f64"
+                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1f7cabb841e62ec49615bd965ac780fd994b3f64",
-                "reference": "1f7cabb841e62ec49615bd965ac780fd994b3f64",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
+                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
                 "shasum": ""
             },
             "require": {
@@ -1266,7 +1266,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -1290,7 +1290,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-10-17 11:48:11"
+            "time": "2013-11-24 20:17:07"
         },
         {
             "name": "zendframework/zend-escaper",
