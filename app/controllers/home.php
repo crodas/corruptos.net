@@ -65,6 +65,24 @@ function get_home($req)
 }
 
 /**
+ *  @Route "/{uri:corrupto}/medio/{tipo}"
+ *  @Route "/{uri:corrupto}/medio/{tipo}/{page}"
+ *  @View corrupto.tpl
+ */
+function get_corruptos_medios($req)
+{
+    $corrupto = $req->get('corrupto');
+    $page     = $req->get('page') ?: 0;
+    $filter   = ['__type' => $req->get('tipo')];
+    $base     = "/" . $corrupto->uri . "/medio/" . $req->get('tipo');
+    $menu     = [
+        '/audio/' . $corrupto->uri => ['Audios', false],
+        '/' . $corrupto->uri => ['Noticias', false],
+    ];
+    return compact('corrupto', 'filter', 'page', 'base', 'menu');
+}
+
+/**
  *  @Route "/audio/{uri:corrupto}"
  *  @Route "/audio/{uri:corrupto}/{page}"
  *  @View corrupto.tpl
