@@ -32,8 +32,8 @@ class Sitemap implements Iterator
             $current = $step($this->cursor->current());
             if (is_array($current)) {
                 $this->queue = $current;
+                $current = array_shift($this->queue);
             }
-            $current = array_shift($this->queue);
         } else {
             $current = $this->current;
         }
