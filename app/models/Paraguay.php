@@ -1,5 +1,6 @@
 <?php
 
+/** @Persist */
 class Paraguay extends Noticia
 {
     public static function is($url)
