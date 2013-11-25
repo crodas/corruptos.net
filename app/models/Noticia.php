@@ -62,12 +62,13 @@ abstract class Noticia
     /** @onHydratation */
     public function onHydratation()
     {
-        if (!empty($this->texto)) {
+        if (empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
                 try {
                     $this->texto = mb_substr($this->crawled_data['texto'], 0, 500) . "...";
                     Service::get('db')->save($this);
-                } catch (\Exception $e) {}
+                } catch (\Exception $e) {
+                }
             }
         }
     }
