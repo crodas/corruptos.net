@@ -64,8 +64,10 @@ abstract class Noticia
     {
         if (!empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
-                $this->texto = ForceUTF8\Encoding::toUTF8($this->crawled_data['texto']);
-                Service::get('db')->save($this);
+                try {
+                    $this->texto = ForceUTF8\Encoding::toUTF8($this->crawled_data['texto']);
+                    Service::get('db')->save($this);
+                } catch (\Exception $e) {}
             }
         }
     }
