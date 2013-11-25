@@ -11,14 +11,9 @@ class Abc extends Noticia
         return preg_match('/abc\.com\.py/', $url);
     }
 
-    protected static function is_useful_internal($url)
-    {
-        return preg_match('/abc-radio|congresistas|editorial|judicial|locales|interior|politica|policiales|economia|nacionales|articulos/', $url);
-    }
-
     public function crawl()
     {
-        if ($this->crawled) return;
+        if ($this->crawled && !empty($this->crawled_data['texto'])) return;
 
         echo "Crawling {$this->url}\n";
 
@@ -26,11 +21,11 @@ class Abc extends Noticia
         
         $title  = Http::text($xpath->query('//*[@id="article"]/h1'));
         $copete = Http::text($xpath->query('//*[@id="article"]/p'));
-        $texto  = Http::text($xpath->query('//*[@id="article"]/div[@class="text"]/p'));
+        $texto  = Http::text($xpath->query('//*[@id="article"]/div[@class="text"]'));
         $links  = [];
         $images = [];
 
-        foreach ($xpath->query('//*[@id="article"]/div[@class="text"]/p/a') as $l) {
+        foreach ($xpath->query('//*[@id="article"]/div[@class="text"]/a') as $l) {
             $links[] = [
                 $l->getAttribute('href'),
                 $l->textContent

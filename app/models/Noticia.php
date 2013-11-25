@@ -13,7 +13,7 @@ abstract class Noticia
     /** @String @Unique */
     public $uri;
 
-    /** @ReferenceMany("corruptos", [uri, nombre]) @Required */
+    /** @ReferenceMany("corruptos", [uri, nombre]) */
     public $corruptos = array();
 
     /** @String @Required */
@@ -59,6 +59,34 @@ abstract class Noticia
         return $col;
     }
 
+    public function checkContext($name)
+    {
+        if (empty($name)) { 
+            return false; 
+        }
+
+        $names = explode(" ", strtolower(iconv('UTF-8','ASCII//TRANSLIT',$name)));
+        $args  = array_merge([$this->titulo, $this->texto], $this->crawled_data);
+
+        foreach ($args as $texto) {
+            if (is_array($texto)) continue;
+
+            $parts = array_filter(preg_split('/[^a-z]+/', strtolower(iconv('UTF-8','ASCII//TRANSLIT', $texto))));
+
+            $index = [];
+            foreach ($names as $name) {
+                $index[$name] = array_search_all($name, $parts);
+            }
+
+            if (check_context($names, $index)) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
     /** @onHydratation */
     public function onHydratation()
     {
@@ -84,10 +112,6 @@ abstract class Noticia
         return false;
     }
 
-    protected static function is_useful_internal($url)
-    {
-        return true;
-    }
 
     public function fuente()
     {
@@ -97,16 +121,6 @@ abstract class Noticia
     public function render()
     {
         echo $this->texto;
-    }
-
-    public static function is_useful($url) 
-    {
-        $type = self::getType($url);
-
-        if ($type) {
-            return $type::is_useful_internal($url);
-        }
-        return false;
     }
 
     abstract public function crawl();

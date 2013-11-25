@@ -135,9 +135,14 @@ function cleaup_things($input, $output)
 {
     $conn = Service::get('db');
     foreach ($conn->getCollection('noticias')->Find() as $noticia) {
-        if (!Noticia::is_useful($noticia->url)) {
-            $conn->delete($noticia);
+        foreach ($noticia->corruptos as $index => $corrupto) {
+            if (!$noticia->checkContext($corrupto->nombre) && !$noticia->checkContext($corrupto->apodo)) {
+                echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
+                //unset($noticia->corruptos[$index]);
+            }
         }
+        //$noticia->corruptos = array_values($noticia->corruptos);
+        $conn->save($noticia);
     }
 }
 

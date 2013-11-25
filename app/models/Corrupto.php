@@ -63,11 +63,6 @@ class Corrupto
         $search = Service::get('search');
 
         foreach($search($this->apodo ?: $this->nombre) as $news) {
-            if (!Noticia::is_useful($news->url)) {
-                echo "\t {$news->url}  is not useful\n";
-                continue;
-            }
-
             $not = Noticia::getOrCreate($news->url);
             $not->titulo   = $news->titulo;
             if (!empty($news->copete)) {
@@ -78,7 +73,10 @@ class Corrupto
             }
             $not->hits        = $news->hits;
             $not->comentarios = $news->comentarios;
-            $not->corruptos[] = $this;
+            if ($not->checkContext($this->nombre) || $not->checkContext($this->apodo)) {
+                // it might be relevant :)
+                $not->corruptos[] = $this;
+            }
             try {
                 $not->crawl();
             } catch (\Exception $e) {}
