@@ -14,7 +14,7 @@ function sitemap()
     $sitemap->generate($base . '/corruptos.xml', 'https://corruptos.net');
 
     $sitemap = new Sitemap($db->getCollection('noticias')->find()->sort(['$natural' => -1])->limit(20000), function($corrupto) {
-        return "/noticias/" . $corrupto->uri;
+        return "/noticia/" . $corrupto->uri;
     });
     $sitemap->generate($base . '/noticias.xml', 'https://corruptos.net');
 }
