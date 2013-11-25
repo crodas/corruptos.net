@@ -31,6 +31,9 @@ abstract class Noticia
     /** @Int */
     public $hits;
 
+    /** @Int */
+    protected $version = 0;
+
     /** @Int @Inc */
     public $visitas = 0;
 

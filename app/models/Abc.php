@@ -13,7 +13,7 @@ class Abc extends Noticia
 
     public function crawl()
     {
-        if ($this->crawled && !empty($this->crawled_data['texto'])) return;
+        if ($this->crawled && $this->version != 1) return;
 
         echo "Crawling {$this->url}\n";
 
@@ -38,5 +38,6 @@ class Abc extends Noticia
 
         $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images');
         $this->crawled = true;
+        $this->version = 1;
     }
 }
