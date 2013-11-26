@@ -115,7 +115,7 @@
                                     <header>
                                         <h2><a href="/{{$corrupto->uri}}"><span itemprop="name">{{{ $corrupto->nombre }}}</span></a></h2>
                                         <small class="byline">
-                                            <span itemprop="role">Senador</span> -
+                                            <span itemprop="role">{{{$corrupto->cargo}}}</span> -
                                             <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
                                             <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>
                                             <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>

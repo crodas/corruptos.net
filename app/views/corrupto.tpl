@@ -10,7 +10,7 @@
 <div itemscope itemtype="http://data-vocabulary.org/Person">
     <h2 itemprop="name">{{{$corrupto->nombre}}}</h2>
     <small class="byline">
-        <span itemprop="role">Senador</span> -
+        <span itemprop="role">{{{$corrupto->cargo}}}</span> -
         <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
     </small>
     <p></p>
