@@ -139,6 +139,10 @@ function cleaup_things($input, $output)
     //$query = ['__type' => 'nanduti'];
 
     foreach ($conn->getCollection('noticias')->Find($query) as $noticia) {
+        if (empty($noticia->corruptos)) {
+            /** not important */
+            continue;
+        }
         $noticia->crawl();
         $tmp = [];
         foreach ($noticia->corruptos as $corrupto) {
