@@ -203,7 +203,6 @@ function search_service(Array $config)
         return array_merge([]
             /**/
             , Crawler::paraguay_com($text)
-            /** /
             , Crawler::nanduti($text)
             , Crawler::cardinal($text)
             , Crawler::abc($text)
