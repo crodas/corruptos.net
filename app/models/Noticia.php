@@ -67,6 +67,7 @@ abstract class Noticia
         if (empty($name)) { 
             return false; 
         }
+        return;
 
         $names = explode(" ", strtolower(iconv('UTF-8','ASCII//TRANSLIT',$name)));
         $args  = array_merge([$this->titulo, $this->texto], $this->crawled_data);
@@ -96,7 +97,7 @@ abstract class Noticia
         if (empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
                 try {
-                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 500) . "...";
+                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 500, "UTF-8") . "...";
                     Service::get('db')->save($this);
                 } catch (\Exception $e) {
                 }

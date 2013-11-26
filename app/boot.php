@@ -6,6 +6,8 @@ require __DIR__ . "/functions.php";
 use Whoops\Run;
 use Whoops\Handler\PrettyPageHandler;
 
+mb_internal_Encoding("UTF-8");
+
 $service = new \ServiceProvider\Composer(
     __DIR__ . "/configs/app.yml",
     'Service',
