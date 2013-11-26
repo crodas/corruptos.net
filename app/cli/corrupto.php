@@ -157,7 +157,7 @@ function cleaup_things($input, $output)
                 && !$noticia->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre)
             ) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
-                //unset($noticia->corruptos[$index]);
+                unset($noticia->corruptos[$index]);
             }
         }
         $conn->save($noticia);
