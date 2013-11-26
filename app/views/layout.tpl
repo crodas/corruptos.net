@@ -6,10 +6,14 @@
 -->
 <html>
     <head>
-        <title>Corruptos de Paraguay</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
+        @section('seo')
+        <title>Corruptos de Paraguay</title>
+        <meta name="description" content="Índice de noticias sobre algunos corruptos del paraguay" />
+        <meta name="keywords" content="{{ implode(", ", array_map(function($n) { 
+            return $n->nombre; 
+        }, iterator_to_array($corruptos))) }}" />
+        @show
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
         <link href="//fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
         <link type="text/plain" rel="author" href="//corruptos.net/humans.txt" />
