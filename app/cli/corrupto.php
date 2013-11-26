@@ -151,11 +151,7 @@ function cleaup_things($input, $output)
         $noticia->corruptos = array_values($tmp);
 
         foreach ($noticia->corruptos as $index => $corrupto) {
-            if (!$noticia->checkContext($corrupto->nombre) 
-                && !$noticia->checkContext($corrupto->apodo)
-                && !$noticia->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
-                && !$noticia->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre)
-            ) {
+            if (!$noticia->isAbout($corrupt)) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
                 unset($noticia->corruptos[$index]);
             }

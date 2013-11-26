@@ -76,7 +76,7 @@ class Corrupto
             }
             $not->hits        = $news->hits;
             $not->comentarios = $news->comentarios;
-            if ($not->checkContext($this->nombre) || $not->checkContext($this->apodo)) {
+            if ($not->isAbout($this)) {
                 // it might be relevant :)
                 $not->corruptos[] = $this;
             }

@@ -62,6 +62,14 @@ abstract class Noticia
         return $col;
     }
 
+    public function isAbout(Corrupto $corrupto)
+    {
+        return $noticia->checkContext($corrupto->nombre) 
+            || $noticia->checkContext($corrupto->apodo)
+            || $noticia->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
+            || $noticia->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre);
+    }
+
     public function checkContext($name)
     {
         if (empty($name)) { 
