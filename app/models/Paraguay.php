@@ -10,7 +10,7 @@ class Paraguay extends Noticia
 
     public function crawl()
     {
-        if ($this->crawled) return;
+        if ($this->crawled && $this->version == 2) return;
 
         $page = Http::wget($this->url);
         $content = $page->query('//div[@class="interior_main_column"]')->item(0);
@@ -22,6 +22,12 @@ class Paraguay extends Noticia
 
         $images = [];
         $links  = [];
+        $tags   = [];
+
+        foreach ($page->query('.//*[@class="tags"]//a', $content) as $tag) {
+            $tags[] = Http::text($tag);
+        }
+
         foreach ($page->query('.//a', $content) as $link) {
             $links[] = [
                 $link->getAttribute('href'),
@@ -32,7 +38,9 @@ class Paraguay extends Noticia
             $images[] = $img->GetAttribute('src');
         }
 
-        $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images', 'categoria');
-        $this->crawled  = true;
+        $tags_txt = implode("\n", $tags);
+        $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images', 'categoria', 'tags', 'tags_txt');
+        $this->version = 2;
+        $this->crawled = true;
     }
 }

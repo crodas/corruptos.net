@@ -43,7 +43,7 @@ function check_context(Array $names, Array $index)
         for ($i=0; $i < $ti; $i++) {
             $e = 0;
             for ($e; $e < $te; $e++) {
-                if (($check[0][$i] - $check[1][$e]) < 5) {
+                if (abs($check[0][$i] - $check[1][$e]) < 5) {
                     return true;
                 }
             }

@@ -13,7 +13,7 @@ class Abc extends Noticia
 
     public function crawl()
     {
-        if ($this->crawled && $this->version != 1) return;
+        if ($this->crawled && $this->version == 2) return;
 
         $xpath = Http::wget($this->url);
         
@@ -34,8 +34,8 @@ class Abc extends Noticia
             $images[] = $l->getAttribute('data-large');
         }
 
-        $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images');
+        $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images', 'tags');
         $this->crawled = true;
-        $this->version = 1;
+        $this->version = 2;
     }
 }

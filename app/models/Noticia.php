@@ -67,7 +67,6 @@ abstract class Noticia
         if (empty($name)) { 
             return false; 
         }
-        return;
 
         $names = explode(" ", strtolower(iconv('UTF-8','ASCII//TRANSLIT',$name)));
         $args  = array_merge([$this->titulo, $this->texto], $this->crawled_data);

@@ -133,15 +133,29 @@ function select_frontimage($input, $output)
  */
 function cleaup_things($input, $output)
 {
-    $conn = Service::get('db');
-    foreach ($conn->getCollection('noticias')->Find() as $noticia) {
+    $conn  = Service::get('db');
+    $query = [];
+    //$query = ['_id' => new \MongoId('528dceffcc216c884c000120')];
+    $query = ['__type' => 'nanduti'];
+
+    foreach ($conn->getCollection('noticias')->Find($query) as $noticia) {
+        $noticia->crawl();
+        $tmp = [];
+        foreach ($noticia->corruptos as $corrupto) {
+            $tmp[(string)$corrupto->id] = $corrupto;
+        }
+        $noticia->corruptos = array_values($tmp);
+
         foreach ($noticia->corruptos as $index => $corrupto) {
-            if (!$noticia->checkContext($corrupto->nombre) && !$noticia->checkContext($corrupto->apodo)) {
+            if (!$noticia->checkContext($corrupto->nombre) 
+                && !$noticia->checkContext($corrupto->apodo)
+                && !$noticia->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
+                && !$noticia->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre)
+            ) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
                 //unset($noticia->corruptos[$index]);
             }
         }
-        //$noticia->corruptos = array_values($noticia->corruptos);
         $conn->save($noticia);
     }
 }

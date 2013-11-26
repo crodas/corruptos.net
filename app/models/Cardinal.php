@@ -15,7 +15,7 @@ class Cardinal extends Noticia
 
     public function crawl()
     {
-        if ($this->crawled) return;
+        if ($this->crawled && $this->version == 2) return;
 
         $xpath = Http::wget($this->url);
 
@@ -30,8 +30,10 @@ class Cardinal extends Noticia
             $tags[] = Http::text([$etiqueta]);
         }
 
-        $this->crawled_data = compact('title', 'html', 'tags', 'mp3');
+        $tags_txt = implode("\n", $tags);
+        $this->crawled_data = compact('title', 'html', 'tags', 'mp3', 'tags_txt');
         $this->crawled = true;
+        $this->version = 2;
     }
 
 }
