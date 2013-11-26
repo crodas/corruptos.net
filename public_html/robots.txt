@@ -1,4 +1,4 @@
 User-agent: *
 
-Sitemap: /sitemap/corruptos.xml
-Sitemap: /sitemap/noticias.xml
+Sitemap: https://corruptos.net/sitemap/corruptos.xml
+Sitemap: https://corruptos.net/sitemap/noticias.xml
