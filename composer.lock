@@ -424,12 +424,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SitemapGenerator.git",
-                "reference": "ba6a2ece905a2c75ff10a9aa7056d0b13db40c2e"
+                "reference": "14fe4505f2632dd922139e9279bc258391af7d0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SitemapGenerator/zipball/ba6a2ece905a2c75ff10a9aa7056d0b13db40c2e",
-                "reference": "ba6a2ece905a2c75ff10a9aa7056d0b13db40c2e",
+                "url": "https://api.github.com/repos/crodas/SitemapGenerator/zipball/14fe4505f2632dd922139e9279bc258391af7d0c",
+                "reference": "14fe4505f2632dd922139e9279bc258391af7d0c",
                 "shasum": ""
             },
             "require": {
@@ -452,7 +452,7 @@
                 }
             ],
             "description": "Generate static sitemap to server statically",
-            "time": "2013-11-26 04:51:13"
+            "time": "2013-11-26 05:15:10"
         },
         {
             "name": "crodas/text-rank",
