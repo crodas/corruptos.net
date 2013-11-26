@@ -9,7 +9,7 @@ function sitemap()
     $db   = Service::get('db');
     $base = __DIR__ . '/../../public_html/sitemap/';
 
-    $generator = new SitemapGenerator("https://corruptos.net/sitemap", $base);
+    $generator = new SitemapGenerator("https://botame.org/sitemap", $base);
     $generator->addMap($db->getCollection('corruptos')->find(), function($corrupto) {
         return new Multiple([
             "/" . $corrupto->uri,
