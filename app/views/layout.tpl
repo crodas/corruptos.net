@@ -18,7 +18,7 @@
         @show
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
         <link href="//fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
-        <link type="text/plain" rel="author" href="//corruptos.net/humans.txt" />
+        <link type="text/plain" rel="author" href="//botame.org/humans.txt" />
         <script src="/js/jquery.min.js"></script>
         <script src="/js/config.js"></script>
         <script src="/js/skel.min.js"></script>
@@ -116,8 +116,8 @@
                                         <small class="byline">
                                             <span itemprop="role">{{{$corrupto->cargo}}}</span> -
                                             <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
-                                            <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>
-                                            <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://corruptos.net/{{$corrupto->uri}}"></i>
+                                            <i class="fa fa-small fa-twitter"  data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://botame.org/{{$corrupto->uri}}"></i>
+                                            <i class="fa fa-small fa-facebook" data-text="{{{substr($corrupto->nombre,0, 80)}}}" data-url="https://botame.org/{{$corrupto->uri}}"></i>
                                         </small>
                                     </header>
                                     <div>
@@ -185,7 +185,7 @@
             var me = $(this)
                 , text = encodeURIComponent(me.data('text'))
                 , link = encodeURIComponent(me.data('url'))
-                , url = 'https://twitter.com/intent/tweet?hashtags=corruptos&original_referer=' + link +  '&text=' + text  + '&tw_p=tweetbutton&url='+ link +'&via=corruptos_net';
+                , url = 'https://twitter.com/intent/tweet?hashtags=corruptos&original_referer=' + link +  '&text=' + text  + '&tw_p=tweetbutton&url='+ link +'&via=botame_org';
             window.open(url, '', "toolbar=0, status=0, width=650, height=360");
         });
     </script>

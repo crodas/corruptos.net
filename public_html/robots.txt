@@ -1,4 +1,4 @@
 User-agent: *
 
-Sitemap: https://corruptos.net/sitemap/corruptos.xml
-Sitemap: https://corruptos.net/sitemap/noticias.xml
+Sitemap: https://botame.org/sitemap/corruptos.xml
+Sitemap: https://botame.org/sitemap/noticias.xml
