@@ -10,13 +10,12 @@
         "filp/whoops": "1.*",
         "crodas/tiny-form": "*",
         "crodas/cli": "~0.1",
-        "google/api-client": "*",
-        "zendframework/zend-http": "*",
         "seld/jsonlint": "*",
         "crodas/text-rank": "*",
         "neitanod/forceutf8": "*",
         "elasticsearch/elasticsearch": "*",
-        "mobiledetect/mobiledetectlib": "~2.7"
+        "mobiledetect/mobiledetectlib": "~2.7",
+        "crodas/sitemap-generator": "dev-master"
     },
     "scripts": {
         "post-autoload-dump": "Autoloader\\Composer::generate"

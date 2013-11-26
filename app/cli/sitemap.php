@@ -1,22 +1,25 @@
 <?php
 
+use crodas\SitemapGenerator\SitemapGenerator;
+
 /** @Cli("generate:sitemap") */
 function sitemap()
 {
     $db   = Service::get('db');
     $base = __DIR__ . '/../../public_html/sitemap/';
-    $sitemap = new Sitemap($db->getCollection('corruptos')->find(), function($corrupto) {
+
+    $generator = new SitemapGenerator("https://corruptos.net/sitemap", $base);
+    $generator->addMap($db->getCollection('corruptos')->find(), function($corrupto) {
         return [
             "/" . $corrupto->uri,
             "/" . $corrupto->uri . "/audio"
         ];
-    });
-    $sitemap->generate($base . '/corruptos.xml', 'https://corruptos.net');
+    }, 'corruptos.xml');
 
-    $sitemap = new Sitemap($db->getCollection('noticias')->find()->sort(['$natural' => -1])->limit(20000), function($corrupto) {
+    $generator->limit(1000);
+    $generator->addMap($db->getCollection('noticias')->find()->sort(['$natural' => -1])->limit(20000), function($corrupto) {
         return "/noticia/" . $corrupto->uri;
-    });
-    $sitemap->generate($base . '/noticias.xml', 'https://corruptos.net');
+    }, 'noticias.xml');
 }
 
 /** @Cli("generate:images", "host corruptos' images locally") */
