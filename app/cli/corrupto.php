@@ -136,7 +136,7 @@ function cleaup_things($input, $output)
     $conn  = Service::get('db');
     $query = [];
     //$query = ['_id' => new \MongoId('528dceffcc216c884c000120')];
-    $query = ['__type' => 'nanduti'];
+    //$query = ['__type' => 'nanduti'];
 
     foreach ($conn->getCollection('noticias')->Find($query) as $noticia) {
         $noticia->crawl();
