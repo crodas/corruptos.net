@@ -64,10 +64,10 @@ abstract class Noticia
 
     public function isAbout(Corrupto $corrupto)
     {
-        return $noticia->checkContext($corrupto->nombre) 
-            || $noticia->checkContext($corrupto->apodo)
-            || $noticia->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
-            || $noticia->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre);
+        return $this->checkContext($corrupto->nombre) 
+            || $this->checkContext($corrupto->apodo)
+            || $this->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
+            || $this->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre);
     }
 
     public function checkContext($name)
