@@ -75,8 +75,8 @@
                                         <div class="row">
                                             <div class="12u">
                                             @section('header')
-                                                <h2>Los corruptos</h2>
-                                                <p>Bienvenidos al ranking de corruptos</p>
+                                                <h2>Botáme</h2>
+                                                <p>Acá está todo lo que hice para merece tu voto (o que me botes)</p>
                                             @show
                                             </div>
                                                 <!---
