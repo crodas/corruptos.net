@@ -11,7 +11,7 @@ function sitemap()
 
     $generator = new SitemapGenerator("https://corruptos.net/sitemap", $base);
     $generator->addMap($db->getCollection('corruptos')->find(), function($corrupto) {
-        return new Multiple[
+        return new Multiple([
             "/" . $corrupto->uri,
             "/" . $corrupto->uri . "/audio"
         ]);
