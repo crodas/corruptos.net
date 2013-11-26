@@ -1,6 +1,7 @@
 <?php
 
 use crodas\SitemapGenerator\SitemapGenerator;
+use crodas\SitemapGenerator\Multiple;
 
 /** @Cli("generate:sitemap") */
 function sitemap()
@@ -10,10 +11,10 @@ function sitemap()
 
     $generator = new SitemapGenerator("https://corruptos.net/sitemap", $base);
     $generator->addMap($db->getCollection('corruptos')->find(), function($corrupto) {
-        return [
+        return new Multiple[
             "/" . $corrupto->uri,
             "/" . $corrupto->uri . "/audio"
-        ];
+        ]);
     }, 'corruptos.xml');
 
     $generator->limit(1000);
