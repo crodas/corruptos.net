@@ -10,9 +10,11 @@
         @section('seo')
         <title>Corruptos de Paraguay</title>
         <meta name="description" content="Índice de noticias sobre algunos corruptos del paraguay" />
+        @if (!empty($corruptos))
         <meta name="keywords" content="{{ implode(", ", array_map(function($n) { 
             return $n->nombre; 
         }, iterator_to_array($corruptos))) }}" />
+        @end
         @show
         <link href="//fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
         <link href="//fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
