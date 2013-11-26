@@ -161,7 +161,7 @@ function cleaup_things($input, $output)
             }
         }
 
-        $noticia->corruptos = array_values($this->corruptos);
+        $noticia->corruptos = array_values($noticia->corruptos);
         $conn->save($noticia);
     }
 }
