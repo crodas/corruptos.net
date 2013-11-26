@@ -138,7 +138,11 @@ function cleaup_things($input, $output)
     //$query = ['_id' => new \MongoId('528dceffcc216c884c000120')];
     //$query = ['__type' => 'nanduti'];
 
-    foreach ($conn->getCollection('noticias')->Find($query) as $noticia) {
+    $cursor = $conn->getCollection('noticias')->Find($query);
+    $cursor->timeout(-1);
+
+
+    foreach ($cursor as $noticia) {
         if (empty($noticia->corruptos)) {
             /** not important */
             continue;
