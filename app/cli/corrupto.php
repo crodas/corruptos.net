@@ -160,6 +160,8 @@ function cleaup_things($input, $output)
                 unset($noticia->corruptos[$index]);
             }
         }
+
+        $noticia->corruptos = array_values($this->corruptos);
         $conn->save($noticia);
     }
 }
