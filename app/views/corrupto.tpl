@@ -3,7 +3,7 @@
 @section('seo')
     <title>{{{$corrupto->nombre}}} | Corruptos del Paraguay</title>
     <meta name="description" content="{{{mb_substr($corrupto->summary, 0, 200)}}}" />
-    <meta name="keywords" content="corruptos, paraguay,{{{$corrupto->nombre}}}" />
+    <meta name="keywords" content="paraguay,{{{$corrupto->nombre}}}" />
 @end
 
 @section('header')

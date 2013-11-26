@@ -1,9 +1,9 @@
 @extends('layout')
 
         @section('seo')
-        <title>{{{$noticia->titulo}}} | Corruptos del Paraguay</title>
+        <title>{{{$noticia->titulo}}} | Políticos del  Paraguay</title>
         <meta name="description" content="{{{mb_substr($noticia->texto, 0,200)}}}" />
-        <meta name="keywords" content="corruptos, paraguay, {{{$corrupto->nombre}}}" />
+        <meta name="keywords" content="paraguay, {{{$corrupto->nombre}}}" />
         @show
 
 @section('header')

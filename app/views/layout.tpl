@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         @section('seo')
-        <title>Corruptos de Paraguay</title>
+        <title>Botáme</title>
         <meta name="description" content="Índice de noticias sobre algunos corruptos del paraguay" />
         @if (!empty($corruptos))
         <meta name="keywords" content="{{ implode(", ", array_map(function($n) { 
@@ -44,8 +44,7 @@
                                 
                                     <!-- Logo -->
                                         <div id="logo">
-                                            <h1><a href="/">Corruptos</a></h1>
-                                            <span>Del Paraguay</span>
+                                            <h1><a href="/">Botáme</a></h1>
                                         </div>
                                     
                                         <nav class="nav" id="nav">
