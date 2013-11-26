@@ -11,7 +11,6 @@ class Paraguay extends Noticia
     public function crawl()
     {
         if ($this->crawled) return;
-        echo "Crawling {$this->url}\n";
 
         $page = Http::wget($this->url);
         $content = $page->query('//div[@class="interior_main_column"]')->item(0);

@@ -15,8 +15,6 @@ class Abc extends Noticia
     {
         if ($this->crawled && $this->version != 1) return;
 
-        echo "Crawling {$this->url}\n";
-
         $xpath = Http::wget($this->url);
         
         $title  = Http::text($xpath->query('//*[@id="article"]/h1'));

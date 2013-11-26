@@ -17,8 +17,6 @@ class Cardinal extends Noticia
     {
         if ($this->crawled) return;
 
-        echo "Crawling {$this->url}\n";
-
         $xpath = Http::wget($this->url);
 
         $title = Http::text($xpath->query('//*[@id="noticias-list"]//div[@class="description"]/a'));

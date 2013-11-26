@@ -1,7 +1,5 @@
 <?php
 
-use Seld\JsonLint\JsonParser;
-
 class Crawler
 {
     static protected $meses = [
@@ -24,13 +22,7 @@ class Crawler
 
     static function get($url)
     {
-        $json = file_get_contents($url);
-        $bom  = "\xEF\xBB\xBF";
-        if (substr($json, 0, 3) === $bom) {
-            $json = substr($json, 3);
-        }
-        $parser = new JsonParser();
-        return $parser->parse($json);
+        return Http::wget($url, 3600, true, 'json');
     }
 
     static function uh($text)
@@ -69,7 +61,7 @@ class Crawler
         $comentarios = $current = $hits = 0;
 
         while (true) {
-            $page    = Http::wget('http://paraguay.com/buscar/' . urlencode($text) . '/pagina/' . (++$current));
+            $page    = Http::wget('http://paraguay.com/buscar/' . urlencode($text) . '/pagina/' . (++$current), 3600);
             $stories = $page->query('//div[@class="story"]');
             if ($stories->length == 0) {
                 // so long and thanks for all the firsh @mikeotr!
@@ -117,7 +109,7 @@ class Crawler
 
         $hits = 0;
         $comentarios = 0;
-        $xpath = Http::wget($url);
+        $xpath = Http::wget($url, 3600);
         $alls  = [];
         foreach ($xpath->query('//div[@class="BAcaja"]') as $div) {
             $titulo = Http::text($xpath->query('./div[@class="BAcajaTitu"]', $div));
@@ -146,7 +138,7 @@ class Crawler
         $hits = 0;
         $comentarios = 0;
         for ($i=0; $i < $max; $i++) {
-            $xpath = Http::wget('http://www.cardinal.com.py/buscar.html?' . http_build_query(['busqueda' => $text, 'page'=>$i+1]));
+            $xpath = Http::wget('http://www.cardinal.com.py/buscar.html?' . http_build_query(['busqueda' => $text, 'page'=>$i+1]), 3600);
             $max   = (int)Http::text($xpath->query('(//*[@id="resultados-busqueda"]/div[@class="paginacion"]/a)[last()]'));
 
 
