@@ -43,6 +43,15 @@ class Crawler
 
     static function hoy($text)
     {
+        $meses = array_map(function($name) {
+            return strtolower($name);
+        }, self::$meses);
+
+        $month = array_map(function($index) {
+            $index++;
+            return date('F', strtotime("{$index}/1/2013"));
+        }, array_keys($meses));
+
         $q = Http::wget('http://www.hoy.com.py/search_form', 2);
         $form = array();
         foreach ($q->query('//input') as $input) {
@@ -53,6 +62,8 @@ class Crawler
         
         $zoffset = 0;
         $results = [];
+        $hits    = 0;
+        $comentarios = 0;
         do {
             if ($zoffset > 0) {
                 $page = Http::wget($search_url . '/P' . $zoffset);
@@ -67,8 +78,14 @@ class Crawler
                 $categoria = Http::text($page->query('.//h3//a', $scope));
                 $copete    = Http::text($page->query('.//p', $scope));
                 
+                $fecha = Http::text($page->query('.//h3/span', $scope));
+                $fecha = preg_replace('/[^a-z0-9\:]/', ' ', $fecha);
+                $fecha = preg_replace('/^[^0-9]+/', '', $fecha);
+                $fecha = str_replace($meses, $month, $fecha);
+                $fecha = str_replace(' de ', ' ', $fecha);
+                $publicacion = $fecha;
                 
-                $results[] = compact('titulo', 'url', 'categoria', 'copete');
+                $results[] = compact('titulo', 'url', 'categoria', 'copete', 'hits', 'comentarios', 'publicacion');
                 $found++;
             }
             if ($found < 5) {
@@ -77,10 +94,7 @@ class Crawler
             $zoffset += $found;
         } while (true);
         
-        var_dump($results, $found);exit;
-
-        sleep(15);
-        die($data);
+        return $results;
     }
 
     static function uh($text)
