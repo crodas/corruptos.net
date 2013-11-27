@@ -108,6 +108,9 @@ function get_noticia($req)
 {
     $noticia  = $req->get('noticia');
     $corrupto = current($noticia->corruptos); 
+    if (empty($corrupto)) {
+        $req->notFound();
+    }
     $autoplay = true;
     $menu     = [
         '/audio/' . $corrupto->uri => ['Audios', false],
