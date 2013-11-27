@@ -66,9 +66,9 @@ class Crawler
         $comentarios = 0;
         do {
             if ($zoffset > 0) {
-                $page = Http::wget($search_url . '/P' . $zoffset);
+                $page = Http::wget($search_url . 'P' . $zoffset, 3600);
             } else {
-                $page = Http::wget($search_url);
+                $page = Http::wget($search_url, 3600);
             }
             $found = 0;
             foreach ($page->query('//*[@class="main_content"]//*[@class="article"]') as $scope) {
@@ -85,7 +85,7 @@ class Crawler
                 $fecha = str_replace(' de ', ' ', $fecha);
                 $publicacion = $fecha;
                 
-                $results[] = compact('titulo', 'url', 'categoria', 'copete', 'hits', 'comentarios', 'publicacion');
+                $results[] = (object)compact('titulo', 'url', 'categoria', 'copete', 'hits', 'comentarios', 'publicacion');
                 $found++;
             }
             if ($found < 5) {
@@ -274,7 +274,7 @@ function search_service(Array $config)
     return function($text) use ($config) {
         return array_merge([]
             /**/
-            , Crawler::hoy($text)
+            , Crawler::hoy($text) 
             , Crawler::paraguay_com($text)
             , Crawler::nanduti($text)
             , Crawler::cardinal($text)
