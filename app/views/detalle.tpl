@@ -8,7 +8,8 @@
 
 @section('header')
     <h2>{{{$corrupto->nombre}}}</h2>
-    <p></p>
+    <p>Esto es lo que hice ¿Merezco tu 
+        <a target="_blank" href="http://lema.rae.es/drae/?val=botar">boto</a>?</p>
 @end
 
 @section('content')

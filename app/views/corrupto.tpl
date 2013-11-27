@@ -8,12 +8,13 @@
 
 @section('header')
 <div itemscope itemtype="http://data-vocabulary.org/Person">
-    <h2 itemprop="name">{{{$corrupto->nombre}}}</h2>
     <small class="byline">
         <span itemprop="role">{{{$corrupto->cargo}}}</span> -
         <span itemprop="affiliation">{{{$corrupto->partido}}}</span>
     </small>
-    <p></p>
+    <h2 itemprop="name">{{{$corrupto->nombre}}}</h2>
+    <p>Esto es lo que hice ¿Merezco tu 
+        <a target="_blank" href="http://lema.rae.es/drae/?val=botar">boto</a>?</p>
 </div>
 @end
 
