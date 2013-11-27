@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         @section('seo')
-        <title>Botáme</title>
+        <title>Bótame</title>
         <meta name="description" content="Índice de noticias sobre algunos corruptos del paraguay" />
         @if (!empty($corruptos))
         <meta name="keywords" content="{{ implode(", ", array_map(function($n) { 
@@ -44,7 +44,7 @@
                                 
                                     <!-- Logo -->
                                         <div id="logo">
-                                            <h1><a href="/">Botáme</a></h1>
+                                            <h1><a href="/">Bótame</a></h1>
                                         </div>
                                     
                                         <nav class="nav" id="nav">
@@ -75,8 +75,8 @@
                                         <div class="row">
                                             <div class="12u">
                                             @section('header')
-                                                <h2>Botáme</h2>
-                                                <p>Acá está todo lo que hice para merece tu voto (o que me botes)</p>
+                                                <h2>Soy político</h2>
+                                                <p>Hice estas cosas para merecer tu boto</p>
                                             @show
                                             </div>
                                                 <!---

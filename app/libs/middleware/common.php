@@ -20,9 +20,9 @@ function inject_is_mobile($req, $unused, $args)
 function inject_menu($req, $unused, $args)
 {
     $args['menu'] = array_merge([
-            '/ver_los23' => ['Los 23', false],
-            '/ver_senador' => ['Senadores', false],
-            '/ver_diputado' => ['Diputados', false],
+            '/ver/los23' => ['Los 23', false],
+            '/ver/senador' => ['Senadores', false],
+            '/ver/diputado' => ['Diputados', false],
             '/locales' => ['Locales Adheridos', false],
         ]
         , empty($args['menu']) ? [] : $args['menu']

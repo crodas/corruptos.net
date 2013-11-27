@@ -35,8 +35,8 @@ function get_locales() {
 /**
  *  @Route "/"
  *  @Route "/{page}"
- *  @Route "/ver_{tag}"
- *  @Route "/ver_{tag}/{page}"
+ *  @Route "/ver/{tag}"
+ *  @Route "/ver/{tag}/{page}"
  *  @View layout.tpl
  */
 function get_home($req)
