@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0dab8c399ebc1d4092a3726d122b792f",
+    "hash": "7ecaa20d7028f6dc2657ef3c4fb69677",
     "packages": [
         {
             "name": "crodas/activemongo2",
@@ -1128,6 +1128,57 @@
             "time": "2013-06-11 07:34:22"
         },
         {
+            "name": "symfony/css-selector",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/CssSelector",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/CssSelector.git",
+                "reference": "1513e7b4c1f4f8e937a6bc30159793014c0abdb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/1513e7b4c1f4f8e937a6bc30159793014c0abdb9",
+                "reference": "1513e7b4c1f4f8e937a6bc30159793014c0abdb9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                }
+            ],
+            "description": "Symfony CssSelector Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-11-24 20:17:07"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "dev-master",
             "target-dir": "Symfony/Component/EventDispatcher",
@@ -1280,7 +1331,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "crodas/activemongo2": 20,
-        "crodas/sitemap-generator": 20
+        "crodas/sitemap-generator": 20,
+        "symfony/css-selector": 20
     },
     "platform": [
 
