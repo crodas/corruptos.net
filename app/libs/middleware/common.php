@@ -24,6 +24,7 @@ function inject_menu($req, $unused, $args)
             '/ver/senador' => ['Senadores', false],
             '/ver/diputado' => ['Diputados', false],
             '/locales' => ['Locales Adheridos', false],
+            '/postular' =>  ['Portula tu candidato', false],
         ]
         , empty($args['menu']) ? [] : $args['menu']
     );
