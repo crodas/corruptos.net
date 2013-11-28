@@ -37,7 +37,6 @@ class Http
         if ($time) {
             return new \MongoDate($time);
         }
-        var_dump($itext);exit;
         return new \MongoDate;
     }
 

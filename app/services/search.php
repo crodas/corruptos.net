@@ -292,7 +292,7 @@ function search_service(Array $config)
     return function($text) use ($config) {
         return array_merge([]
             /**/
-            , Crawler::uh($text) /*
+            , Crawler::uh($text) 
             , Crawler::hoy($text) 
             , Crawler::paraguay_com($text) 
             , Crawler::nanduti($text)
