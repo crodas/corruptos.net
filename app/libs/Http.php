@@ -6,12 +6,54 @@ use ForceUTF8\Encoding;
 
 class Http
 {
+    static protected $meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+        'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+
+    public static function fecha($itext)
+    {
+        static $meses, $meses3, $month;
+        if (!$meses) {
+            $meses = array_map(function($name) {
+                return strtolower($name);
+            }, self::$meses);
+            $meses3 = array_map(function($name) {
+                return substr($name, 0, 3);
+            }, $meses);
+            $month = array_map(function($index) {
+                $index++;
+                return date('F', strtotime("{$index}/1/2013"));
+            }, array_keys($meses));
+        }
+
+        $text = mb_strtolower($itext);
+        $text = preg_replace('/^[^0-9]+/', '', $text);
+        $text = preg_replace('/\sde\s/', ' ', $text);
+        $text = preg_replace('/[^a-z0-9\:]+/', ' ', $text);
+        $text = str_replace($meses, $month, $text);
+        $text = str_replace($meses3, $month, $text);
+        $time = strtotime($text);
+        if ($time) {
+            return new \MongoDate($time);
+        }
+        var_dump($itext);exit;
+        return new \MongoDate;
+    }
+
     public static function save($path, $content)
     {
         if (!is_dir(dirname($path))) {
             mkdir(dirname($path), 0777, true);
         }
         file_put_contents($path, gzencode($content), LOCK_EX);
+    }
+
+    public static function xpath($html)
+    {
+        $dom  = new \DomDocument;
+        @$dom->loadHTML($html);
+        return new \DOMXPath($dom);
     }
 
     public static function wget($url, $ttl = -1, $raw = false, $forceType = '')
@@ -31,6 +73,7 @@ class Http
             echo "wget $url\n";
             $ch = curl_init($url);
             curl_setopt_array($ch, [
+                CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_RETURNTRANSFER => 1,
                 CURLOPT_USERAGENT =>  'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5',
             ]);
@@ -71,9 +114,7 @@ class Http
             return $html;
         }
 
-        $dom  = new \DomDocument;
-        @$dom->loadHTML($html);
-        return new \DOMXPath($dom);
+        return self::xpath($html);
     }
 
     public static function text($object)

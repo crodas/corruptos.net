@@ -34,6 +34,7 @@ function inject_menu($req, $unused, $args)
         'abc' => 'ABC Color',
         'nandudi' => 'Ñandutí',
         'hoy' => 'Hoy',
+        'ultimahora' => 'UH',
     ];
     
     // be fair

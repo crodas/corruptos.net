@@ -19,7 +19,7 @@ class Crawler
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_VERBOSE, true);
 
-        $output = curl_exec ($ch) . "\n";
+        $output = str_replace("\r", "", curl_exec ($ch) . "\n");
         list($header, $data) = explode("\n\n", $output, 2);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if ($http_code == 301 || $http_code == 302) {
@@ -30,10 +30,9 @@ class Crawler
             }
             return $url;
         }
-
         curl_close ($ch);
 
-        return $data;
+        return trim($data);
     }
 
     static function get($url)
@@ -53,8 +52,8 @@ class Crawler
         }, array_keys($meses));
 
         try {
-            $q = Http::wget('http://www.hoy.com.py/search_form', 2);
             sleep(15); // they are pussy
+            $q = Http::wget('http://www.hoy.com.py/search_form', 2);
         } catch (\Exception $e) {
             return [];
         }
@@ -104,7 +103,16 @@ class Crawler
 
     static function uh($text)
     {
-        $alls = [];
+        $page = Http::wget('http://www.ultimahora.com/contenidos/resultado.html?text=' . urlencode($text), 600);
+
+        $urls = array();
+        foreach ($page->query('//*[@class="result-obj"]//*[@class="cols1 clearfix"]//*[@class="t2"]//a') as $row) {
+            $urls[] = ['url' => $row->getAttribute('href')];
+        }
+        foreach ($page->query('//*[@class="contenido"]//h3//a') as $row) {
+            $urls[] = ['url' => $row->getAttribute('href')];
+        }
+
         $url  = "http://www.ultimahora.com/_post/ultimahora/getMoreNewsBySearch.php";
         for ($i=0; ; $i++) {
             $args = [
@@ -120,7 +128,12 @@ class Crawler
             ];
 
             $obj = self::post($url, $args);
+            foreach (Http::xpath($obj)->query('//h3/a') as $path) {
+                $urls[] = ['url' => $path->getAttribute('href')];
+            }
+            break;
         }
+        return $urls;
     }
 
     static function paraguay_com($text)
@@ -279,6 +292,7 @@ function search_service(Array $config)
     return function($text) use ($config) {
         return array_merge([]
             /**/
+            , Crawler::uh($text) /*
             , Crawler::hoy($text) 
             , Crawler::paraguay_com($text) 
             , Crawler::nanduti($text)

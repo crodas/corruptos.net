@@ -55,6 +55,7 @@ abstract class Noticia
         $col = $db->getCollection(__CLASS__)->findOne(['url' => $url]);
         if (empty($col)) {
             $class = self::getType($url);
+            if (!$class) return false;
             $col = new $class;
             $col->url = $url;
         }
@@ -115,7 +116,7 @@ abstract class Noticia
 
     public static function getType($url)
     {
-        foreach (array('Hoy', 'Paraguay', 'Abc', 'Cardinal', 'Nanduti') as $type) {
+        foreach (array('Ultimahora', 'Hoy', 'Paraguay', 'Abc', 'Cardinal', 'Nanduti') as $type) {
             if ($type::is($url)) {
                 return $type;
             }
