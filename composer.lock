@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7ecaa20d7028f6dc2657ef3c4fb69677",
+    "hash": "65f2fc872b0bfce0d5ae97473b6a41e1",
     "packages": [
         {
             "name": "crodas/activemongo2",
@@ -803,6 +803,48 @@
             "time": "2013-11-22 17:54:40"
         },
         {
+            "name": "leric/php-thrift",
+            "version": "0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leric/php-thrift-package.git",
+                "reference": "39394c672c1c81d797e688abcc90ba53e2837099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leric/php-thrift-package/zipball/39394c672c1c81d797e688abcc90ba53e2837099",
+                "reference": "39394c672c1c81d797e688abcc90ba53e2837099",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Thrift": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leric Zhang",
+                    "email": "leric.zhang@gmail.com",
+                    "homepage": "http://www.leric.info",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Thrift client api for PHP(version sync with thrift)",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "thrift"
+            ],
+            "time": "2012-10-17 04:16:26"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.7.5",
             "source": {
@@ -922,6 +964,50 @@
             "time": "2013-11-25 13:58:14"
         },
         {
+            "name": "munkie/elasticsearch-thrift-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/munkie/elasticsearch-thrift-php.git",
+                "reference": "9a03d2d705347639fe5c2b9dd77759e36dde7423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/munkie/elasticsearch-thrift-php/zipball/9a03d2d705347639fe5c2b9dd77759e36dde7423",
+                "reference": "9a03d2d705347639fe5c2b9dd77759e36dde7423",
+                "shasum": ""
+            },
+            "require": {
+                "leric/php-thrift": "0.9.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "elasticsearch/elasticsearch-transport-thrift": "1.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Elasticsearch"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikhail Shamin",
+                    "email": "munk13@gmail.com"
+                }
+            ],
+            "description": "ElasticSearch PHP Thrift transport client. Generated from elasticsearch-transport-thrift plugin thrift file",
+            "keywords": [
+                "elasticsearch",
+                "thrift"
+            ],
+            "time": "2013-01-21 07:29:45"
+        },
+        {
             "name": "neitanod/forceutf8",
             "version": "dev-master",
             "source": {
@@ -1037,6 +1123,57 @@
                 "psr-3"
             ],
             "time": "2013-11-19 10:21:35"
+        },
+        {
+            "name": "ruflin/elastica",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica.git",
+                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/e36213362ef459f92e8b09167e537e9312f55ae3",
+                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "munkie/elasticsearch-thrift-php": "1.4.*",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "monolog/monolog": "Logging request",
+                "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
+                "psr/log": "for logging"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Elastica": "lib/",
+                    "Elastica\\Test": "test/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Ruflin",
+                    "homepage": "http://ruflin.com/"
+                }
+            ],
+            "description": "Elasticsearch Client",
+            "homepage": "http://elastica.io/",
+            "keywords": [
+                "client",
+                "search"
+            ],
+            "time": "2013-11-23 21:35:18"
         },
         {
             "name": "seld/jsonlint",

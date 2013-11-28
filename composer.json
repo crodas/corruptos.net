@@ -16,7 +16,9 @@
         "elasticsearch/elasticsearch": "*",
         "mobiledetect/mobiledetectlib": "~2.7",
         "crodas/sitemap-generator": "dev-master",
-        "symfony/css-selector": "2.5.*@dev"
+        "symfony/css-selector": "2.5.*@dev",
+        "ruflin/elastica": "*",
+        "munkie/elasticsearch-thrift-php": "*"
     },
     "scripts": {
         "post-autoload-dump": "Autoloader\\Composer::generate"
