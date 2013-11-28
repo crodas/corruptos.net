@@ -55,7 +55,7 @@ class Http
                 $parser = new JsonParser();
                 $html = $parser->parse($html);
             } else {
-                die("Unexpected type: $contentType");
+                throw new \Exception("Unexpected type: $contentType");
             }
 
             self::save($cache, json_encode([

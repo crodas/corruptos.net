@@ -52,8 +52,12 @@ class Crawler
             return date('F', strtotime("{$index}/1/2013"));
         }, array_keys($meses));
 
-        sleep(15); // they are pussy
-        $q = Http::wget('http://www.hoy.com.py/search_form', 2);
+        try {
+            $q = Http::wget('http://www.hoy.com.py/search_form', 2);
+            sleep(15); // they are pussy
+        } catch (\Exception $e) {
+            return [];
+        }
         $form = array();
         foreach ($q->query('//input') as $input) {
             $form[$input->getAttribute('name')] = $input->getAttribute('value');
