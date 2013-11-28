@@ -26,7 +26,7 @@ class Hoy extends Noticia
         $images = [];
 
         foreach ($xpath->query($selector . '//a') as $l) {
-            if ($l->firstChild && $l->firstChild->tagName == "img") {
+            if ($l->firstChild && !empty($l->firstChild->tagName) && $l->firstChild->tagName == "img") {
                 $links[] = $l->getAttribute('href');
             } else {
                 $links[] = [
@@ -39,6 +39,5 @@ class Hoy extends Noticia
         $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images');
         $this->crawled = true;
         $this->version = 2;
-        Service::get('db')->save($this);
     }
 }

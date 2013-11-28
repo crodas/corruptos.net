@@ -82,13 +82,16 @@ class Corrupto
             }
             try {
                 $not->crawl();
-            } catch (\Exception $e) {}
+            } catch (\Exception $e) {
+            }
             try {
                 $conn->save($not);
             } catch (\Exception $e) {
                 echo "Exception at {$not->url}\n";
                 echo $e->GetMessage() . "\n";
                 echo (string)$e . "\n";
+                //var_dump($not);exit;
+                //exit;
             }
         }
         $news = $conn->getCollection('noticias');

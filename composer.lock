@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "4999c1da94edd1cd321e7330042573df1b7d3dfd"
+                "reference": "975a02f424a7506c68d29d6e8b7a3e46833b2735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/4999c1da94edd1cd321e7330042573df1b7d3dfd",
-                "reference": "4999c1da94edd1cd321e7330042573df1b7d3dfd",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/975a02f424a7506c68d29d6e8b7a3e46833b2735",
+                "reference": "975a02f424a7506c68d29d6e8b7a3e46833b2735",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-11-26 17:12:10"
+            "time": "2013-11-27 06:30:58"
         },
         {
             "name": "crodas/artifex",
@@ -611,12 +611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elasticsearch/elasticsearch-php.git",
-                "reference": "043e8fbce79afe854b2b38347f6d92bfe45daba5"
+                "reference": "f690f8be56305452325a4c12837f8e01f37ab00b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elasticsearch/elasticsearch-php/zipball/043e8fbce79afe854b2b38347f6d92bfe45daba5",
-                "reference": "043e8fbce79afe854b2b38347f6d92bfe45daba5",
+                "url": "https://api.github.com/repos/elasticsearch/elasticsearch-php/zipball/f690f8be56305452325a4c12837f8e01f37ab00b",
+                "reference": "f690f8be56305452325a4c12837f8e01f37ab00b",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2013-11-21 22:33:04"
+            "time": "2013-11-27 12:13:21"
         },
         {
             "name": "filp/whoops",
@@ -804,16 +804,16 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.7.4",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "3b2be1c323d579b36a406d3c54eba5604cea0fd2"
+                "reference": "52a824fdb535055ac19add9eced7a913b9041b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/3b2be1c323d579b36a406d3c54eba5604cea0fd2",
-                "reference": "3b2be1c323d579b36a406d3c54eba5604cea0fd2",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/52a824fdb535055ac19add9eced7a913b9041b2f",
+                "reference": "52a824fdb535055ac19add9eced7a913b9041b2f",
                 "shasum": ""
             },
             "require": {
@@ -839,7 +839,7 @@
                 {
                     "name": "Serban Ghita",
                     "email": "serbanghita@gmail.com",
-                    "homepage": "http://ghita.org",
+                    "homepage": "http://mobiledetect.net",
                     "role": "Developer"
                 }
             ],
@@ -852,7 +852,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2013-11-15 16:23:58"
+            "time": "2013-11-27 22:03:19"
         },
         {
             "name": "monolog/monolog",
@@ -1281,12 +1281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a"
+                "reference": "1481f096caead542c2dfadd67d9fd6124d97e273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
-                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1481f096caead542c2dfadd67d9fd6124d97e273",
+                "reference": "1481f096caead542c2dfadd67d9fd6124d97e273",
                 "shasum": ""
             },
             "require": {
@@ -1319,7 +1319,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-24 20:17:07"
+            "time": "2013-11-26 16:42:52"
         }
     ],
     "packages-dev": [

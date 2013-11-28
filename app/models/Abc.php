@@ -37,6 +37,5 @@ class Abc extends Noticia
         $this->crawled_data = compact('title', 'copete', 'texto', 'links', 'images', 'tags');
         $this->crawled = true;
         $this->version = 2;
-        Service::get('db')->save($this);
     }
 }
