@@ -52,7 +52,6 @@ class Crawler
         }, array_keys($meses));
 
         try {
-            sleep(15); // they are pussy
             $q = Http::wget('http://www.hoy.com.py/search_form', 2);
         } catch (\Exception $e) {
             return [];
@@ -62,7 +61,9 @@ class Crawler
             $form[$input->getAttribute('name')] = $input->getAttribute('value');
         }
         $form['keywords'] = $text;
+        sleep(15); // they are pussy
         $search_url = self::post('http://www.hoy.com.py', $form);
+        sleep(15); // they are pussy
         
         $zoffset = 0;
         $results = [];
