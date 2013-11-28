@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\CssSelector\CssSelector as j;
+
 class Crawler
 {
     static protected $meses = [
@@ -13,16 +15,86 @@ class Crawler
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
 
-        $output = curl_exec ($ch);
+        $output = curl_exec ($ch) . "\n";
+        list($header, $data) = explode("\n\n", $output, 2);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($http_code == 301 || $http_code == 302) {
+            preg_match('/Location:(.*?)\n/', $header, $matches);
+            $url = trim(array_pop($matches));
+            if (!filter_var($url, FILTER_VALIDATE_URL)) {
+                return false;
+            }
+            return $url;
+        }
+
         curl_close ($ch);
 
-        die($output);
+        return $data;
     }
 
     static function get($url)
     {
         return Http::wget($url, 3600, true, 'json');
+    }
+
+    static function hoy($text)
+    {
+        $meses = array_map(function($name) {
+            return strtolower($name);
+        }, self::$meses);
+
+        $month = array_map(function($index) {
+            $index++;
+            return date('F', strtotime("{$index}/1/2013"));
+        }, array_keys($meses));
+
+        $q = Http::wget('http://www.hoy.com.py/search_form', 2);
+        $form = array();
+        foreach ($q->query('//input') as $input) {
+            $form[$input->getAttribute('name')] = $input->getAttribute('value');
+        }
+        $form['keywords'] = $text;
+        $search_url = self::post('http://www.hoy.com.py', $form);
+        
+        $zoffset = 0;
+        $results = [];
+        $hits    = 0;
+        $comentarios = 0;
+        do {
+            if ($zoffset > 0) {
+                $page = Http::wget($search_url . 'P' . $zoffset, 3600);
+            } else {
+                $page = Http::wget($search_url, 3600);
+            }
+            $found = 0;
+            foreach ($page->query('//*[@class="main_content"]//*[@class="article"]') as $scope) {
+                $titulo = Http::text($page->query('.//h2', $scope));
+                $url    = $page->query('.//h2/a', $scope)->item(0)->getAttribute('href');
+
+                $categoria = Http::text($page->query('.//h3//a', $scope));
+                $copete    = Http::text($page->query('.//p', $scope));
+                
+                $fecha = Http::text($page->query('.//h3/span', $scope));
+                $fecha = preg_replace('/[^a-z0-9\:]/', ' ', $fecha);
+                $fecha = preg_replace('/^[^0-9]+/', '', $fecha);
+                $fecha = str_replace($meses, $month, $fecha);
+                $fecha = str_replace(' de ', ' ', $fecha);
+                $publicacion = $fecha;
+                
+                $results[] = (object)compact('titulo', 'url', 'categoria', 'copete', 'hits', 'comentarios', 'publicacion');
+                $found++;
+            }
+            if ($found < 5) {
+                break;
+            }
+            $zoffset += $found;
+        } while (true);
+        
+        return $results;
     }
 
     static function uh($text)
@@ -202,7 +274,8 @@ function search_service(Array $config)
     return function($text) use ($config) {
         return array_merge([]
             /**/
-            , Crawler::paraguay_com($text)
+            , Crawler::hoy($text) 
+            , Crawler::paraguay_com($text) 
             , Crawler::nanduti($text)
             , Crawler::cardinal($text)
             , Crawler::abc($text)
