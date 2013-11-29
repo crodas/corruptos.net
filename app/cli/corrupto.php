@@ -137,6 +137,7 @@ function cleaup_things($input, $output)
     $query = [];
     //$query = ['_id' => new \MongoId('528dceffcc216c884c000120')];
     //$query = ['__type' => 'nanduti'];
+    //$query = ['url' => 'http://www.abc.com.py/edicion-impresa/politica/pobres-resultados-en-busqueda-de-los-secuestradores-del-epp-61978.html'];
 
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);

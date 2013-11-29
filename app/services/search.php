@@ -284,12 +284,10 @@ class Crawler
 
 /**
  *  @Service("search", {
- *      api: {required: true},
  *  }, {shared: true}) 
  */
 function search_service(Array $config)
 {
-
     return function($text) use ($config) {
         return array_merge([]
             /**/

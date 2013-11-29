@@ -716,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "bc0d57f10ca5709a06b688e7fa5cb4432bc00804"
+                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/bc0d57f10ca5709a06b688e7fa5cb4432bc00804",
-                "reference": "bc0d57f10ca5709a06b688e7fa5cb4432bc00804",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
+                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-11-22 17:54:40"
+            "time": "2013-11-28 21:02:44"
         },
         {
             "name": "leric/php-thrift",
@@ -1322,12 +1322,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d"
+                "reference": "805980381ccb3d8d92c51860323e7646e9219df6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/07244506ed46ff1914596e13ccc09666ecf7e06d",
-                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/805980381ccb3d8d92c51860323e7646e9219df6",
+                "reference": "805980381ccb3d8d92c51860323e7646e9219df6",
                 "shasum": ""
             },
             "require": {
@@ -1367,7 +1367,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-24 20:17:07"
+            "time": "2013-11-28 10:27:35"
         },
         {
             "name": "symfony/finder",
