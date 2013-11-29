@@ -18,7 +18,7 @@
             @else
             <meta name="twitter:description" content="{{{ mb_substr($noticia->texto, 0, 200) }}}">
             @end
-            <meta name="twitter:image:src" content="{{$corrupto->getImage()}}">
+            <meta name="twitter:image:src" content="https://botame.org/{{$corrupto->getImage()}}">
             <meta name="twitter:player" content="https://botame.org/noticia/{{$noticia->uri}}/twitter">
             <meta name="twitter:player:stream" content="https://botame.org/play/audio/{{$noticia->id}}">
             <meta name="twitter:player:stream:content_type" content="audio/mp3">
