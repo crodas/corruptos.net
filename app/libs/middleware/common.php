@@ -34,6 +34,8 @@ function inject_menu($req, $unused, $args)
         'paraguay' => 'Paraguay.com',
         'abc' => 'ABC Color',
         'nandudi' => 'Ñandutí',
+        'hoy' => 'Hoy',
+        'ultimahora' => 'UH',
     ];
     
     // be fair

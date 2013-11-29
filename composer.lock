@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0dab8c399ebc1d4092a3726d122b792f",
+    "hash": "65f2fc872b0bfce0d5ae97473b6a41e1",
     "packages": [
         {
             "name": "crodas/activemongo2",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "4999c1da94edd1cd321e7330042573df1b7d3dfd"
+                "reference": "fea214304cc3af2eec448104439b997a08edafbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/4999c1da94edd1cd321e7330042573df1b7d3dfd",
-                "reference": "4999c1da94edd1cd321e7330042573df1b7d3dfd",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/fea214304cc3af2eec448104439b997a08edafbf",
+                "reference": "fea214304cc3af2eec448104439b997a08edafbf",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-11-26 17:12:10"
+            "time": "2013-11-29 03:41:57"
         },
         {
             "name": "crodas/artifex",
@@ -611,12 +611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elasticsearch/elasticsearch-php.git",
-                "reference": "043e8fbce79afe854b2b38347f6d92bfe45daba5"
+                "reference": "f690f8be56305452325a4c12837f8e01f37ab00b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elasticsearch/elasticsearch-php/zipball/043e8fbce79afe854b2b38347f6d92bfe45daba5",
-                "reference": "043e8fbce79afe854b2b38347f6d92bfe45daba5",
+                "url": "https://api.github.com/repos/elasticsearch/elasticsearch-php/zipball/f690f8be56305452325a4c12837f8e01f37ab00b",
+                "reference": "f690f8be56305452325a4c12837f8e01f37ab00b",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +657,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2013-11-21 22:33:04"
+            "time": "2013-11-27 12:13:21"
         },
         {
             "name": "filp/whoops",
@@ -716,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "bc0d57f10ca5709a06b688e7fa5cb4432bc00804"
+                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/bc0d57f10ca5709a06b688e7fa5cb4432bc00804",
-                "reference": "bc0d57f10ca5709a06b688e7fa5cb4432bc00804",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
+                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
                 "shasum": ""
             },
             "require": {
@@ -800,20 +800,62 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-11-22 17:54:40"
+            "time": "2013-11-28 21:02:44"
         },
         {
-            "name": "mobiledetect/mobiledetectlib",
-            "version": "2.7.4",
+            "name": "leric/php-thrift",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "3b2be1c323d579b36a406d3c54eba5604cea0fd2"
+                "url": "https://github.com/leric/php-thrift-package.git",
+                "reference": "39394c672c1c81d797e688abcc90ba53e2837099"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/3b2be1c323d579b36a406d3c54eba5604cea0fd2",
-                "reference": "3b2be1c323d579b36a406d3c54eba5604cea0fd2",
+                "url": "https://api.github.com/repos/leric/php-thrift-package/zipball/39394c672c1c81d797e688abcc90ba53e2837099",
+                "reference": "39394c672c1c81d797e688abcc90ba53e2837099",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Thrift": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leric Zhang",
+                    "email": "leric.zhang@gmail.com",
+                    "homepage": "http://www.leric.info",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Thrift client api for PHP(version sync with thrift)",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "thrift"
+            ],
+            "time": "2012-10-17 04:16:26"
+        },
+        {
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "2.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/serbanghita/Mobile-Detect.git",
+                "reference": "52a824fdb535055ac19add9eced7a913b9041b2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/52a824fdb535055ac19add9eced7a913b9041b2f",
+                "reference": "52a824fdb535055ac19add9eced7a913b9041b2f",
                 "shasum": ""
             },
             "require": {
@@ -839,7 +881,7 @@
                 {
                     "name": "Serban Ghita",
                     "email": "serbanghita@gmail.com",
-                    "homepage": "http://ghita.org",
+                    "homepage": "http://mobiledetect.net",
                     "role": "Developer"
                 }
             ],
@@ -852,7 +894,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2013-11-15 16:23:58"
+            "time": "2013-11-27 22:03:19"
         },
         {
             "name": "monolog/monolog",
@@ -920,6 +962,50 @@
                 "psr-3"
             ],
             "time": "2013-11-25 13:58:14"
+        },
+        {
+            "name": "munkie/elasticsearch-thrift-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/munkie/elasticsearch-thrift-php.git",
+                "reference": "9a03d2d705347639fe5c2b9dd77759e36dde7423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/munkie/elasticsearch-thrift-php/zipball/9a03d2d705347639fe5c2b9dd77759e36dde7423",
+                "reference": "9a03d2d705347639fe5c2b9dd77759e36dde7423",
+                "shasum": ""
+            },
+            "require": {
+                "leric/php-thrift": "0.9.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "elasticsearch/elasticsearch-transport-thrift": "1.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Elasticsearch"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikhail Shamin",
+                    "email": "munk13@gmail.com"
+                }
+            ],
+            "description": "ElasticSearch PHP Thrift transport client. Generated from elasticsearch-transport-thrift plugin thrift file",
+            "keywords": [
+                "elasticsearch",
+                "thrift"
+            ],
+            "time": "2013-01-21 07:29:45"
         },
         {
             "name": "neitanod/forceutf8",
@@ -1039,6 +1125,57 @@
             "time": "2013-11-19 10:21:35"
         },
         {
+            "name": "ruflin/elastica",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica.git",
+                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/e36213362ef459f92e8b09167e537e9312f55ae3",
+                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "munkie/elasticsearch-thrift-php": "1.4.*",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "monolog/monolog": "Logging request",
+                "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
+                "psr/log": "for logging"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Elastica": "lib/",
+                    "Elastica\\Test": "test/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Ruflin",
+                    "homepage": "http://ruflin.com/"
+                }
+            ],
+            "description": "Elasticsearch Client",
+            "homepage": "http://elastica.io/",
+            "keywords": [
+                "client",
+                "search"
+            ],
+            "time": "2013-11-23 21:35:18"
+        },
+        {
             "name": "seld/jsonlint",
             "version": "dev-master",
             "source": {
@@ -1128,18 +1265,69 @@
             "time": "2013-06-11 07:34:22"
         },
         {
+            "name": "symfony/css-selector",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/CssSelector",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/CssSelector.git",
+                "reference": "1513e7b4c1f4f8e937a6bc30159793014c0abdb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/1513e7b4c1f4f8e937a6bc30159793014c0abdb9",
+                "reference": "1513e7b4c1f4f8e937a6bc30159793014c0abdb9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                }
+            ],
+            "description": "Symfony CssSelector Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-11-24 20:17:07"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "dev-master",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d"
+                "reference": "805980381ccb3d8d92c51860323e7646e9219df6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/07244506ed46ff1914596e13ccc09666ecf7e06d",
-                "reference": "07244506ed46ff1914596e13ccc09666ecf7e06d",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/805980381ccb3d8d92c51860323e7646e9219df6",
+                "reference": "805980381ccb3d8d92c51860323e7646e9219df6",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1367,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-24 20:17:07"
+            "time": "2013-11-28 10:27:35"
         },
         {
             "name": "symfony/finder",
@@ -1230,12 +1418,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a"
+                "reference": "1481f096caead542c2dfadd67d9fd6124d97e273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
-                "reference": "9de619fff37677c6a4d71aba0fc8ede5c5186c9a",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1481f096caead542c2dfadd67d9fd6124d97e273",
+                "reference": "1481f096caead542c2dfadd67d9fd6124d97e273",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1456,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-24 20:17:07"
+            "time": "2013-11-26 16:42:52"
         }
     ],
     "packages-dev": [
@@ -1280,7 +1468,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "crodas/activemongo2": 20,
-        "crodas/sitemap-generator": 20
+        "crodas/sitemap-generator": 20,
+        "symfony/css-selector": 20
     },
     "platform": [
 

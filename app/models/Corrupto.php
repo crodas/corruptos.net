@@ -66,29 +66,47 @@ class Corrupto
         $search = Service::get('search');
 
         foreach($search($this->apodo ?: $this->nombre) as $news) {
+            if (is_array($news)) {
+                $news = (object)$news;
+            }
             $not = Noticia::getOrCreate($news->url);
-            $not->titulo   = $news->titulo;
-            if (!empty($news->copete)) {
-                $not->texto = $news->copete;
+            if (!$not) {
+                echo "Ignoring {$news->url}\n";
+                continue;
             }
+            foreach (['titulo', 'copete', 'hits', 'comentarios'] as $tipo) {
+                if (!empty($news->$tipo)) {
+                    $not->$tipo = $news->$tipo;
+                }
+            }
+            if (!empty($not->copete)) {
+                $not->texto = $not->copete;
+            }
+
+            // get more info
+            try {
+                $not->crawl();
+            } catch (\Exception $e) {}
+
             if (empty($not->creado) || empty($not->creado->sec)) {
-                $not->creado   = new MongoDate(strtotime($news->publicacion));
+                if (!empty($news->publicacion)) {
+                    $not->creado   = new \MongoDate(strtotime($news->publicacion));
+                }
             }
-            $not->hits        = $news->hits;
-            $not->comentarios = $news->comentarios;
+
             if ($not->isAbout($this)) {
                 // it might be relevant :)
                 $not->corruptos[] = $this;
             }
-            try {
-                $not->crawl();
-            } catch (\Exception $e) {}
+
             try {
                 $conn->save($not);
             } catch (\Exception $e) {
                 echo "Exception at {$not->url}\n";
                 echo $e->GetMessage() . "\n";
                 echo (string)$e . "\n";
+                //var_dump($not);exit;
+                //exit;
             }
         }
         $news = $conn->getCollection('noticias');
