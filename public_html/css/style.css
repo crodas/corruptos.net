@@ -73,6 +73,7 @@
 		form select,
 		form textarea
 		{
+            font-size: 22px;
 			-webkit-appearance: none;
 		}
 			

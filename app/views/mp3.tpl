@@ -57,7 +57,11 @@ $(document).ready(function(){
         </div>
         <div class="jp-title">
             <ul>
-                <li>Audio de {{$noticia->fuente()}}</li>
+                @if ($noticia instanceof Noticia)
+                    <li>Audio de {{$noticia->fuente()}}</li>
+                @else
+                    <li>Audio de {{$noticia->fuente}}</li>
+                @end
             </ul>
         </div>
         <div class="jp-no-solution">
