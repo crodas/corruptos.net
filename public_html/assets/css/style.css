@@ -1,0 +1,138 @@
+body{
+	padding-top: 60px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   	font-weight: 300;
+   	background: #EEEEEE;
+   	padding-bottom: 60px;
+}
+h1, h2, h3, h4, h5, h6 { 
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+p > a, p > a:hover{
+  border-bottom: none;
+}
+
+hr, .page-header{ border-color: #CCCCCC; }
+
+img { 
+	-webkit-box-shadow: 0 6px 4px -4px #777; 
+	-moz-box-shadow: 0 6px 4px -4px #777; 
+	box-shadow: 0 6px 4px -4px #777; 
+}
+
+.pagination { text-align: center; }
+
+.navbar{ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+.navbar-inner { min-height: 30px; }
+.navbar .nav > li > a { padding: 12px; font-size: 13px; }
+
+.navbar .btn-group{ margin-top: 7px; margin-right: 13px; }
+
+/* Logo */
+.navbar .brand { padding: 11px 20px 13px; font-size: 18px; }
+
+/* Container */
+.content-wrap{ padding-top: 15px; }
+
+/* News feed */
+.news-feed li{ line-height: 1.15; margin-bottom: 20px; min-height: 60px;}
+.news-feed h4.title{ margin: 0px; padding: 0px 0px 5px; line-height: 1.0; }
+.news-feed .post{ margin-left: 70px; }
+.news-feed .avatar{ height: 60px;  position: absolute; top: 0; bottom: 0; margin-right:10px; min-height: 60px;}
+.news-feed .avatar img{ width: 60px; margin-top: 5px; }
+.news-feed .post-wrap{ position: relative; }
+.news-feed .meta, .news-feed .article { margin-bottom: 4px}
+.news-feed p{ margin: 0px; padding: 0px; }
+
+/* Profile */
+.profile .info{ margin-left: 20px;}
+
+
+/* Widgets */
+.widget{ padding: 10px; }
+.widget h4{  margin-bottom: 20px;}
+
+.list-widget h4{ border-bottom: 1px solid #eee ; padding-bottom: 5px; }
+.list-widget li{ float: left; margin-bottom: 10px; margin-right: 10px;}
+.list-widget ul.links li{ float: none;}
+
+/* Custom Search box */
+#custom-search-form { margin:0; margin-top: 5px; padding: 0px; width: 100%; }
+#custom-search-form .search-query { 
+	padding-right: 3px; 
+	padding-right: 4px \9; 
+	padding-left: 3px; 
+	padding-left: 4px \9;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px; 
+	width: 96.5%; 
+}
+#custom-search-form button { 
+	border: 0; 
+	background: none; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	/** belows styles are working good */
+	padding: 2px 5px; 
+	margin-top: 2px; 
+	position: relative; 
+	left: -28px;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0; 
+}
+.search-query:focus + button { z-index: 3; }
+
+
+.news-item
+{
+  	position:relative;
+  	padding: 10px 10px 20px;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.navbar .btn, .navbar .btn-group {
+    margin-top: 8px;
+}
+
+@media(max-width: 979px){
+  body{
+    padding-top: 0px;
+  }
+}
+
+  
+/*  #toolbar [data-wysihtml5-action] {
+    float: right;
+  }*/
+
+  textarea:focus {
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .wysihtml5-command-active {
+    font-weight: bold;
+  }
+  
+  [data-wysihtml5-dialog] {
+    margin: 5px 0 0;
+  }
+  
+  a[data-wysihtml5-command-value="red"] {
+    color: red;
+  }
+  
+  a[data-wysihtml5-command-value="green"] {
+    color: green;
+  }
+  
+  a[data-wysihtml5-command-value="blue"] {
+    color: blue;
+  }
+>>>>>>> v11
