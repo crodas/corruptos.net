@@ -1,5 +1,35 @@
 <?php
 
+function __($x, $singular, $plural)
+{
+    return "$x ". ($x == 1 ? $singular : $plural);
+}
+
+function time_ago($time)
+{
+    if (is_string($time)) {
+        $time = strtotime($time);
+    }
+    $time_elapsed = time() - $time;
+    
+    $seconds = $time_elapsed ; 
+    $minutes = floor($time_elapsed / 60 );
+    $hours = floor($time_elapsed / 3600); 
+    $days = floor($time_elapsed / 86400 ); 
+    $weeks = floor($time_elapsed / 604800); 
+    $months = floor($time_elapsed / 2600640 ); 
+    $years = floor($time_elapsed / 31207680 ); 
+
+    if ($years > 0) return __($years, "año", "años");
+    if ($months > 0) return __($months, "mes", "meses");
+    if ($weeks > 0) return __($weeks, "semanas", "semanas");
+    if ($days > 0) return __($days, "día", "días");
+    if ($hours > 0) return __($hours, "hora", "horas");
+    if ($minutes > 0) return __($minutes, "minuto", "minutos");
+    
+    return ___($time_elapsed, "segundo", "segundos");
+}
+
 function has_something(Array $values)
 {
     $i = 0;

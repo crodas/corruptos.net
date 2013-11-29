@@ -1,6 +1,7 @@
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function(){
+window.delayed = window.delayed || [];
+delayed.push(function() {
     $("#jquery_jplayer_{{$id}}").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {

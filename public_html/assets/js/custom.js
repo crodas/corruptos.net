@@ -1,3 +1,12 @@
+$(function(e) {
+    $(delayed || []).each(function(key, value) {
+        if (typeof value == "function") {
+            value(e);
+        }
+    });
+    window.delayed = [];
+    window.delayed.push = $.ready;
+});
 
         var gotoHashTab = function (customHash) {
             var hash = customHash || location.hash;
@@ -95,3 +104,4 @@
     .on("redo:composer", function() {
       log.innerHTML += "<div>redo:composer</div>";
     });
+

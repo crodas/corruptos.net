@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layout/new')
 
 @section('seo')
-    <title>{{{$corrupto->nombre}}} | Botame</title>
+    <title>{{{$corrupto->nombre}}} | Botame.org</title>
     <meta name="description" content="{{{mb_substr($corrupto->summary, 0, 200)}}}" />
     <meta name="keywords" content="paraguay, botame, {{{$corrupto->nombre}}}" />
 @end
@@ -19,63 +19,59 @@
 @end
 
 @section('content')
-
-<div id="main-wrapper">
-<div class="container">
-    <div class="row">
-        <div class="4u">
-        
-            <!-- Sidebar -->
-                <div id="sidebar">
-                    <section class="widget-thumbnails">
-                        <h2>Resumen</h2>
-	                    <div class="wide">
-                            <img alt="corrupto {{{$corrupto->nombre}}}" src="{{{ $corrupto->getImage(false) }}}" alt="" />
-                        </div>
-                            @foreach($newspaper as $uri => $name)
-                            <a class="button small"  href="/{{$corrupto->uri}}/medio/{{$uri}}">{{$name}}</a>
-                            @end
-                        <p><small>{{{$corrupto->summary}}}</small></p>
-                    </section>
-                </div>
-        
-        </div>
-        <div class="8u">
-
-            <!-- Content -->
-                <div id="content">
-                    @set($datos, $corrupto->getNoticias($page, $has_next, $filter))
-                    @if ($datos->count() > 0)
-                        <h2>Noticias</h2>
-                    @else
-                        <h2>Todavia no hay nada</h2>
-                    @end
-                    @foreach($datos as $noticia)
-                    <section class="last">
-                        @include('detalle-noticia',compact('noticia'))
-                    </section>
-                    @end
-
-                    @if ($page > 0)
-                        <a href="{{{$base}}}/{{$page-1}}"
-                        class="button fa
-                        fa-arrow-circle-left">Siguiente anterior</a>
-                    @end
-                    
-                    @if ($has_next)
-                        <a href="{{{$base}}}/{{$page+1}}"
-                        class="button fo pull-right fa-arrow-right
-                        fa-arrow-circle-right">Siguiente página</a>
-                    @end
-
-                </div>
-
-        </div>
-
+<div class="profile">
+    <a href="#" class="avatar pull-left">
+        <img src="{{{$corrupto->getImage()}}}" width="100" />
+    </a>
+    <div class="info pull-left">
+        <h2>{{{$corrupto->nombre}}} <small>
+        @foreach($corrupto->tags as $tag)
+            <a href="/ver/{{{$tag}}}">#{{{$tag}}}</a>
+        @end
+        </small></h2>
+        <h4>{{{$corrupto->total_noticias}}} noticias</h4>
     </div>
+    <div class="clearfix"></div>
 </div>
-</div>
+<hr />
 
+<ul class="news-feed unstyled">
+    @set($datos, $corrupto->getNoticias($page, $has_next, $filter))
+    @foreach($datos as $dato)
+    <li class="news-item">
+        <h4 class="title">
+            <a target="_blank" href="/go/{{{$dato->id}}}" class="text-info">
+                {{{$dato->titulo}}}
+            </a>
+        </h4>
+        <div class="post-wrap">
+            <a href="http://www.websterfolks.com/demo/reddish/user/2-demo" class="avatar">
+                <img src="http://www.gravatar.com/avatar/7c4ff521986b4ff8d29440beec01972d?" alt="demo user" class="pull-left clearfix" />
+            </a>
+            <div class="post" class="pull-left">
+                <p class="meta">
+                    hace {{ time_ago($dato->creado->sec) }} atrás en                                                
+                    <strong>
+                        <a target="_blank" href="/go/{{{$dato->fuente()}}}" class="text-warning">{{{$dato->fuente()}}}</a>                                                
+                    </strong>
+                </p> 
+                <p class="article">
+                    @if (!empty($dato->is_audio))
+                        @include('mp3', ['id' => $dato->id, 'noticia' => $dato])
+                    @else
+                        {{{$dato->texto}}}
+                    @end
+                </p>
+                <p class="comments-count">
+                    <a href="/noticia/{{$dato->uri}}" class="text-success">
+                        {{$dato->total_comentarios}} comentarios
+                    </a>
+                </p>
+            </div> 
+        </div>
+    </li>
+    @end
+</ul>
 @end
 
 @section('js')

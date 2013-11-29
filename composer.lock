@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "fea214304cc3af2eec448104439b997a08edafbf"
+                "reference": "a1e2029f047ce023d79dede070718094259c0f9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/fea214304cc3af2eec448104439b997a08edafbf",
-                "reference": "fea214304cc3af2eec448104439b997a08edafbf",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/a1e2029f047ce023d79dede070718094259c0f9b",
+                "reference": "a1e2029f047ce023d79dede070718094259c0f9b",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-11-29 03:41:57"
+            "time": "2013-11-29 21:07:00"
         },
         {
             "name": "crodas/artifex",
@@ -341,16 +341,16 @@
         },
         {
             "name": "crodas/service-provider",
-            "version": "v0.1.7",
+            "version": "v0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ServiceProvider.git",
-                "reference": "80b9560aeace3b78923e64b65ed263e7e4b2dc77"
+                "reference": "86fc1f9eb3ea2316517726a2846412484b3bb1b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ServiceProvider/zipball/80b9560aeace3b78923e64b65ed263e7e4b2dc77",
-                "reference": "80b9560aeace3b78923e64b65ed263e7e4b2dc77",
+                "url": "https://api.github.com/repos/crodas/ServiceProvider/zipball/86fc1f9eb3ea2316517726a2846412484b3bb1b1",
+                "reference": "86fc1f9eb3ea2316517726a2846412484b3bb1b1",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
                 }
             ],
             "description": "Little configuration manager and dependency injection",
-            "time": "2013-11-02 05:42:10"
+            "time": "2013-11-29 22:55:58"
         },
         {
             "name": "crodas/simple-view-engine",

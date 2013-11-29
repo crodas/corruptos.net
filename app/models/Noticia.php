@@ -49,6 +49,9 @@ abstract class Noticia
     /** @Hash */
     public $crawled_data = array();
 
+    /** @Int */
+    public $total_comentarios = 0;
+
     public static function getOrCreate($url)
     {
         $db  = Service::get("db");
@@ -105,7 +108,7 @@ abstract class Noticia
         if (empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
                 try {
-                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 500, "UTF-8") . "...";
+                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 1000, "UTF-8") . "...";
                     Service::get('db')->save($this);
                 } catch (\Exception $e) {
                 }

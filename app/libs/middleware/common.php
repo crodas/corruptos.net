@@ -19,16 +19,7 @@ function inject_is_mobile($req, $unused, $args)
 /** @postRoute */
 function inject_menu($req, $unused, $args)
 {
-    $args['menu'] = array_merge([
-            '/ver/los23' => ['Los 23', false],
-            '/ver/senador' => ['Senadores', false],
-            '/ver/diputado' => ['Diputados', false],
-            '/locales' => ['Locales Adheridos', false],
-            '/postular' =>  ['Portula tu candidato', false],
-        ]
-        , empty($args['menu']) ? [] : $args['menu']
-    );
-    // FIXME: I should be in a nice yml file
+    $args['sections'] = Service::get('sections');
     $args['newspaper'] = [
         'cardinal' => 'Cardinal',
         'paraguay' => 'Paraguay.com',
