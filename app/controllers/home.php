@@ -10,19 +10,6 @@ function go($req)
     exit;
 }
 
-/** @Route("/play/audio/{id:noticia}") */
-function get_audio($req)
-{
-    $noticia = $req->get('noticia');
-    if (!$noticia->is_audio || empty($noticia->crawled_data['mp3'])) {
-        $req->notFound();
-    }
-    $noticia->listened++;
-    Service::get('db')->save($noticia);
-    header("Location: {$noticia->crawled_data['mp3']}");
-    exit;
-}
-
 
 /**
  *  @Route /locales
