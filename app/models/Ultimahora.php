@@ -60,7 +60,7 @@ class Ultimahora extends Noticia
                 return;
             }
             $xpath = Http::wipe($this->url);
-            return $this->crawl($v++);
+            return $this->crawl(++$v);
         }
         $fecha  = Http::fecha($xpath->query('//*[@class="floatright"]'));
         $copete = Http::text($xpath->query('//*[@class="news-headline-obj"]'));
