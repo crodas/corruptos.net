@@ -31,7 +31,7 @@ class Cardinal extends Noticia
                 $titulo = Http::text($link);
                 $url    = "http://www.cardinal.com.py" . $link->getAttribute('href');
                 if (self::exists($url)) {
-                    break;
+                    break 2;
                 } 
 
                 $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits');
