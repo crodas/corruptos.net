@@ -143,7 +143,6 @@ function cleaup_things($input, $output)
         $corrupto->nombre = $nombre;
         $conn->save($corrupto);
     }
-    exit;
 
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
@@ -164,7 +163,7 @@ function cleaup_things($input, $output)
         foreach ($noticia->corruptos as $index => $corrupto) {
             if (!$noticia->isAbout($corrupto->getObject())) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
-                //unset($noticia->corruptos[$index]);
+                unset($noticia->corruptos[$index]);
             }
         }
 
