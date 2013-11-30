@@ -716,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6"
+                "reference": "d04d235d085c9be1883ee7817000394d4e3c7deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
-                "reference": "b0d91a5aca51fbad219f0bc33f0500745fcf8cd6",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d04d235d085c9be1883ee7817000394d4e3c7deb",
+                "reference": "d04d235d085c9be1883ee7817000394d4e3c7deb",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-11-28 21:02:44"
+            "time": "2013-11-30 18:14:26"
         },
         {
             "name": "leric/php-thrift",
