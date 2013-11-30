@@ -19,23 +19,12 @@ function inject_is_mobile($req, $unused, $args)
 /** @postRoute */
 function inject_menu($req, $unused, $args)
 {
-    $args['sections'] = Service::get('sections');
-    $args['newspaper'] = [
-        'cardinal' => 'Cardinal',
-        'paraguay' => 'Paraguay.com',
-        'abc' => 'ABC Color',
-        'nandudi' => 'Ñandutí',
-        'hoy' => 'Hoy',
-        'ultimahora' => 'UH',
-    ];
+    $args['sections']  = Service::get('sections');
+    $args['newspaper'] = Service::get('sources');
     
     // be fair
     uasort($args['newspaper'], function() { return rand(-1, 1); });
 
-    if (!empty($args['menu'][$_SERVER['REQUEST_URI']])) {
-        // Go home @crodas you're drunk!
-        $args['menu'][$_SERVER['REQUEST_URI']][1] = true;
-    }
     return $args;
 }
 

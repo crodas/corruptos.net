@@ -116,7 +116,7 @@ function get_corruptos($req)
     $corrupto = $req->get('corrupto');
     $page     = $req->get('page') ?: 0;
     $filter   = [];
-    $base     = "/audio/" . $corrupto->uri;
+    $base     = "/" . $corrupto->uri;
     $menu     = [
         '/audio/' . $corrupto->uri => ['Audios', false],
         '/' . $corrupto->uri => ['Noticias', false],

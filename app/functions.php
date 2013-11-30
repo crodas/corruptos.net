@@ -53,6 +53,19 @@ function array_search_all($needle, $haystack)
     return ($array);
 }
 
+function pagination($page, $total)
+{
+    $config = Service::get('config');
+    $tpages = ceil($total / $config['per_page']);
+    $pages  = range(1, min($config['show_pages'], $total));
+
+    if ($total > $config['show_pages']+1) {
+        $offset = max($config['show_pages']+1, $total-2);
+        $pages = array_merge($pages, ['...'], range($offset, $total));
+    }
+    return $pages;
+}
+
 function check_context(Array $names, Array $index)
 {
     if (!has_something($index)) {

@@ -36,7 +36,7 @@
 <hr />
 
 <ul class="news-feed unstyled">
-    @set($datos, $corrupto->getNoticias($page, $has_next, $filter))
+    @set($datos, $corrupto->getNoticias($page, $total, $filter))
     @foreach($datos as $dato)
     <li class="news-item">
         <h4 class="title">
@@ -46,13 +46,13 @@
         </h4>
         <div class="post-wrap">
             <a href="http://www.websterfolks.com/demo/reddish/user/2-demo" class="avatar">
-                <img src="http://www.gravatar.com/avatar/7c4ff521986b4ff8d29440beec01972d?" alt="demo user" class="pull-left clearfix" />
+                <img src="{{{ $dato->corruptos[array_rand($dato->corruptos)]->getImage() }}}" alt="demo user" class="pull-left clearfix" />
             </a>
             <div class="post" class="pull-left">
                 <p class="meta">
                     hace {{ time_ago($dato->creado->sec) }} atrás en                                                
                     <strong>
-                        <a target="_blank" href="/go/{{{$dato->fuente()}}}" class="text-warning">{{{$dato->fuente()}}}</a>                                                
+                        <a target="_blank" href="/fuente/{{{$dato->fuente()}}}" class="text-warning">{{{$dato->fuente()}}}</a>                                                
                     </strong>
                 </p> 
                 <p class="article">
@@ -72,7 +72,21 @@
     </li>
     @end
 </ul>
+
+<div class="pagination">
+    <ul class="pagination">
+    @foreach(pagination($page, $total) as $p)
+        @if ($page+1 == $p || !$p)
+            <li><a>{{$p}}</a></li>
+        @else
+            <li><a href="{{$base}}/{{$p}}">{{$p}}</a></li>
+        @end
+    @end
+    </ul>
+</div>
+
 @end
+
 
 @section('js')
 <link href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />

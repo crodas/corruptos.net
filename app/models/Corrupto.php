@@ -7,8 +7,6 @@
  */
 class Corrupto
 {
-    const PER_PAGE = 30;
-
     /** @Id */
     public $id;
 
@@ -163,15 +161,17 @@ class Corrupto
         return $doc;
     }
 
-    public function getNoticias($page, &$has_more, $filter = [])
+    public function getNoticias($page, &$total, $filter = [])
     {
+        $config = Service::get('config');
+
         $db  = Service::get('db');
         $col = $db->getCollection('noticias')
             ->find(array_merge(['corruptos.uri' => $this->uri], $filter))
-            ->skip($page * self::PER_PAGE)
-            ->limit(self::PER_PAGE)
+            ->skip($page * $config['per_page'])
+            ->limit($config['per_page'])
             ->sort(['creado' => -1]);
-        $has_more = $col->count() > ($page+1)*self::PER_PAGE;
+        $total = $col->count();
         return $col;
     } 
 }
