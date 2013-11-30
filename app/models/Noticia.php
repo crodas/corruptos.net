@@ -124,6 +124,11 @@ abstract class Noticia
         return false;
     }
 
+    public static function exists($url)
+    {
+        return Service::get('db')->getCollection(__CLASS__)->count(compact('url')) == 1;
+    }
+
 
     public function fuente()
     {

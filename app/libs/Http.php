@@ -27,6 +27,10 @@ class Http
             }, array_keys($meses));
         }
 
+        if ($itext instanceof DOMNodeList) {
+            $itext = self::text($itext);
+        }
+
         $text = mb_strtolower($itext);
         $text = preg_replace('/^[^0-9]+/', '', $text);
         $text = preg_replace('/\sde\s/', ' ', $text);
@@ -39,6 +43,34 @@ class Http
         }
         return new \MongoDate;
     }
+
+    static function post($url, $post)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+        $output = str_replace("\r", "", curl_exec ($ch) . "\n");
+        list($header, $data) = explode("\n\n", $output, 2);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($http_code == 301 || $http_code == 302) {
+            preg_match('/Location:(.*?)\n/', $header, $matches);
+            $url = trim(array_pop($matches));
+            if (!filter_var($url, FILTER_VALIDATE_URL)) {
+                return false;
+            }
+            return $url;
+        }
+
+        curl_close ($ch);
+
+        return self::xpath(trim($data));
+    }
+
 
     public static function save($path, $content)
     {
@@ -53,6 +85,15 @@ class Http
         $dom  = new \DomDocument;
         @$dom->loadHTML($html);
         return new \DOMXPath($dom);
+    }
+
+    public static function wipe($url)
+    {
+        $hash  = sha1($url);
+        $cache = realpath(__DIR__ . '/../../tmp/') . '/http/'  . substr($hash, 0, 2) . '/' . substr($hash, 2, 2) . '/' . substr($hash, 4) . '.json.gz';
+        if (is_file($cache)) {
+            unlink($cache);
+        }
     }
 
     public static function wget($url, $ttl = -1, $raw = false, $forceType = '')
