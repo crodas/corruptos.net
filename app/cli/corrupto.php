@@ -135,9 +135,15 @@ function cleaup_things($input, $output)
 {
     $conn  = Service::get('db');
     $query = [];
-    //$query = ['_id' => new \MongoId('528dceffcc216c884c000120')];
-    //$query = ['__type' => 'nanduti'];
-    //$query = ['url' => 'http://www.abc.com.py/edicion-impresa/politica/pobres-resultados-en-busqueda-de-los-secuestradores-del-epp-61978.html'];
+
+    $cursor = $conn->getCollection('corruptos')->Find($query);
+
+    foreach ($cursor as $corrupto) {
+        $nombre = mb_convert_case($corrupto->nombre, MB_CASE_TITLE, 'UTF-8');
+        $corrupto->nombre = $nombre;
+        $conn->save($corrupto);
+    }
+    exit;
 
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
@@ -158,7 +164,7 @@ function cleaup_things($input, $output)
         foreach ($noticia->corruptos as $index => $corrupto) {
             if (!$noticia->isAbout($corrupto->getObject())) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
-                unset($noticia->corruptos[$index]);
+                //unset($noticia->corruptos[$index]);
             }
         }
 

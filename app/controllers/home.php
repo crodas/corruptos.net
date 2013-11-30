@@ -61,12 +61,13 @@ function get_corruptos_medios($req)
     $corrupto = $req->get('corrupto');
     $page     = $req->get('page') ?: 0;
     $filter   = ['__type' => $req->get('tipo')];
+    $medio    = $req->get('tipo');
     $base     = "/" . $corrupto->uri . "/medio/" . $req->get('tipo');
     $menu     = [
         '/audio/' . $corrupto->uri => ['Audios', false],
         '/' . $corrupto->uri => ['Noticias', false],
     ];
-    return compact('corrupto', 'filter', 'page', 'base', 'menu');
+    return compact('corrupto', 'filter', 'page', 'base', 'menu', 'medio');
 }
 
 /**

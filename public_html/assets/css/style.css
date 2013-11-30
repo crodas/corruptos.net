@@ -14,6 +14,19 @@ p > a, p > a:hover{
 
 hr, .page-header{ border-color: #CCCCCC; }
 
+ul.nav-tabs {
+    margin-top: 15px!important;
+}
+.nav-tabs, .nav-tabs li.active a {
+   	background: #EEEEEE !important;
+    color: black; 
+}
+
+div.jp-title li {
+    margin-bottom: 0px !important;
+    min-height: 15px;
+}
+
 img { 
 	-webkit-box-shadow: 0 6px 4px -4px #777; 
 	-moz-box-shadow: 0 6px 4px -4px #777; 

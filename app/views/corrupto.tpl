@@ -33,7 +33,26 @@
     </div>
     <div class="clearfix"></div>
 </div>
-<hr />
+
+<ul class="nav nav-tabs">
+    @foreach($newspaper as $uri => $nombre)
+        @if (!empty($medio) && $uri == $medio)
+            @set($selected, true)
+            <li class="active">
+        @else
+            <li>
+        @end
+                <a href="/{{$corrupto->uri}}/medio/{{$uri}}">{{$nombre}}</a>
+        </li>
+    @end
+    @if (empty($selected))
+    <li class="active">
+    @else
+    <li>
+    @end
+    <a href="/{{$corrupto->uri}}">Todos</a>
+  </li>
+</ul>
 
 <ul class="news-feed unstyled">
     @set($datos, $corrupto->getNoticias($page, $total, $filter))
@@ -66,6 +85,9 @@
                     <a href="/noticia/{{$dato->uri}}" class="text-success">
                         {{$dato->total_comentarios}} comentarios
                     </a>
+                    @foreach ($dato->corruptos as $corrupto)
+                        <a href="/{{$corrupto->uri}}">#{{{$corrupto->nombre}}}</a>
+                    @end
                 </p>
             </div> 
         </div>
