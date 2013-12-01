@@ -41,6 +41,9 @@ class Http
         if ($time) {
             return new \MongoDate($time);
         }
+
+        Service::get('logger')->addError("Cannot parse {$itext} ({$text}) to time");
+
         return new \MongoDate;
     }
 

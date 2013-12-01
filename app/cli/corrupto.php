@@ -138,7 +138,6 @@ function cleaup_things($input, $output)
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
 
-
     foreach ($cursor as $noticia) {
         if (empty($noticia->corruptos)) {
             /** not important */
