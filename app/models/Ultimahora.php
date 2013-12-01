@@ -41,7 +41,7 @@ class Ultimahora extends Noticia
                 $zurl = $path->getAttribute('href');
                 if (self::Exists($zurl)) {
                     /** so long and thanks for al lthe first */
-                    break;
+                    break 2;
                 }
                 $urls[] = ['url' => $zurl];
             }
