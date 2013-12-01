@@ -24,6 +24,7 @@ function cli_couchdb()
                 'copete' => $noticia->texto,
                 'personas' => $personas,
                 'extracted_data' => $noticia->crawled_data,
+                'creado' => date("c", $noticia->creado->sec),
             ];
             save_couchdb($save);
         }
