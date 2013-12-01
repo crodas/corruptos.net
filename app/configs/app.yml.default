@@ -23,3 +23,6 @@ esearch:
     server:
         - host: localhost
           port: 9200  
+
+logger:
+    dir: ../../tmp/logs
