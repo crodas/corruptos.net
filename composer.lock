@@ -3,8 +3,45 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f032fe802257fb2a20f0863827a29695",
+    "hash": "ad9da7a9a4e3e4a9228d7448e41e3f84",
     "packages": [
+        {
+            "name": "bytefreak/coucher",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/bytefreak/php-coucher.git",
+                "reference": "267a900d845797aafb56bcbd664bcde68005b25e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/bytefreak/php-coucher/get/267a900d845797aafb56bcbd664bcde68005b25e.zip",
+                "reference": "267a900d845797aafb56bcbd664bcde68005b25e",
+                "shasum": ""
+            },
+            "require": {
+                "nategood/httpful": "0.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "BF\\Coucher\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Richter",
+                    "email": "thomas@bytefreak.de"
+                }
+            ],
+            "description": "Little and efficient couchdb connector.",
+            "homepage": "http://bitbucket.org/bytefreak/php-coucher/",
+            "time": "2013-11-19 01:06:34"
+        },
         {
             "name": "crodas/activemongo2",
             "version": "dev-develop",
@@ -1008,6 +1045,56 @@
             "time": "2013-01-21 07:29:45"
         },
         {
+            "name": "nategood/httpful",
+            "version": "0.2.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nategood/httpful.git",
+                "reference": "0bf1423028abe2f630e1d2ef8d62486d6655b2f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nategood/httpful/zipball/0bf1423028abe2f630e1d2ef8d62486d6655b2f3",
+                "reference": "0bf1423028abe2f630e1d2ef8d62486d6655b2f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Httpful": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nate Good",
+                    "email": "me@nategood.com",
+                    "homepage": "http://nategood.com"
+                }
+            ],
+            "description": "A Readable, Chainable, REST friendly, PHP HTTP Client",
+            "homepage": "http://github.com/nategood/httpful",
+            "keywords": [
+                "api",
+                "curl",
+                "http",
+                "requests",
+                "rest",
+                "restful"
+            ],
+            "time": "2013-10-20 11:03:40"
+        },
+        {
             "name": "neitanod/forceutf8",
             "version": "dev-master",
             "source": {
@@ -1034,6 +1121,32 @@
             "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
             "homepage": "https://github.com/neitanod/forceutf8",
             "time": "2013-03-10 08:51:59"
+        },
+        {
+            "name": "pear-pear.phpunit.de/Object_Freezer",
+            "version": "1.0.0",
+            "dist": {
+                "type": "file",
+                "url": "http://pear.phpunit.de/get/Object_Freezer-1.0.0.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.3.0.0"
+            },
+            "replace": {
+                "pear-phpunit/object_freezer": "== 1.0.0.0"
+            },
+            "type": "pear-library",
+            "autoload": {
+                "classmap": [
+                    ""
+                ]
+            },
+            "include-path": [
+                "/"
+            ],
+            "description": "Library that provides the low-level functionality required to store (\"freeze\") PHP objects to and fetch (\"thaw\") PHP objects from an object store."
         },
         {
             "name": "pimple/pimple",
@@ -1130,12 +1243,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3"
+                "reference": "31cd9ad9bb6d7c0cf222d3cb677ae95dbd0b7436"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/e36213362ef459f92e8b09167e537e9312f55ae3",
-                "reference": "e36213362ef459f92e8b09167e537e9312f55ae3",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/31cd9ad9bb6d7c0cf222d3cb677ae95dbd0b7436",
+                "reference": "31cd9ad9bb6d7c0cf222d3cb677ae95dbd0b7436",
                 "shasum": ""
             },
             "require": {
@@ -1143,7 +1256,8 @@
             },
             "require-dev": {
                 "munkie/elasticsearch-thrift-php": "1.4.*",
-                "psr/log": "~1.0"
+                "psr/log": "~1.0",
+                "satooshi/php-coveralls": "dev-master"
             },
             "suggest": {
                 "monolog/monolog": "Logging request",
@@ -1173,7 +1287,7 @@
                 "client",
                 "search"
             ],
-            "time": "2013-11-23 21:35:18"
+            "time": "2013-12-01 18:32:58"
         },
         {
             "name": "seld/jsonlint",
@@ -1469,7 +1583,8 @@
     "stability-flags": {
         "crodas/activemongo2": 20,
         "crodas/sitemap-generator": 20,
-        "symfony/css-selector": 20
+        "symfony/css-selector": 20,
+        "bytefreak/coucher": 20
     },
     "platform": [
 
