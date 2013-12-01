@@ -15,7 +15,8 @@ function log_service($config, $context)
     $name  = !empty($context['name']) ? $context['name'] : $config['name'];
     $fname = $name . date("Y-m-d") . ".log"; 
     $log = new Logger($name);
-    $log->pushHandler(new StreamHandler($config['dir'] . '/' . $fname, Logger::WARNING));
+    $log->pushHandler(new StreamHandler($config['dir'] . '/' . $fname, Logger::INFO));
+    $log->pushHandler(new StreamHandler($config['dir'] . '/error' . $fname, Logger::ERROR));
 
     return $log;
 }

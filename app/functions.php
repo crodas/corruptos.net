@@ -12,6 +12,15 @@ function has_something(Array $values)
     return $i >= 2;
 }
 
+function dlog($text, $type = 'info')
+{
+    static $logger;
+    if (empty($logger)) {
+        $logger = Service::get('logger');
+    }
+    $logger->{'add'  . $type}($text);
+}
+
 function array_search_all($needle, $haystack)
 {
     $array = [];
