@@ -38,7 +38,12 @@ class Ultimahora extends Noticia
 
             $obj = Http::post($url, $args);
             foreach ($obj->query('//h3/a') as $path) {
-                $urls[] = ['url' => $path->getAttribute('href')];
+                $url = $path->getAttribute('href');
+                if (self::Exists($url)) {
+                    /** so long and thanks for al lthe first */
+                    break;
+                }
+                $urls[] = ['url' => $url];
             }
             if ($obj->query('//h3/a')->length != 3) {
                 break;

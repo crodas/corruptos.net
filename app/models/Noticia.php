@@ -124,6 +124,11 @@ abstract class Noticia
         return false;
     }
 
+    /**
+     *  Check if a given URL (news) was already crawled 
+     *
+     *  @return bool
+     */
     public static function exists($url)
     {
         return Service::get('db')->getCollection(__CLASS__)->count(compact('url')) == 1;
