@@ -38,7 +38,12 @@ class Ultimahora extends Noticia
 
             $obj = Http::post($url, $args);
             foreach ($obj->query('//h3/a') as $path) {
-                $urls[] = ['url' => $path->getAttribute('href')];
+                $zurl = $path->getAttribute('href');
+                if (self::Exists($zurl)) {
+                    /** so long and thanks for al lthe first */
+                    break;
+                }
+                $urls[] = ['url' => $zurl];
             }
             if ($obj->query('//h3/a')->length != 3) {
                 break;
@@ -50,7 +55,7 @@ class Ultimahora extends Noticia
 
     public function crawl($v = 0)
     {
-        if ($this->crawled && $this->version == 2) return;
+        if ($this->crawled && $this->version == 3) return;
         $xpath = Http::wget($this->url);
 
         $title  = Http::text($xpath->query('//h1'));
@@ -62,14 +67,14 @@ class Ultimahora extends Noticia
             $xpath = Http::wipe($this->url);
             return $this->crawl(++$v);
         }
-        $fecha  = Http::fecha($xpath->query('//*[@class="floatright"]'));
+        $fecha  = Http::fecha($xpath->query('(//*[@class="floatright"])[1]'));
         $copete = Http::text($xpath->query('//*[@class="news-headline-obj"]'));
         $texto  = Http::text($xpath->query('//*[@class="newDetailTextChange"]'));
 
         $this->creado  = $fecha;
         $this->titulo  = $title;
         $this->texto   = $copete;
-        $this->version = 2;
+        $this->version = 3;
         $this->crawled = true;
         $this->crawled_data = compact('title', 'fecha', 'copete', 'texto');
     }

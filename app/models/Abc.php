@@ -38,7 +38,7 @@ class Abc extends Noticia
                     break;
                 }
             } catch (\Exception $e) {
-                echo (string)$e;
+                dlog($e, "error");
             }
         }
 

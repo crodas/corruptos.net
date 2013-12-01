@@ -69,7 +69,7 @@ class Corrupto
             }
             $not = Noticia::getOrCreate($news->url);
             if (!$not) {
-                echo "Ignoring {$news->url}\n";
+                dlog("Ignoring news url {$news->url}", "error");
                 continue;
             }
             foreach (['titulo', 'copete', 'hits', 'comentarios'] as $tipo) {
@@ -100,9 +100,8 @@ class Corrupto
             try {
                 $conn->save($not);
             } catch (\Exception $e) {
-                echo "Exception at {$not->url}\n";
-                echo $e->GetMessage() . "\n";
-                echo (string)$e . "\n";
+                dlog("Exception at {$not->url}", "error");
+                dlog($e, "error");
                 //var_dump($not);exit;
                 //exit;
             }

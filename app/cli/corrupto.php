@@ -147,7 +147,6 @@ function cleaup_things($input, $output)
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
 
-
     foreach ($cursor as $noticia) {
         if (empty($noticia->corruptos)) {
             /** not important */
@@ -180,7 +179,7 @@ function update($input, $output)
 {
     $conn = Service::get('db');
     foreach ($conn->getCollection('corruptos')->Find() as $corrupto) {
-        echo "Actualizando {$corrupto->nombre}\n";
+        dlog("Actualizando {$corrupto->nombre}");
         $corrupto->update();
         $conn->save($corrupto);
     }

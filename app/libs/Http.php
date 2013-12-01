@@ -41,6 +41,9 @@ class Http
         if ($time) {
             return new \MongoDate($time);
         }
+
+        dlog("Cannot parse {$itext} ({$text}) to time", "error");
+
         return new \MongoDate;
     }
 

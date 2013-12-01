@@ -18,7 +18,8 @@
         "crodas/sitemap-generator": "dev-master",
         "symfony/css-selector": "2.5.*@dev",
         "ruflin/elastica": "*",
-        "munkie/elasticsearch-thrift-php": "*"
+        "munkie/elasticsearch-thrift-php": "*",
+        "monolog/monolog": "~1.7"
     },
     "scripts": {
         "post-autoload-dump": "Autoloader\\Composer::generate"
