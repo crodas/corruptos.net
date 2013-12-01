@@ -16,6 +16,39 @@ class Nanduti extends Noticia
         return preg_match('/nanduti\.com/', $url);
     }
 
+    public static function search($text)
+    {
+        $url = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
+            'buscar' => $text, 
+            'noti' => 'si',
+            'secciones' => '', 
+            'fech1'=> '1999-11-23', 
+            'fech2'=> '2099-11-23',
+            'paginas'=> 10000000000000, 
+            'button' => 'Empezar busqueda',
+        ]);
+
+        $hits = 0;
+        $comentarios = 0;
+        $xpath = Http::wget($url, 3600);
+        $alls  = [];
+        foreach ($xpath->query('//div[@class="BAcaja"]') as $div) {
+            $titulo = Http::text($xpath->query('./div[@class="BAcajaTitu"]', $div));
+            $url    = $xpath->query('.//a', $div)->item(0)->getAttribute('href');
+            $publicacion = implode("/", array_reverse(explode("/", Http::text($xpath->query('./div[@class="BAcajaFec"]', $div)))));
+            $copete  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
+
+            if (self::exists($url)) {
+                break;
+            }
+            
+
+            $alls[] = (object) compact('titulo', 'url', 'publicacion', 'comentarios', 'hits', 'copete');
+        }
+
+        return $alls;
+    }
+
     public function crawl()
     {
         if ($this->crawled) return;
