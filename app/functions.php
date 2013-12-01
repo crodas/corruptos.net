@@ -51,6 +51,22 @@ function dlog($text, $type = 'info')
     $logger->{'add'  . $type}($text);
 }
 
+function save_couchdb($object) 
+{
+    static $conn;
+    if (!$conn) {
+        $conn = Service::get('couchdb');
+    }
+    if (!empty($object['_id'])) {
+        $origin = $conn->getDocument($object['_id']);
+        if ($origin) {
+            $object = array_merge($origin, $object);
+        }
+    }
+    $conn->saveDocument($object['_id'], $object);
+}
+
+
 function array_search_all($needle, $haystack)
 {
     $array = [];

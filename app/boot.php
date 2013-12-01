@@ -21,4 +21,3 @@ if (Service::Get('devel') && PHP_SAPI !== 'cli') {
     $run->pushHandler($handler);
     $run->register();
 }
-

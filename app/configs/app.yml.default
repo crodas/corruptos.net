@@ -26,3 +26,9 @@ esearch:
 
 logger:
     dir: ../../tmp/logs
+
+couchdb:
+    host: localhost
+    db: botame_db
+    user: admin
+    password: admin
