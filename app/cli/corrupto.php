@@ -135,7 +135,6 @@ function cleaup_things($input, $output)
 {
     $conn  = Service::get('db');
     $query = [];
-    $query = ['url' => 'http://www.cardinal.com.py/noticias/los_tres_empleados_del_diputado_jos_mara_ibez_estn_en_carcter_de_contratados_desde_el_mes_de_agosto_sostuvo_ricardo_vaesken_director_de_rr_hh_de_diputados_23502.html'];
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
 
