@@ -62,7 +62,7 @@ class Cardinal extends Noticia
         $this->crawled_data = compact('title', 'html', 'tags', 'mp3', 'tags_txt');
         $this->creado = Http::fecha($xpath->query('//*[@class="date"]'));
         $this->crawled = true;
-        $this->version = 2;
+        $this->version = 3;
     }
 
 }
