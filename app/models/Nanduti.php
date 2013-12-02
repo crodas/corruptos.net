@@ -18,7 +18,8 @@ class Nanduti extends Noticia
 
     public static function search($text)
     {
-        $url = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
+        $text = iconv('UTF-8','ASCII//TRANSLIT',$text);
+        $url  = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
             'buscar' => $text, 
             'noti' => 'si',
             'audi' => 'si',

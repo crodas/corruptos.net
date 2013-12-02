@@ -31,3 +31,8 @@ jQuery(function() {
 			jQuery('form').n33_formerize();
 
 });
+
+function go(f, x) {
+    f.href = "/go/" + x;
+    return true;
+}
