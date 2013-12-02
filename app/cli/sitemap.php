@@ -19,7 +19,7 @@ function sitemap()
 
     $generator->limit(1000);
     $generator->addMap($db->getCollection('noticias')->find()->sort(['$natural' => -1])->limit(20000), function($corrupto) {
-        if (empty($corruptos->corruptos)) {
+        if (empty($corrupto->corruptos)) {
             return null;
         }
         return "/noticia/" . $corrupto->uri;
