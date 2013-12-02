@@ -1,5 +1,5 @@
 
-<h3><a href="/go/{{$noticia->id}}" target="_blank">{{{$noticia->titulo}}}</a></h3>
+<h3><a href="{{{$noticia->url}}}" onmousedown="return go(this, '{{{$noticia->id}}}')" target="_blank">{{{$noticia->titulo}}}</a></h3>
     <small>
     @if ($noticia->creado instanceof \MongoDate)
         {{date("Y/m/d H:i:s", $noticia->creado->sec)}}
