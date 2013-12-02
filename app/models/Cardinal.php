@@ -13,7 +13,7 @@ class Cardinal extends Noticia
         return preg_match('/cardinal\.com/', $url);
     }
 
-    public static function search($text)
+    public static function search($text, $force = false)
     {
         $alls  = [];
         $max   = 2;
@@ -30,7 +30,7 @@ class Cardinal extends Noticia
                 $parent = $link->parentNode->parentNode;
                 $titulo = Http::text($link);
                 $url    = "http://www.cardinal.com.py" . $link->getAttribute('href');
-                if (self::exists($url)) {
+                if (self::exists($url) && !$force) {
                     break 2;
                 } 
 

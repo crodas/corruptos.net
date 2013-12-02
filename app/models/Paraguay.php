@@ -8,7 +8,7 @@ class Paraguay extends Noticia
         return preg_match('/paraguay\.com\//', $url);
     }
 
-    public static function search($text)
+    public static function search($text, $force = false)
     {
         $urls = [];
         $col  = Service::get('db')->getCollection(__CLASS__);
@@ -31,7 +31,7 @@ class Paraguay extends Noticia
                 if (substr($url, -1 * strlen($current_page)) == $current_page) {
                     $url = substr($url, 0, -1 * strlen($current_page));
                 }
-                if ($col->count(['url' => $url]) == 1) {
+                if ($col->count(['url' => $url]) == 1 && !$force) {
                     // we already have this in our db
                     break 2;
                 }
