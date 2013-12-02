@@ -84,9 +84,9 @@ function pagination($page, $total)
     $tpages = ceil($total / $config['per_page']);
     $pages  = range(1, min($config['show_pages'], $total));
 
-    if ($total > $config['show_pages']+1) {
-        $offset = max($config['show_pages']+1, $total-2);
-        $pages = array_merge($pages, ['...'], range($offset, $total));
+    if ($tpages > $config['show_pages']+1) {
+        $offset = max($config['show_pages']+1, $tpages-2);
+        $pages = array_merge($pages, ['...'], range($offset, $tpages-1));
     }
     return $pages;
 }
