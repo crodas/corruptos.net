@@ -16,7 +16,7 @@ class Nanduti extends Noticia
         return preg_match('/nanduti\.com/', $url);
     }
 
-    public static function search($text)
+    public static function search($text, $force = false)
     {
         $text = iconv('UTF-8','ASCII//TRANSLIT',$text);
         $url  = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
@@ -44,7 +44,7 @@ class Nanduti extends Noticia
             if (!parse_url($url, PHP_URL_HOST)) {
                 $url = "http://nanduti.com.py/v1/{$url}";
             }
-            if (self::exists($url)) {
+            if (self::exists($url) && !$force) {
                 continue;
             }
             

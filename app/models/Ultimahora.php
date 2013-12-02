@@ -10,7 +10,7 @@ class Ultimahora extends Noticia
         return preg_match('/ultimahora\.com/', $url);
     }
 
-    public static function search($text)
+    public static function search($text, $force = false)
     {
         $page = Http::wget('http://www.ultimahora.com/contenidos/resultado.html?text=' . urlencode($text), 600);
 
@@ -39,7 +39,7 @@ class Ultimahora extends Noticia
             $obj = Http::post($url, $args);
             foreach ($obj->query('//h3/a') as $path) {
                 $zurl = $path->getAttribute('href');
-                if (self::Exists($zurl)) {
+                if (self::Exists($zurl) && !$force) {
                     /** so long and thanks for al lthe first */
                     break 2;
                 }

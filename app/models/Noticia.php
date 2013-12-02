@@ -117,9 +117,16 @@ abstract class Noticia
     }
 
 
+    public static function getClasses()
+    {
+        return  array(
+            'Ultimahora', 'Hoy', 'Paraguay', 'Abc', 'Cardinal', 'Nanduti'
+        );
+    }
+
     public static function getType($url)
     {
-        foreach (array('Ultimahora', 'Hoy', 'Paraguay', 'Abc', 'Cardinal', 'Nanduti') as $type) {
+        foreach (self::getClasses() as $type) {
             if ($type::is($url)) {
                 return $type;
             }

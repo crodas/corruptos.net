@@ -58,54 +58,57 @@ class Corrupto
     /** @Array */
     public $tags = array();
 
-    public function update()
+    public function update($force = false)
     {
         $conn   = Service::get('db');
         $search = Service::get('search');
-
-        foreach($search($this->apodo ?: $this->nombre) as $news) {
-            if (is_array($news)) {
-                $news = (object)$news;
-            }
-            $not = Noticia::getOrCreate($news->url);
-            if (!$not) {
-                dlog("Ignoring news url {$news->url}", "error");
-                continue;
-            }
-            foreach (['titulo', 'copete', 'hits', 'comentarios'] as $tipo) {
-                if (!empty($news->$tipo)) {
-                    $not->$tipo = $news->$tipo;
+        
+        foreach (Noticia::getClasses() as $class) {
+            foreach($class::search($this->apodo ?: $this->nombre, $force) as $news) {
+                if (is_array($news)) {
+                    $news = (object)$news;
                 }
-            }
-            if (!empty($not->copete)) {
-                $not->texto = $not->copete;
-            }
-
-            // get more info
-            try {
-                $not->crawl();
-            } catch (\Exception $e) {}
-
-            if (empty($not->creado) || empty($not->creado->sec)) {
-                if (!empty($news->publicacion)) {
-                    $not->creado   = new \MongoDate(strtotime($news->publicacion));
+                $not = Noticia::getOrCreate($news->url);
+                if (!$not) {
+                    dlog("Ignoring news url {$news->url}", "error");
+                    continue;
                 }
-            }
+                foreach (['titulo', 'copete', 'hits', 'comentarios'] as $tipo) {
+                    if (!empty($news->$tipo)) {
+                        $not->$tipo = $news->$tipo;
+                    }
+                }
+                if (!empty($not->copete)) {
+                    $not->texto = $not->copete;
+                }
 
-            if ($not->isAbout($this)) {
-                // it might be relevant :)
-                $not->corruptos[] = $this;
-            }
+                // get more info
+                try {
+                    $not->crawl();
+                } catch (\Exception $e) {}
+                
+                if (empty($not->creado) || empty($not->creado->sec)) {
+                    if (!empty($news->publicacion)) {
+                        $not->creado   = new \MongoDate(strtotime($news->publicacion));
+                    }
+                }   
 
-            try {
-                $conn->save($not);
-            } catch (\Exception $e) {
-                dlog("Exception at {$not->url}", "error");
-                dlog($e, "error");
-                //var_dump($not);exit;
-                //exit;
+                if ($not->isAbout($this)) {
+                    // it might be relevant :)
+                    $not->corruptos[] = $this;
+                }
+
+                try {
+                    $conn->save($not);
+                } catch (\Exception $e) {
+                    dlog("Exception at {$not->url}", "error");
+                    dlog($e, "error");
+                    //var_dump($not);exit;
+                    //exit;
+                }
             }
         }
+
         $news = $conn->getCollection('noticias');
         $this->hits = $news->sum('hits', ['corruptos.uri' => $this->uri]);
         $this->comentarios = $news->sum('commentarios', ['corruptos.uri' => $this->uri]);
@@ -155,7 +158,6 @@ class Corrupto
         if (empty($doc)) {
             $doc = new self;
             $doc->nombre = $nombre;
-            $db->save($doc);
         }
         return $doc;
     }

@@ -11,7 +11,7 @@ class Abc extends Noticia
         return preg_match('/abc\.com\.py/', $url);
     }
 
-    public static function search($text)
+    public static function search($text, $force = false)
     {
         $alls = [];
         for ($i=0; ; $i++) {
@@ -29,7 +29,7 @@ class Abc extends Noticia
                 $break = false;
                 foreach ($obj->articulos as &$noticia) {
                     $noticia->url = "http://www.abc.com.py/" . $noticia->url;
-                    if (self::exists($noticia->url)) {
+                    if (self::exists($noticia->url) && !$force) {
                         $break = true; 
                     }
                 }

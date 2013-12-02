@@ -114,4 +114,3 @@
 <link href="/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
 @end
-

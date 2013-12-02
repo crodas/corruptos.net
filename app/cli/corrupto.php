@@ -196,9 +196,12 @@ function agregar($input, $output)
 
     $corrupto = Corrupto::getOrCreate($nombre);
     foreach ($input->getArgument('tipo') as $tipo) {
+        if (empty($corrupto->cargo)) {
+            $corrupto->cargo = $tipo;
+        }
         $corrupto->tags[] = $tipo;
     }
     $corrupto->tags = array_unique($corrupto->tags);
     Service::get('db')->save($corrupto);
-    $corrupto->update();
+    $corrupto->update(true);
 }
