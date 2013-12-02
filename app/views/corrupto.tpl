@@ -59,7 +59,7 @@
     @foreach($datos as $dato)
     <li class="news-item">
         <h4 class="title">
-            <a target="_blank" href="/go/{{{$dato->id}}}" class="text-info">
+            <a target="_blank" href="{{{$dato->url}}}" onmousedown="return go(this, '{{$dato->id}}')" class="text-info">
                 {{{$dato->titulo}}}
             </a>
         </h4>

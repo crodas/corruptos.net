@@ -8,6 +8,11 @@ $(function(e) {
     window.delayed.push = $.ready;
 });
 
+function go(f, x) {
+    f.href = "/go/" + x;
+    return true;
+}
+
         var gotoHashTab = function (customHash) {
             var hash = customHash || location.hash;
             var hashPieces = hash.split('?'),
