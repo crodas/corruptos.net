@@ -21,8 +21,10 @@ class Nanduti extends Noticia
         $url = 'http://www.nanduti.com.py/v1/buscador_avanzado.php?' . http_build_query([
             'buscar' => $text, 
             'noti' => 'si',
+            'audi' => 'si',
+            'quin' => 'si',
             'secciones' => '', 
-            'fech1'=> '1999-11-23', 
+            'fech1'=> '1979-11-23', 
             'fech2'=> '2099-11-23',
             'paginas'=> 10000000000000, 
             'button' => 'Empezar busqueda',
@@ -38,8 +40,11 @@ class Nanduti extends Noticia
             $publicacion = implode("/", array_reverse(explode("/", Http::text($xpath->query('./div[@class="BAcajaFec"]', $div)))));
             $copete  = Http::text($xpath->query('./div[@class="BAcajaTxt"]', $div));
 
+            if (!parse_url($url, PHP_URL_HOST)) {
+                $url = "http://nanduti.com.py/v1/{$url}";
+            }
             if (self::exists($url)) {
-                break;
+                continue;
             }
             
 
@@ -51,13 +56,18 @@ class Nanduti extends Noticia
 
     public function crawl()
     {
-        if ($this->crawled) return;
+        if ($this->crawled && $this->version == 2) return;
 
         $xpath = Http::wget($this->url);
 
-        $title = Http::text($xpath->query('//*[@class="UMTitulo"]'));
-        $texto = Http::text($xpath->query('//*[@class="UMmed_1"]/p | //*[@class="UMmed_1"]//span'));
-        $mp3   =  $xpath->query('//*[@class="UMmed_1"]//embed')->item(0);
+        /** audio info */
+        $title = Http::text($xpath->query('//*[@class="UMTitulo"]//center'));
+        $texto = $title;
+        if (empty($title)) {
+            $title = Http::text($xpath->query('//*[@class="UMTitulo"]'));
+            $texto = Http::text($xpath->query('//*[@class="UMmed_1"]/p | //*[@class="UMmed_1"]//span'));
+        }
+        $mp3   =  $xpath->query('//embed')->item(0);
 
         $this->is_audio = false;
         if ($mp3) {
@@ -73,6 +83,7 @@ class Nanduti extends Noticia
 
         $this->crawled_data = compact('title', 'texto', 'mp3');
         $this->crawled = true;
+        $this->version = 2;
     }
 
     public function render()
