@@ -44,10 +44,10 @@ function search_service(Array $config)
     return function($text) use ($config) {
         return array_merge([]
             /**/
+            , Crawler::nanduti($text) /*
             , Crawler::hoy($text) 
             , Crawler::uh($text) 
             , Crawler::cardinal($text)
-            , Crawler::nanduti($text)
             , Crawler::paraguay_com($text) 
             , Crawler::abc($text)
             /**/
