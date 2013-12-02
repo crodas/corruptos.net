@@ -32,7 +32,7 @@ function inject_menu($req, $unused, $args)
         'cardinal' => 'Cardinal',
         'paraguay' => 'Paraguay.com',
         'abc' => 'ABC Color',
-        'nandudi' => 'Ñandutí',
+        'nanduti' => 'Ñandutí',
         'hoy' => 'Hoy',
         'ultimahora' => 'UH',
     ];
