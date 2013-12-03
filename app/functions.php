@@ -72,7 +72,7 @@ function strtowords($text)
     $id    = 0;
     foreach ($parts as $word) {
         $words[$id] = $word[0];
-        if (!empty($word[1]) && preg_match('/[,\n.;]/', $word[1])) {
+        if (!empty($word[1]) && preg_match('/[,\n.;0-9]/', $word[1])) {
             if (strlen($word[0]) != 1 && trim($word[1]) != '.') {
                 // "foo c. rodas" is still the same sentence
                 $id += 100;
