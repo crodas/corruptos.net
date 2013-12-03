@@ -34,7 +34,7 @@ function images()
     foreach($db->getCollection('corruptos')->find() as $corrupto) {
         $ext = explode('.', $corrupto->image);
         $ext = strtolower(end($ext));
-        if (!is_file("{$base}/{$corrupto->id}.{$ext}") {
+        if (!is_file("{$base}/{$corrupto->id}.{$ext}")) {
             `wget "{$corrupto->image}" -O "{$base}/{$corrupto->id}.{$ext}"`;
         }
         if (!is_file("{$base}/{$corrupto->id}:large.{$ext}")) {
