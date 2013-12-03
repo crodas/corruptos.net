@@ -48,6 +48,43 @@ function array_search_all($needle, $haystack)
     return ($array);
 }
 
+function strtowords($text)
+{
+    $parts = preg_split(
+        '/([^a-z]+)/m', 
+        strtolower(iconv('UTF-8','ASCII//TRANSLIT', $text)),
+        -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+    );
+
+    if (empty($parts)) {
+        return [];
+    }
+
+    if (preg_match('/[^a-z]/', $parts[0])) {
+        // remove first element as we expect <word> <separator>
+        // and not <separator> <word>
+        array_shift($parts);
+    }
+
+    $parts = array_chunk($parts, 2);
+
+    $words = [];
+    $id    = 0;
+    foreach ($parts as $word) {
+        $words[$id] = $word[0];
+        if (!empty($word[1]) && preg_match('/[,\n.;]/', $word[1])) {
+            if (strlen($word[0]) != 1 && trim($word[1]) != '.') {
+                // "foo c. rodas" is still the same sentence
+                $id += 100;
+            }
+        }
+        $id++;
+    }
+
+    return $words;
+
+}
+
 function check_context(Array $names, Array $index)
 {
     if (!has_something($index)) {

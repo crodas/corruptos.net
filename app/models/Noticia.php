@@ -83,7 +83,7 @@ abstract class Noticia
         foreach ($args as $texto) {
             if (is_array($texto)) continue;
 
-            $parts = array_filter(preg_split('/[^a-z]+/', strtolower(iconv('UTF-8','ASCII//TRANSLIT', $texto))));
+            $parts = strtowords($texto);
 
             $index = [];
             foreach ($names as $name) {
