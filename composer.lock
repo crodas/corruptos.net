@@ -48,12 +48,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/ActiveMongo2.git",
-                "reference": "bbe69d1e07a80445bca2174b046a0b444a0b76f6"
+                "reference": "84c262a56c34db3f30371ed767134080946feb12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/bbe69d1e07a80445bca2174b046a0b444a0b76f6",
-                "reference": "bbe69d1e07a80445bca2174b046a0b444a0b76f6",
+                "url": "https://api.github.com/repos/crodas/ActiveMongo2/zipball/84c262a56c34db3f30371ed767134080946feb12",
+                "reference": "84c262a56c34db3f30371ed767134080946feb12",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +80,7 @@
                 }
             ],
             "description": "Mongo abstraction",
-            "time": "2013-12-03 21:20:53"
+            "time": "2013-12-03 22:58:41"
         },
         {
             "name": "crodas/artifex",
