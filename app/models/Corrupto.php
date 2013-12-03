@@ -157,7 +157,6 @@ class Corrupto
         if (empty($doc)) {
             $doc = new self;
             $doc->nombre = $nombre;
-            $db->save($doc);
         }
         return $doc;
     }
