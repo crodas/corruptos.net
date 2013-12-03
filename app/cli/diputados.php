@@ -10,10 +10,11 @@ function diputados()
 
         $parent  = $r->parentNode->parentNode;
         $profile = $q->query('.//td', $parent);
+        $nombres = array_map('trim', explode(",", Http::text($profile->item(1))));
         $nombre  = array_map(function($name) {
             $name = explode(" ", trim($name));
             return $name;
-        }, explode(",", Http::text($profile->item(1))));
+        }, $nombres);
         $partido = Http::text($profile->item(2));
         $email   = iconv('UTF-8','ASCII//TRANSLIT',Http::text($profile->item(3)));
         $nombre  = $nombre[1][0] . " " . implode(" ", $nombre[0]);
@@ -34,6 +35,10 @@ function diputados()
 
         $corrupto = Corrupto::getOrCreate($nombre);
         $corrupto->cargo = 'diputado';
+        $corrupto->nombres = [
+            'nombre' => explode(" ", $nombres[1]),
+            'apellido' => explode(" ", $nombres[0]),
+        ];
         $corrupto->image  = $img;
         $corrupto->avatar = $img;
         $corrupto->email = $email;

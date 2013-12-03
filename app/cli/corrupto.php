@@ -54,7 +54,7 @@ function select_frontimage_one($input, $output)
 /** 
  *  @Cli("corrupto:profile") 
  */
-function uupdate_profiel($input, $output)
+function uupdate_profile($input, $output)
 {
     $conn  = Service::get('db');
     $col   = $conn->getCollection('corruptos');
@@ -92,9 +92,9 @@ function uupdate_profiel($input, $output)
         case 1:
             $corrupto = $cursor->getNext();
             break;
-        case 0:
+        default:
             echo '/' . preg_replace('/[^a-z]{2}/i', '.+', $nombre[0] . '.+'. $apellido[0]) . '/i' . "\n";
-
+            break;
         }
 
         if (empty($corrupto)) continue;
@@ -104,6 +104,11 @@ function uupdate_profiel($input, $output)
                 $corrupto->$type = $value;
             }
         }
+        $corrupto->nombres = [
+            'nombre' => $nombre,
+            'apellido' =>$apellido,
+        ];
+
         $conn->save($corrupto);
     }
 }
@@ -135,6 +140,8 @@ function cleaup_things($input, $output)
 {
     $conn  = Service::get('db');
     $query = [];
+    //$query = ['url' => new MongoRegex('/deporte/')];
+    //$query = ['url' => 'http://www.abc.com.py/edicion-impresa/politica/aumentan-votos-para-el-desafuero-de-bogado-pero-aun-no-hay-mayoria-638781.html'];
     $cursor = $conn->getCollection('noticias')->Find($query);
     $cursor->timeout(-1);
 
@@ -143,7 +150,7 @@ function cleaup_things($input, $output)
             /** not important */
             continue;
         }
-        $noticia->crawl();
+        //$noticia->crawl();
         $tmp = [];
         foreach ($noticia->corruptos as $corrupto) {
             $tmp[(string)$corrupto->id] = $corrupto;

@@ -85,31 +85,42 @@ function strtowords($text)
 
 }
 
+function array_pick_min(Array &$index)
+{
+    $total = [];
+    foreach($index as $id => $content) {
+        $total[$id] = count($content);
+    }
+    asort($total);
+
+    $min = $index[key($total)];
+    unset($index[key($total)]);
+    return $min;
+}
+
 function check_context(Array $names, Array $index)
 {
     if (!has_something($index)) {
         return false;
     }
 
-    $checks = [];
-    $total  = count($names) - 1;
-    for ($i=0; $i < $total; $i++) {
-        for($e=$i; $e < $total; $e++) {
-            $checks[] = [$index[$names[$i]], $index[$names[$e+1]]];
-        }
-    }
-    foreach ($checks as $check) {
-        $i = 0;
-        $ti = count($check[0]);
-        $te = count($check[1]);
-        for ($i=0; $i < $ti; $i++) {
-            $e = 0;
-            for ($e; $e < $te; $e++) {
-                if (abs($check[0][$i] - $check[1][$e]) < 5) {
-                    return true;
+    foreach (array_pick_min($index) as $word => $pos) {
+        $founds = array();
+        $i = 1;
+        foreach ($index as $id => $word1) {
+            $found = false;
+            foreach($word1 as $pos1) {
+                $found = abs($pos - $pos1) < (4*$i++);
+                if ($found) {
+                    break;
                 }
             }
+            if (!$found) {
+                continue 2;
+            }
+            $founds[$id] = abs($pos - $pos1);
         }
+        return true;
     }
 
     return false;

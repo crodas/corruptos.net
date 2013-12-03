@@ -18,6 +18,9 @@ class Corrupto
     /** @String @Required */
     public $nombre;
 
+    /** @Required @Array */
+    public $nombres;
+
     /** @String @Required */
     public $cargo;
 
