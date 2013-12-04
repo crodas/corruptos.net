@@ -82,7 +82,7 @@ function pagination($page, $total)
 {
     $config = Service::get('config');
     $tpages = ceil($total / $config['per_page']);
-    $pages  = range(1, min($config['show_pages'], $total));
+    $pages  = range(1, min($config['show_pages'], $tpages));
 
     if ($tpages > $config['show_pages']+1) {
         $offset = max($config['show_pages']+1, $tpages-2);
@@ -91,31 +91,80 @@ function pagination($page, $total)
     return $pages;
 }
 
+
+function strtowords($text)
+{
+    $parts = preg_split(
+        '/([^a-z]+)/m', 
+        strtolower(iconv('UTF-8','ASCII//TRANSLIT', $text)),
+        -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+    );
+
+    if (empty($parts)) {
+        return [];
+    }
+
+    if (preg_match('/[^a-z]/', $parts[0])) {
+        // remove first element as we expect <word> <separator>
+        // and not <separator> <word>
+        array_shift($parts);
+    }
+
+    $parts = array_chunk($parts, 2);
+
+    $words = [];
+    $id    = 0;
+    foreach ($parts as $word) {
+        $words[$id] = $word[0];
+        if (!empty($word[1]) && preg_match('/[,\n.;0-9]/', $word[1])) {
+            if (strlen($word[0]) != 1 && trim($word[1]) != '.') {
+                // "foo c. rodas" is still the same sentence
+                $id += 100;
+            }
+        }
+        $id++;
+    }
+
+    return $words;
+
+}
+
+function array_pick_min(Array &$index)
+{
+    $total = [];
+    foreach($index as $id => $content) {
+        $total[$id] = count($content);
+    }
+    asort($total);
+
+    $min = $index[key($total)];
+    unset($index[key($total)]);
+    return $min;
+}
+
 function check_context(Array $names, Array $index)
 {
     if (!has_something($index)) {
         return false;
     }
 
-    $checks = [];
-    $total  = count($names) - 1;
-    for ($i=0; $i < $total; $i++) {
-        for($e=$i; $e < $total; $e++) {
-            $checks[] = [$index[$names[$i]], $index[$names[$e+1]]];
-        }
-    }
-    foreach ($checks as $check) {
-        $i = 0;
-        $ti = count($check[0]);
-        $te = count($check[1]);
-        for ($i=0; $i < $ti; $i++) {
-            $e = 0;
-            for ($e; $e < $te; $e++) {
-                if (abs($check[0][$i] - $check[1][$e]) < 5) {
-                    return true;
+    foreach (array_pick_min($index) as $word => $pos) {
+        $founds = array();
+        $i = 1;
+        foreach ($index as $id => $word1) {
+            $found = false;
+            foreach($word1 as $pos1) {
+                $found = abs($pos - $pos1) < (4*$i++);
+                if ($found) {
+                    break;
                 }
             }
+            if (!$found) {
+                continue 2;
+            }
+            $founds[$id] = abs($pos - $pos1);
         }
+        return true;
     }
 
     return false;

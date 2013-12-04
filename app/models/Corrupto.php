@@ -16,6 +16,9 @@ class Corrupto
     /** @String @Required */
     public $nombre;
 
+    /** @Required @Array */
+    public $nombres;
+
     /** @String @Required */
     public $cargo;
 
@@ -61,7 +64,6 @@ class Corrupto
     public function update($force = false)
     {
         $conn   = Service::get('db');
-        $search = Service::get('search');
         
         foreach (Noticia::getClasses() as $class) {
             foreach($class::search($this->apodo ?: $this->nombre, $force) as $news) {

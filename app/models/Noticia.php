@@ -68,10 +68,37 @@ abstract class Noticia
 
     public function isAbout(Corrupto $corrupto)
     {
-        return $this->checkContext($corrupto->nombre) 
-            || $this->checkContext($corrupto->apodo)
-            || $this->checkContext($corrupto->partido . ' ' . $corrupto->nombre)
-            || $this->checkContext($corrupto->cargo   . ' ' . $corrupto->nombre);
+        $nombres = [];
+        if (empty($corrupto->nombres)) {
+            var_dump($corrupto->uri);exit;
+        }
+        extract($corrupto->nombres);
+        if (count($apellido) > 1) {
+            for($i = 2; $i <= count($apellido); $i++) {
+                $nombres[] = array_slice($apellido, 0, $i);
+            }
+        }
+        for ($i = 1; $i <= count($nombre); $i++) {
+            for($e = 1; $e <= count($apellido); $e++) {
+                $nombres[] = array_merge(
+                    array_slice($nombre, 0, $i),
+                    array_slice($apellido, 0, $e)
+                );
+            }
+        }
+
+        foreach ($nombres as $nombre) {
+            $nombre = implode(" ", $nombre);
+            $found = $this->checkContext($nombre) 
+                || $this->checkContext($corrupto->apodo)
+                || $this->checkContext($corrupto->partido . ' ' . $nombre)
+                || $this->checkContext($corrupto->cargo   . ' ' . $nombre);
+            if ($found) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function checkContext($name)
@@ -86,7 +113,7 @@ abstract class Noticia
         foreach ($args as $texto) {
             if (is_array($texto)) continue;
 
-            $parts = array_filter(preg_split('/[^a-z]+/', strtolower(iconv('UTF-8','ASCII//TRANSLIT', $texto))));
+            $parts = strtowords($texto);
 
             $index = [];
             foreach ($names as $name) {

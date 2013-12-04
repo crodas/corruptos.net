@@ -24,31 +24,33 @@ function get_locales() {
  *  @Route "/{page}"
  *  @Route "/ver/{tag}"
  *  @Route "/ver/{tag}/{page}"
- *  @View layout.tpl
+ *  @View usuarios.tpl
  */
 function get_home($req)
 {
     $db    = Service::get('db');
     $query = array();
     $tag   = $req->get('tag');
-    $page  = $req->get('page') ?: 0;
-    $limit = 30;
+    $page  = max(intval($req->get('page')), 1);
+    $limit = Service::get('config')['per_page'];
+
     if (!empty($tag)) {
-        $query = ['tags' => $tag];
+        $query = ['tags' => rawurldecode($tag)];
     }
 
     $corruptos = $db->getCollection('corrupto')
         ->find($query)
-        ->limit($limit+1)
-        ->skip($page * $limit)
+        ->limit($limit)
+        ->skip(($page-1) * $limit)
         ->sort(['hits' => -1]);
+
     if ($corruptos->count(true) == 0) {
         $req->notFound();
     }
-    $has_next = $corruptos->count(true) == $limit+1;
-    $base     = explode("/", $_SERVER['REQUEST_URI'])[1];
-    $corruptos->limit($limit);
-    return compact('corruptos', 'page', 'has_next', 'base');
+    $base  = rtrim(preg_replace("@/{$page}$@", "", $_SERVER['REQUEST_URI']), '/');
+    $total = $corruptos->count();
+
+    return compact('corruptos', 'page', 'base', 'total');
 }
 
 /**
