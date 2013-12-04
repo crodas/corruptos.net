@@ -140,6 +140,7 @@ function cleaup_things($input, $output)
 {
     $conn  = Service::get('db');
     $query = [];
+    //$query = ['url' => 'http://www.abc.com.py/edicion-impresa/politica/el-continuismo-resulto-mas-delicioso-que-el-cambio-246183.html'];
 
     $cursor = $conn->getCollection('corruptos')->Find($query);
 
@@ -167,7 +168,7 @@ function cleaup_things($input, $output)
         foreach ($noticia->corruptos as $index => $corrupto) {
             if (!$noticia->isAbout($corrupto->getObject())) {
                 echo "{$noticia->id}: {$noticia->url} is not about {$corrupto->nombre}\n";
-                //unset($noticia->corruptos[$index]);
+                unset($noticia->corruptos[$index]);
             }
         }
 

@@ -74,8 +74,8 @@ abstract class Noticia
         }
 
         extract($corrupto->nombres);
-        $nombres[] = $corrupto->cargo . ' ' . $apellido[0];
-        $nombres[] = $corrupto->partido . ' ' . $apellido[0]; 
+        $nombres[] = [$corrupto->cargo,  $apellido[0]];
+        $nombres[] = [$corrupto->partido, $apellido[0]]; 
 
         if (count($apellido) > 1) {
             for($i = 2; $i <= count($apellido); $i++) {
