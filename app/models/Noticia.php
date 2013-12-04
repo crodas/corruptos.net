@@ -72,7 +72,11 @@ abstract class Noticia
         if (empty($corrupto->nombres)) {
             var_dump($corrupto->uri);exit;
         }
+
         extract($corrupto->nombres);
+        $nombres[] = $corrupto->cargo . ' ' . $apellido[0];
+        $nombres[] = $corrupto->partido . ' ' . $apellido[0]; 
+
         if (count($apellido) > 1) {
             for($i = 2; $i <= count($apellido); $i++) {
                 $nombres[] = array_slice($apellido, 0, $i);
