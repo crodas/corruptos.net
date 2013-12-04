@@ -49,6 +49,9 @@ abstract class Noticia
     /** @Hash */
     public $crawled_data = array();
 
+    /** @Int */
+    public $total_comentarios = 0;
+
     public static function getOrCreate($url)
     {
         $db  = Service::get("db");
@@ -69,7 +72,11 @@ abstract class Noticia
         if (empty($corrupto->nombres)) {
             var_dump($corrupto->uri);exit;
         }
+
         extract($corrupto->nombres);
+        $nombres[] = [$corrupto->cargo,  $apellido[0]];
+        $nombres[] = [$corrupto->partido, $apellido[0]]; 
+
         if (count($apellido) > 1) {
             for($i = 2; $i <= count($apellido); $i++) {
                 $nombres[] = array_slice($apellido, 0, $i);
@@ -132,7 +139,7 @@ abstract class Noticia
         if (empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
                 try {
-                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 500, "UTF-8") . "...";
+                    $this->texto = mb_substr($this->crawled_data['texto'], 0, 1000, "UTF-8") . "...";
                     Service::get('db')->save($this);
                 } catch (\Exception $e) {
                 }
