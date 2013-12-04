@@ -50,7 +50,7 @@ img {
 /* News feed */
 .news-feed li{ line-height: 1.15; margin-bottom: 20px; min-height: 60px;}
 .news-feed h4.title{ margin: 0px; padding: 0px 0px 5px; line-height: 1.0; }
-.news-feed .post{ margin-left: 70px; }
+.news-feed .post{ margin-left: 90px; }
 .news-feed .avatar{ height: 60px;  position: absolute; top: 0; bottom: 0; margin-right:10px; min-height: 60px;}
 .news-feed .avatar img{ width: 60px; margin-top: 5px; }
 .news-feed .post-wrap{ position: relative; }
@@ -148,4 +148,3 @@ img {
   a[data-wysihtml5-command-value="blue"] {
     color: blue;
   }
->>>>>>> v11

@@ -1,0 +1,113 @@
+/**
+Description: Menéame CSS file
+Site URI: http://meneame.net
+Authors: Ricardo Galli, Benjamí Villoslada, Damián Vila, Aníbal De Castro
+Licence: Affero GPL License (http://meneame.net/COPYING)
+*/
+
+.news-shakeit {
+position: absolute;
+top: 0px;
+left: 8px;
+width: 67px;
+height: 85px;
+border: 1px solid #ffeed6;
+font-size: 12px;
+color: #ff6400;
+text-align: center;
+background-clip: padding-box;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.news-shakeit .votes, .news-shakeit .clics {
+background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABbCAIAAAA9YnhPAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKHBIbEFJ0KpIAAAA7SURBVBjTtY87CgAhFAOH3P+u1jZvbBbWSkGxCiQhH9QAobeAwQoa+ND6+WP9Imv27fRlTz38t9tMgAGM9ZDiUJW8zgAAAABJRU5ErkJggg==');
+}
+
+.news-shakeit .votes {
+padding: 6px 0 6px;
+border: 1px solid #FFF;
+border-bottom: 0;
+line-height: 1.2em;
+background-repeat:repeat-x;
+background-position: 0 -2px;
+background-clip: padding-box;
+-moz-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+}
+.news-shakeit .votes a {
+display: block;
+color: #ff6400;
+font-size: 18px;
+text-decoration: none;
+}
+
+.menealo {
+position: relative;
+left: -6px;
+display: inline-block;
+width: 78px;
+border: 1px solid #ffc098;
+background-color: #ff6400;
+}
+
+.menealo:hover {
+border: 1px solid #ff6400;
+}
+
+.menealo a, .menealo span {
+display: block;
+padding: 2px 0;
+height: 18px;
+color: #FFF;
+text-decoration: none;
+border: 1px solid #FFF;
+background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAIAAAC0rgCNAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKHBEpJevxBJkAAAAuSURBVAjXY/h/9wQTw4/PTAw/v0AwjP3jCxPDz89QGorfP2FieHieiYGBgVgMAAfwGZG+FivHAAAAAElFTkSuQmCC') repeat-x;
+}
+
+.menealo span {
+background-image: none;
+border: 1px solid #ff6300;
+border-bottom: 1px solid #ff914a;
+background: #FFF url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAaCAIAAAD5ZqGGAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKHBEpOxH+OfoAAAAvSURBVAjXjYixDQAgDMOsHMh1XJu2KkvFwMRgyTa9l8gQZZEW9Xh6ev59IRrBFwej9x6Vx7fq1wAAAABJRU5ErkJggg==') repeat-x bottom left;
+}
+
+.menealo span.negative  {
+color: #ccc;
+font-size: 11px;
+}
+
+.news-shakeit .clics {
+padding: 1px 0 2px 0;
+border: 1px solid #FFF;
+border-top: 0;
+font-size: 10px;
+background-repeat: repeat-x;
+background-position: bottom;
+background-clip: padding-box;
+-moz-border-radius: 0 0 4px 4px;
+border-radius: 0 0 4px 4px;
+}
+
+.news-shakeit.mnm-queued {
+border: none;
+}
+
+.news-shakeit.mnm-queued .votes, .news-shakeit.mnm-queued .clics {
+border-color: #FF883D;
+background-image: none;
+}
+
+.news-shakeit.mnm-discarded {
+color: #808080;
+border-color: #dfdfdf;
+}
+
+.news-shakeit.mnm-discarded .votes a {
+color: #808080;
+}
+
+.news-shakeit.mnm-discarded .votes, .news-shakeit.mnm-discarded .clics {
+background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABbCAYAAACyAO8YAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA59AAAOfQGd6VlXAAAAB3RJTUUH3AocDzAgFiPXdAAAACVJREFUGNNj+PPnz3+m////M0AIBgYGDNYASAxFkwfKSkZGRgYAWXimCfMnmFcAAAAASUVORK5CYII=');
+}

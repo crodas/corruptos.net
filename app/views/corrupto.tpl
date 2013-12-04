@@ -57,41 +57,7 @@
 <ul class="news-feed unstyled">
     @set($datos, $corrupto->getNoticias($page, $total, $filter))
     @foreach($datos as $dato)
-    <li class="news-item">
-        <h4 class="title">
-            <a target="_blank" href="{{{$dato->url}}}" onmousedown="return go(this, '{{$dato->id}}')" class="text-info">
-                {{{$dato->titulo}}}
-            </a>
-        </h4>
-        <div class="post-wrap">
-            <a href="http://www.websterfolks.com/demo/reddish/user/2-demo" class="avatar">
-                <img src="{{{ $dato->corruptos[array_rand($dato->corruptos)]->getImage() }}}" alt="demo user" class="pull-left clearfix" />
-            </a>
-            <div class="post" class="pull-left">
-                <p class="meta">
-                    hace {{ time_ago($dato->creado->sec) }} atrás en                                                
-                    <strong>
-                        <a target="_blank" href="/fuente/{{{$dato->fuente()}}}" class="text-warning">{{{$dato->fuente()}}}</a>                                                
-                    </strong>
-                </p> 
-                <p class="article">
-                    @if (!empty($dato->is_audio))
-                        @include('mp3', ['id' => $dato->id, 'noticia' => $dato])
-                    @else
-                        {{{$dato->texto}}}
-                    @end
-                </p>
-                <p class="comments-count">
-                    <a href="/noticia/{{$dato->uri}}" class="text-success">
-                        {{$dato->total_comentarios}} comentarios
-                    </a>
-                    @foreach ($dato->corruptos as $corrupto)
-                        <a href="/{{$corrupto->uri}}">#{{{$corrupto->nombre}}}</a>
-                    @end
-                </p>
-            </div> 
-        </div>
-    </li>
+        @include('detalle-noticia', ['noticia' => $dato]);
     @end
 </ul>
 

@@ -63,6 +63,7 @@ function fulltext_create($input, $output)
             'extra'  => $row->crawled_data,
             'url'    => $row->url,
             'is_audio' => !empty($row->is_audio),
+            'total_comentarios' => $row->total_comentarios,
             'corruptos' => array_map(function($c) {
                 return [
                     'id' => (string)$c->id,

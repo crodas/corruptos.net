@@ -8,7 +8,7 @@
         <meta name="description" content="{{{mb_substr($noticia->texto, 0,200)}}}" />
         @end
         <meta name="keywords" content="paraguay, {{{$corrupto->nombre}}}" />
-            @if ($noticia->is_audio)
+            @if (!empty($noticia->is_audio))
             <meta name="twitter:card" content="player">
             <meta name="twitter:site" content="@botame_org">
             <meta name="twitter:title" content="{{{ $noticia->titulo }}}">

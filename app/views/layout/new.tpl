@@ -16,6 +16,7 @@
     <link href="/assets/css/bootstrap.min.css" media="all" type="text/css" rel="stylesheet" />
     <link href="/assets/css/bootstrap-responsive.min.css" media="all" type="text/css" rel="stylesheet" />
     <link href="/assets/css/font-awesome.min.css" media="all" type="text/css" rel="stylesheet" />
+    <link href="/assets/css/mnm.css" media="all" type="text/css" rel="stylesheet" />
     <link href="/assets/css/style.css" media="all" type="text/css" rel="stylesheet" />
     @section('css')
     @show
@@ -83,9 +84,9 @@
             <div class="span3 sidebar">
         
           <div class="widget">
-              <form class="form-search form-horizontal pull-right" id="custom-search-form" method="GET" action="http://www.websterfolks.com/demo/reddish/search/" accept-charset="UTF-8" />
+              <form class="form-search form-horizontal pull-right" id="custom-search-form" method="GET" action="/busqueda" accept-charset="UTF-8" />
                 <div class="input-append span12">
-                  <input type="text" name="search" class="search-query" placeholder="Busqueda" />
+                    {{ $form->text('q', ['class' => 'search-query', 'placeholder' => 'Busqueda']) }}
                   <button type="submit" class=""><i class="icon-search"></i></button>
                 </div>
 

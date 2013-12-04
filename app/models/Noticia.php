@@ -136,6 +136,7 @@ abstract class Noticia
     /** @onHydratation */
     public function onHydratation()
     {
+        $this->fuente = $this->fuente();
         if (empty($this->texto)) {
             if (!empty($this->crawled_data['texto'])) {
                 try {

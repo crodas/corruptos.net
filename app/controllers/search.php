@@ -37,7 +37,6 @@ function get_corruptos_medios($req)
     $form->populate(['q' => $text]);
 
     $base = "/busquedas/" . urlencode($text);
-    $has_next = $results->getTotalHits() > $page * 20;
 
-    return compact('results', 'text', 'form', 'page', 'base', 'has_next');
+    return compact('results', 'text', 'form', 'page', 'base');
 }

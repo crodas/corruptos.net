@@ -4,6 +4,7 @@ namespace middleware;
 
 use Service;
 use Mobile_Detect;
+use crodas\Form\Form;
 
 /** @postRoute */
 function inject_is_mobile($req, $unused, $args)
@@ -21,6 +22,9 @@ function inject_menu($req, $unused, $args)
 {
     $args['sections']  = Service::get('sections');
     $args['newspaper'] = Service::get('sources');
+    if (empty($args['form'])) {
+        $args['form'] = new Form;
+    }
     
     // be fair
     uasort($args['newspaper'], function() { return rand(-1, 1); });

@@ -1,31 +1,52 @@
+    <li class="news-item">
+        <h4 class="title">
+            <a target="_blank" href="{{{$noticia->url}}}" onmousedown="return go(this, '{{$noticia->id}}')" class="text-info">
+                {{{$noticia->titulo}}}
+            </a>
+        </h4>
+        <div class="post-wrap">
+        <!-- votos -->
+        <div class="news-shakeit mnm-published pull-left clearfix">
+            <div class="votes">
+                <a id="a-votes-{{$noticia->id}}" href="/noticia/{{$noticia->uri}}" style="display: block;">
+                    78
+                </a> 
+                botos
+            </div>  
+            <div class="menealo" id="a-va-{{$noticia->id}}">
+                <span>¡botado!</span>
+            </div>  
+            <div class="clics">  650 clics  </div> 
+        </div>
+        <!-- /votos -->
 
-<h3><a href="{{{$noticia->url}}}" onmousedown="return go(this, '{{{$noticia->id}}}')" target="_blank">{{{$noticia->titulo}}}</a></h3>
-    <small>
-    @if ($noticia->creado instanceof \MongoDate)
-        {{date("Y/m/d H:i:s", $noticia->creado->sec)}}
-    @else
-        {{date("Y/m/d H:i:s", strtotime($noticia->creado))}}
-    @end
-    @if (!empty($hash_tag))
-        @foreach ($noticia->corruptos as $corrupto)
-            <a href="/{{$corrupto['uri']}}">#{{$corrupto['nombre']}}</a>
-        @end
-    @end
-    </small>
-    <div>
-        <i class="button small fa fa-2x fa-twitter"  data-text="{{{substr($noticia->titulo,0, 80)}}}..." data-url="https://botame.org/noticia/{{$noticia->uri}}"></i>
-        <i class="button small fa fa-2x fa-facebook" data-text="{{{substr($noticia->titulo,0, 80)}}}..." data-url="https://botame.org/noticia/{{$noticia->uri}}"></i>
-    </div>
-@if (empty($noticia->is_audio)) {
-    @if ($noticia instanceof Noticia)
-        <p>{{{ $noticia->render() }}}</p>
-    @else
-        <p>{{{ $noticia->texto }}}</p>
-    @end
-@else
-    @include("mp3", ['id' => $noticia->id, 'noticia' => $noticia])
-    @if (!empty($noticia->has_text))
-        <p>{{{ $noticia->render() }}}</p>
-    @end
-@end
-
+            <div class="post" class="pull-left">
+                <p class="meta">
+                    @if (is_object($noticia->creado))
+                        hace {{ time_ago($noticia->creado->sec) }} atrás en                                                
+                    @else
+                        hace {{ time_ago(strtotime($noticia->creado)) }} atrás en                                                
+                    @end
+                    <strong>
+                        <a href="/fuente/{{{$noticia->fuente}}}" class="text-warning">{{{$noticia->fuente}}}</a>
+                    </strong>
+                </p> 
+                <p class="article">
+                    @if (!empty($noticia->is_audio))
+                        @include('mp3', ['id' => $noticia->id, 'noticia' => $noticia])
+                    @else
+                        {{{$noticia->texto}}}
+                    @end
+                </p>
+                <p class="comments-count">
+                    <a href="/noticia/{{$noticia->uri}}" class="text-success">
+                        {{$noticia->total_comentarios}} comentarios
+                    </a>
+                    @foreach ($noticia->corruptos as $corrupto)
+                        @set($corrupto, (object)$corrupto)
+                        <a href="/{{$corrupto->uri}}">#{{{$corrupto->nombre}}}</a>
+                    @end
+                </p>
+            </div> 
+        </div>
+    </li>
