@@ -32,6 +32,26 @@ function get_corruptos_medios($req)
     $query->setFrom(($page)*20);    // Where to start?
     $query->setLimit(20);   // How many?
 
+    $facet = new \Elastica\Facet\Terms('myFacetName');
+    $facet->setField('corruptos');
+    $facet->setSize(10);
+    $facet->setOrder('reverse_count');
+    $query->addFacet($facet);
+    $query->addHighlight([
+        'pre_tags' => array('<em class="highlight">'),
+        'post_tags' => array('</em>'),
+        'fields' => array(
+            'texto' => array(
+                'fragment_size' => 200,
+                'number_of_fragments' => 1,
+            ),
+            'titulo' => [
+                'fragment_size' => 200,
+                'number_of_fragments' => 1,
+            ],
+        )
+    ]);
+
     $results = $index->search($query);
     $form = new crodas\Form\Form;
     $form->populate(['q' => $text]);

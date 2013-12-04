@@ -1,7 +1,14 @@
+    @if (is_callable([$noticia, 'getHighlights']))
+        @set($highlight, $noticia->getHighlights())
+    @end
     <li class="news-item">
         <h4 class="title">
             <a target="_blank" href="{{{$noticia->url}}}" onmousedown="return go(this, '{{$noticia->id}}')" class="text-info">
-                {{{$noticia->titulo}}}
+                @if (!empty($highlight['titulo']))
+                    {{ implode("...", $highlight['titulo']) }}
+                @else
+                    {{{$noticia->titulo}}}
+                @end
             </a>
         </h4>
         <div class="post-wrap">
@@ -34,6 +41,8 @@
                 <p class="article">
                     @if (!empty($noticia->is_audio))
                         @include('mp3', ['id' => $noticia->id, 'noticia' => $noticia])
+                    @elif (!empty($highlight['texto'])) 
+                        {{ implode("...", $highlight['texto']) }}
                     @else
                         {{{$noticia->texto}}}
                     @end
