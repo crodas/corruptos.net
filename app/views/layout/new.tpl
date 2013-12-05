@@ -167,6 +167,9 @@
 	<li>
 		<a href="http://reddish.dev/page/1-privacy">Privacy Policy</a>
 	</li>
+    <li>
+        <a href="https://www.digitalocean.com/?refcode=9faf244ad950" target="_blank">Hosted at DigitalOcean</a>
+    </li>
 
 </ul>
 
