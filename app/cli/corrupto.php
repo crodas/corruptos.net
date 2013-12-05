@@ -19,6 +19,9 @@ function do_update($input, $output)
         Service::get('db')->save($corrupto);
         echo "Actualizado\n";
     }
+    if ($clave == "alias") {
+        $corrupto->update(true);
+    }
 }
 
 
