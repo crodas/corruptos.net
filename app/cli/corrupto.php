@@ -19,7 +19,7 @@ function do_update($input, $output)
         Service::get('db')->save($corrupto);
         echo "Actualizado\n";
     }
-    if ($clave == "alias") {
+    if ($clave == "apodo") {
         $corrupto->update(true);
     }
 }
